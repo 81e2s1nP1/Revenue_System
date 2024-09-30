@@ -1,0 +1,182 @@
+﻿@model List<Revenue_System.Models.InvoiceWithDetailsModel>
+
+@{
+    ViewData["Title"] = "Invoice List";
+}
+
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="/css/header.css">
+    <link rel="stylesheet" href="/css/main.css">
+    <title>Trang Web của Tôi</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        main {
+            padding: 20px;
+        }
+
+        .table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+
+            .table th, .table td {
+                border: 1px solid #ddd;
+                padding: 8px;
+                text-align: left;
+            }
+
+            .table th {
+                background-color: #f2f2f2;
+                font-weight: bold;
+            }
+
+            .table tr:hover {
+                background-color: #f5f5f5;
+            }
+
+            .table .attribute-table {
+                text-align: center;
+            }
+    </style>
+</head>
+<body>
+
+    <header>
+        <nav>
+            <ul>
+                <li><a href="#">ASoft</a></li>
+                <li><a href="#">Home</a></li>
+                <li><a asp-controller="Invoice" asp-action="Index">Invoices</a></li>
+                <li><a href="#">Pricing</a></li>
+                <li><a href="#">Dropdown <i class="fa-solid fa-caret-down"></i></a></li>
+            </ul>
+            <div class="search-bar">
+                <input type="text" placeholder="Looking for...">
+                <i class="fa fa-search"></i>
+            </div>
+        </nav>
+    </header>
+
+
+    <main>
+        <div class="container">
+            <div>
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>Invoice ID</th>
+                            <th>Customer ID</th>
+                            <th>Invoice Date</th>
+                            <th>Invoice Detail ID</th>
+                            <th>Product ID</th>
+                            <th>Quantity</th>
+                            <th>Price</th>
+                            <th>Total Price</th>
+                            <th>Active</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>@item.invoiceModel.InvoiceID</td>
+                                <td>@item.invoiceModel.CustomerID</td>
+                                <td>@item.invoiceModel.InvoiceDate.ToString("dd/MM/yyyy")</td>
+                                <td>@item.invoiceDetailModel.InvoiceDetailID</td>
+                                <td>@item.invoiceDetailModel.ProductID</td>
+                                <td>@item.invoiceDetailModel.Quantity</td>
+                                <td>@item.productModel.Price</td>
+                                <td>@item.invoiceDetailModel.TotalPrice</td>
+                                <td class="attribute-table">
+                                    <button onclick="showUpdateInvoiceForm('@item.invoiceModel.InvoiceID', '@item.invoiceDetailModel.Quantity', '@item.invoiceModel.InvoiceDate.ToString("yyyy-MM-dd")')">Edit</button>
+                                    <form asp-action="Delete" method="post" onsubmit="return confirm('Bạn có chắc chắn muốn xóa khách hàng này không?');">
+                                        <input type="hidden" name="id" value="@item.invoiceModel.InvoiceID" />
+                                        <button id="btnDelete" type="submit">Delete</button>
+                                    </form>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+
+                <div class="nav">
+                    <ul>
+                        <li><button onclick="showinvoiceForm()">New Invoice</button></li>
+                    </ul>
+                </div>
+
+                <div class="overlay" id="overlay"></div>
+    
+                <div class="customer-form" id="invoiceForm">
+                <form asp-action="Create" method="post">
+                    <div class="form-group">
+                        <label for="InvoiceID">Invoice ID</label>
+                        <input type="text" class="form-control" id="InvoiceID" name="InvoiceModel.InvoiceID" required />
+                    </div>
+
+                    <div class="form-group">
+                        <label for="CustomerID">Customer ID</label>
+                        <input type="text" class="form-control" id="CustomerID" name="InvoiceModel.CustomerID" required />
+                    </div>
+
+                    <div class="form-group">
+                        <label for="InvoiceDate">Invoice Date</label>
+                        <input type="date" class="form-control" id="InvoiceDate" name="InvoiceModel.InvoiceDate" required />
+                    </div>
+
+                    <div class="form-group">
+                        <label for="InvoiceDetailID">Invoice Detail ID</label>
+                        <input type="text" class="form-control" id="InvoiceDetailID" name="InvoiceDetailModel.InvoiceDetailID" required />
+                    </div>
+
+                    <div class="form-group">
+                        <label for="ProductID">Product ID</label>
+                        <input type="text" class="form-control" id="ProductID" name="InvoiceDetailModel.ProductID" required />
+                    </div>
+
+                    <div class="form-group">
+                        <label for="Quantity">Quantity</label>
+                        <input type="number" class="form-control" id="Quantity" name="InvoiceDetailModel.Quantity" required />
+                    </div>
+
+                    <button type="submit" class="btn btn-primary">Create Invoice</button>
+                        <button type="button" onclick="hideinvoiceForm()">Hủy</button>
+                </form>
+                </div>
+            </div>
+                
+            <!-- Form Cập Nhật Hóa Đơn -->
+            <div class="customer-form" id="updateCustomerForm">
+                <h2>Cập Nhật Hóa Đơn</h2>
+                <form asp-action="Update" method="post">
+                    <!-- Hidden field to store Invoice ID -->
+                    <input type="hidden" class="form-control" id="InvoiceId" name="InvoiceModel.InvoiceID" required />
+                    <div class="form-group">
+                        <label for="Quantity">Quantity</label>
+                        <input type="number" class="form-control" id="Quantity" name="InvoiceDetailModel.Quantity" required />
+                    </div>
+                    <div class="form-group">
+                        <label for="InvoiceDate">Invoice Date</label>
+                        <input type="date" class="form-control" id="InvoiceDate" name="InvoiceModel.InvoiceDate" required />
+                    </div>
+                    <button type="submit">Cập Nhật Hóa Đơn</button>
+                    <button type="button" onclick="hideUpdateCustomerForm()">Hủy</button>
+                </form>
+            </div>
+        </div>
+    </main>
+
+    <script src="/js/main.js"></script>
+</body>
+</html>
