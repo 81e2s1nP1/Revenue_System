@@ -44,7 +44,7 @@ namespace Revenue_System.Controllers
         }
 
         //Update customer infor
-        [HttpPut]
+        [HttpPost]
         [ValidateAntiForgeryToken]
         public IActionResult Update([Bind] CustomerModel customerModel)
         {

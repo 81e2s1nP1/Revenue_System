@@ -39,14 +39,33 @@ function hideinvoiceForm() {
     document.getElementById('overlay').style.display = 'none';
 }
 
-function showUpdateInvoiceForm(invoiceID, quantity, invoiceDate) {
-    document.getElementById('updateCustomerForm').style.display = 'block';
-    document.getElementById('InvoiceId').value = invoiceID;
-    document.getElementById('Quantity').value = quantity;
-    document.getElementById('InvoiceDate').value = invoiceDate;
+function showUpdateInvoiceForm(InvoiceID, InvoiceDetailID, Quantity, InvoiceDate) {
+    document.getElementById('updateInvoiceForm').style.display = 'block';
+    document.getElementById('overlay').style.display = 'block';
+
+    document.getElementById('UpdateInvoiceID').value = InvoiceID;
+    document.getElementById('UpdateInvoiceDetailID').value = InvoiceDetailID;
+    document.getElementById('UpdateQuantity').value = Quantity;
+
+
+    // Convert InvoiceDate from "dd/MM/yyyy" to "yyyy-MM-dd"
+    var dateParts = InvoiceDate.split("/");
+    var formattedDate = dateParts[2] + "-" + dateParts[1] + "-" + dateParts[0];
+
+    document.getElementById('UpdateInvoiceDate').value = formattedDate;
+
+    console.log("test: " + document.getElementById('updateCustomerForm').value)
+    console.log("testttt: " + InvoiceID);
+    console.log("testttt: " + InvoiceDetailID);
+    console.log("testttt: " + Quantity);
+    console.log("testttt: " + formattedDate);
 }
 
-/*submit invoice function*/
+function hideUpdateInvoiceForm() {
+    document.getElementById('updateInvoiceForm').style.display = 'none';
+    document.getElementById('overlay').style.display = 'none';
+}
+
 
 // PRODUCT FORM
 function showProductForm() {
@@ -59,4 +78,18 @@ function hideProductForm() {
     document.getElementById('overlay').style.display = 'none';
 }
 
-/*submit product function*/
+//update
+function showUpdateProductForm(productID, productName, price) {
+    document.getElementById('updateProductForm').style.display = 'block';
+    document.getElementById('overlay').style.display = 'block';
+
+    document.getElementById('displayCustomerID').textContent = productID;
+    document.getElementById('updateProductID').value = productID;
+    document.getElementById('updateProductName').value = productName;
+    document.getElementById('updatePrice').value = price;
+}
+
+function hideUpdateProductForm() {
+    document.getElementById('updateProductForm').style.display = 'none';
+    document.getElementById('overlay').style.display = 'none';
+}

@@ -1,7 +1,7 @@
 ﻿@{
-    ViewData["Title"] = "Home Page";
+    ViewData["Title"] = "Product Page";
 }
-@model List<Revenue_System.Models.CustomerModel>
+@model List<Revenue_System.Models.ProductModel>
 
 <!DOCTYPE html>
 <html lang="vi">
@@ -41,26 +41,28 @@
         </nav>
     </header>
 
+    <!-- begin main -->
+
     <main>
         <div class="container">
             <div>
                 <table>
                     <tr>
-                        <th class="attribute-table">Customer ID</th>
-                        <th class="attribute-table">Customer Name</th>
-                        <th class="attribute-table">Number Phone</th>
+                        <th class="attribute-table">Product ID</th>
+                        <th class="attribute-table">Product Name</th>
+                        <th class="attribute-table">Price</th>
                         <th class="attribute-table">Active</th>
                     </tr>
-                    @foreach (var customer in Model)
+                    @foreach (var products in Model)
                     {
                         <tr>
-                            <td class="attribute-table">@customer.CustomerID</td>
-                            <td class="attribute-table">@customer.CustomerName</td>
-                            <td class="attribute-table">@customer.Phone</td>
+                            <td class="attribute-table">@products.ProductID</td>
+                            <td class="attribute-table">@products.ProductName</td>
+                            <td class="attribute-table">@products.Price $</td>
                             <td class="attribute-table">
-                                <button onclick="showUpdateCustomerForm('@customer.CustomerID', '@customer.CustomerName', '@customer.Phone')">Edit</button>
+                                <button onclick="showUpdateProductForm('@products.ProductID', '@products.ProductName', '@products.Price')">Edit</button>
                                 <form asp-action="Delete" method="post" onsubmit="return confirm('Bạn có chắc chắn muốn xóa khách hàng này không?');">
-                                    <input type="hidden" name="id" value="@customer.CustomerID" />
+                                    <input type="hidden" name="id" value="@products.ProductID" />
                                     <button id="btnDelete" type="submit">Delete</button>
                                 </form>
                             </td>
@@ -71,58 +73,60 @@
 
             <div class="nav">
                 <ul>
-                    <li><button onclick="showCustomerForm()">New Customer</button>                
+                    <li><button onclick="showCustomerForm()">New Product</button>
                 </ul>
             </div>
 
             <div class="overlay" id="overlay"></div>
 
-            <!-- Form Đăng Nhập thêm khách hàng-->
+            <!-- Form Đăng Nhập thêm Sản Phẩm-->
             <div class="customer-form" id="customerForm">
-                <h2>Thêm Khách Hàng Mới</h2>
+                <h2>Thêm Sản Phẩm Mới</h2>
                 <form asp-action="Create" method="post">
                     <div class="form-group">
-                        <label for="customerID">Customer ID:</label>
-                        <input type="text" id="customerID" name="CustomerID" required>
+                        <label for="customerID">Product ID:</label>
+                        <input type="text" id="productID" name="ProductID" required>
                     </div>
                     <div class="form-group">
-                        <label for="customerName">Customer Name:</label>
-                        <input type="text" id="customerName" name="CustomerName" required>
+                        <label for="customerName">Product Name:</label>
+                        <input type="text" id="productName" name="ProductName" required>
                     </div>
                     <div class="form-group">
-                        <label for="phone">Phone Number:</label>
-                        <input type="text" id="phone" name="Phone" required>
+                        <label for="phone">Price:</label>
+                        <input type="text" id="price" name="Price" required>
                     </div>
-                    <button type="submit">Thêm Khách Hàng</button>
+                    <button type="submit">Thêm Sản Phẩm</button>
                     <button type="button" onclick="hideCustomerForm()">Hủy</button>
                 </form>
             </div>
 
-            <!-- Form Cập Nhật Khách Hàng -->
-            <div class="customer-form" id="updateCustomerForm" style="display:none;">
+            <!-- Form Cập Nhật Sản Phẩm -->
+            <div class="customer-form" id="updateProductForm" style="display:none;">
                 <h2>Cập Nhật Khách Hàng</h2>
                 <form asp-action="Update" method="post">
                     <div class="form-group">
                         <label>Customer ID:</label>
                         <span id="displayCustomerID"></span>
-                        <input type="hidden" id="updateCustomerID" name="CustomerID" required placeholder="Mã khách hàng">
+                        <input type="hidden" id="updateProductID" name="ProductID" required placeholder="Mã sản phẩm">
                     </div>
                     <div class="form-group">
                         <label for="updateCustomerName">Customer Name:</label>
-                        <input type="text" id="updateCustomerName" name="CustomerName" required placeholder="Tên khách hàng">
+                        <input type="text" id="updateProductName" name="ProductName" required placeholder="Tên sản phẩm">
                     </div>
                     <div class="form-group">
                         <label for="updatePhone">Phone Number:</label>
-                        <input type="text" id="updatePhone" name="Phone" required placeholder="Số điện thoại khách hàng">
+                        <input type="text" id="updatePrice" name="Price" required placeholder="Gía của sản phẩm">
                     </div>
                     <button type="submit">Cập Nhật Khách Hàng</button>
-                    <button type="button" onclick="hideUpdateCustomerForm()">Hủy</button>
+                    <button type="button" onclick="hideUpdateProductForm()">Hủy</button>
                 </form>
             </div>
 
         </div>
     </main>
 
-    <script src="~/js/main.js"></script>
+    <!-- end main-->
+
+    <script src="/js/main.js"></script>
 </body>
 </html>

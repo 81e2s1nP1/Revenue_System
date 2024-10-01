@@ -83,18 +83,17 @@ namespace Revenue_System.ServiceImplements
             using (SqlConnection con = new SqlConnection(connectionString))
             {
                 string sqlUpdateInvoiceModel = "UPDATE Invoices SET InvoiceDate = @InvoiceDate WHERE InvoiceID = @InvoiceID";
-                string sqlUpdateInvoiceDetailModel = "UPDATE InvoiceDetails SET Quantity = @Quantity WHERE InvoiceDetailID = @InvoiceDetailID";
+                string sqlUpdateInvoiceDetailModel = "UPDATE InvoiceDetails SET Quantity = @Quantity WHERE InvoiceDetailID = @InvoiceDetailID AND InvoiceID = @InvoiceID";
 
                 SqlCommand cmdUpdateInvoiceModel = new SqlCommand(sqlUpdateInvoiceModel, con);
                 SqlCommand cmdUpdateInvoiceDetailModel = new SqlCommand(sqlUpdateInvoiceDetailModel, con);
 
-                // Thêm tham số cho Invoice
                 cmdUpdateInvoiceModel.Parameters.AddWithValue("@InvoiceDate", invoiceModel.InvoiceDate);
                 cmdUpdateInvoiceModel.Parameters.AddWithValue("@InvoiceID", invoiceModel.InvoiceID);
 
-                // Thêm tham số cho InvoiceDetail
                 cmdUpdateInvoiceDetailModel.Parameters.AddWithValue("@Quantity", invoiceDetailModel.Quantity);
                 cmdUpdateInvoiceDetailModel.Parameters.AddWithValue("@InvoiceDetailID", invoiceDetailModel.InvoiceDetailID);
+                cmdUpdateInvoiceDetailModel.Parameters.AddWithValue("@InvoiceID", invoiceModel.InvoiceID);
 
                 try
                 {
@@ -112,6 +111,8 @@ namespace Revenue_System.ServiceImplements
                 }
             }
         }
+
+
 
 
 
@@ -143,6 +144,7 @@ namespace Revenue_System.ServiceImplements
                 cmdInvoiceDetails.Parameters.AddWithValue("@InvoiceID", invoiceModel.InvoiceID.ToUpper());
                 cmdInvoiceDetails.Parameters.AddWithValue("@ProductID", invoiceDetailModel.ProductID);
                 cmdInvoiceDetails.Parameters.AddWithValue("@Quantity", invoiceDetailModel.Quantity);
+                cmdInvoiceDetails.Parameters.AddWithValue("@TotalPrice", 100);
 
                 cmdInvoiceDetails.ExecuteNonQuery();
 
