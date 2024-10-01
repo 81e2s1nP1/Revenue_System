@@ -68,7 +68,7 @@ namespace Revenue_System.ServiceImplements
         }
 
         //Phương thức xóa sản phẩm theo id
-        public void DeleteCustomer(string id)
+        public void DeleteProduct(string id)
         {
             using (SqlConnection con = new SqlConnection(connectionString))
             {

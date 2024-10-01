@@ -44,6 +44,12 @@
     <main>
         <div class="container">
             <div>
+                @if (TempData["ErrorMessage"] != null)
+                {
+                    <div class="alert alert-danger">
+                        <h2 id="alertError">@TempData["ErrorMessage"]</h2>
+                    </div>
+                }
                 <table>
                     <tr>
                         <th class="attribute-table">Customer ID</th>

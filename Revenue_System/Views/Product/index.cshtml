@@ -45,6 +45,12 @@
 
     <main>
         <div class="container">
+            @if (TempData["ErrorMessage"] != null)
+            {
+                <div class="alert alert-danger">
+                    <h2>@TempData["ErrorMessage"]</h2>
+                </div>
+            }
             <div>
                 <table>
                     <tr>

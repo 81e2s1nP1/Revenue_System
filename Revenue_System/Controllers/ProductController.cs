@@ -8,6 +8,7 @@ namespace Revenue_System.Controllers
     {
         private readonly ILogger<HomeController> _logger;
         private ProductDataAccessLayer productDataAccessLayer = new ProductDataAccessLayer();
+        private InvoiceDataAccessLayer invoiceDataAccessLayer = new InvoiceDataAccessLayer();
 
         public ProductController(ILogger<HomeController> logger)
         {
@@ -52,9 +53,17 @@ namespace Revenue_System.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         public IActionResult Delete(string id)
-        {
-            productDataAccessLayer.DeleteCustomer(id);
-            return RedirectToAction("Index");
+        {   
+            if(invoiceDataAccessLayer.ProductCheck(id))
+            {
+                TempData["ErrorMessage"] = "Sản phẩm hiện đang tồn tại hóa đơn và không thể xóa.";
+                return RedirectToAction("Index");
+            }
+            else
+            {
+                productDataAccessLayer.DeleteProduct(id);
+                return RedirectToAction("Index");
+            }
         }
     }
 }

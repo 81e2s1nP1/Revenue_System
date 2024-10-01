@@ -16,10 +16,17 @@ namespace Revenue_System.Controllers
 
         public IActionResult Index()
         {
-            List<InvoiceWithDetailsModel> InvoiceWithDetailsModel = invoiceDataAccessLayer.GetInvoiceWithDetails();
-            return View(InvoiceWithDetailsModel);
+            List<InvoiceWithDetailsModel> invoiceWithDetailsModels = invoiceDataAccessLayer.GetInvoiceWithDetails();
 
+            var customerIDs = invoiceDataAccessLayer.GetAllCustomerIDs(); 
+            var productIDs = invoiceDataAccessLayer.GetAllProductIDs();
+
+            ViewBag.CustomerIDs = customerIDs;
+            ViewBag.ProductIDs = productIDs;
+
+            return View(invoiceWithDetailsModels);
         }
+
 
         // INVOICES CONTROLLER
         // Create new invoices
@@ -27,8 +34,6 @@ namespace Revenue_System.Controllers
         [ValidateAntiForgeryToken]
         public IActionResult Create([Bind] InvoiceModel invoiceModel, InvoiceDetailModel invoiceDetailModel)
         {   
-             
-                Console.WriteLine("this is inside: " + invoiceModel.ToString() + " " + invoiceDetailModel.ToString());
                 invoiceDataAccessLayer.InsertInvoice(invoiceModel, invoiceDetailModel);
                 return RedirectToAction("Index");
         }
@@ -37,7 +42,7 @@ namespace Revenue_System.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         public IActionResult Delete(string id)
-        {
+        {   
             invoiceDataAccessLayer.DeleteInvoice(id);
             return RedirectToAction("Index");
         }

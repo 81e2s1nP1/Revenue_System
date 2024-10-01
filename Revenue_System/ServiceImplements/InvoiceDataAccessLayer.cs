@@ -11,6 +11,7 @@ namespace Revenue_System.ServiceImplements
         public List<InvoiceWithDetailsModel> GetInvoiceWithDetails()
         {
             List<InvoiceWithDetailsModel> lstInvoiceWithDetails = new List<InvoiceWithDetailsModel>();
+            List<string> lstCustomerId = new List<string>();
 
             using SqlConnection con = new SqlConnection(connectionString);
 
@@ -37,7 +38,7 @@ namespace Revenue_System.ServiceImplements
             SqlDataReader rdr = cmd.ExecuteReader();
 
             while (rdr.Read())
-            {
+            {   
                 // Tạo đối tượng InvoiceDetailModel
                 InvoiceDetailModel invoiceDetailModel = new InvoiceDetailModel
                 {
@@ -71,10 +72,54 @@ namespace Revenue_System.ServiceImplements
 
                 // Thêm đối tượng vào danh sách
                 lstInvoiceWithDetails.Add(invoiceWithDetailsModel);
+             
             }
-
             con.Close();
             return lstInvoiceWithDetails;
+        }
+
+        // Phương thức lấy danh sách CustomerID
+        public List<string> GetAllCustomerIDs()
+        {
+            List<string> lstCustomerIDs = new List<string>();
+
+            using SqlConnection con = new SqlConnection(connectionString);
+
+            string sqlQuery = "SELECT DISTINCT CustomerID FROM Customers";
+            SqlCommand cmd = new SqlCommand(sqlQuery, con);
+
+            con.Open();
+            SqlDataReader rdr = cmd.ExecuteReader();
+
+            while (rdr.Read())
+            {
+                lstCustomerIDs.Add(rdr["CustomerID"].ToString());
+            }
+            con.Close();
+
+            return lstCustomerIDs;
+        }
+
+        // Phương thức lấy danh sách ProductID
+        public List<string> GetAllProductIDs()
+        {
+            List<string> lstProductIDs = new List<string>();
+
+            using SqlConnection con = new SqlConnection(connectionString);
+
+            string sqlQuery = "SELECT DISTINCT ProductID FROM Products";
+            SqlCommand cmd = new SqlCommand(sqlQuery, con);
+
+            con.Open();
+            SqlDataReader rdr = cmd.ExecuteReader();
+
+            while (rdr.Read())
+            {
+                lstProductIDs.Add(rdr["ProductID"].ToString());
+            }
+            con.Close();
+
+            return lstProductIDs;
         }
 
         //Phương thức cập nhật lại đơn hàng, chi tiết đơn hàng
@@ -196,5 +241,40 @@ namespace Revenue_System.ServiceImplements
             }
         }
 
+        // Phương thức kiểm tra sản phẩm có trong đơn hàng chưa 
+        public bool ProductCheck(string productId)
+        {
+            using SqlConnection con = new SqlConnection(connectionString);
+            con.Open();
+
+            string query = "SELECT COUNT(*) FROM InvoiceDetails WHERE ProductID = @ProductID";
+            SqlCommand cmd = new SqlCommand(query, con);
+
+            cmd.Parameters.AddWithValue("@ProductID", productId);
+
+            int count = (int)cmd.ExecuteScalar();
+
+            con.Close();
+
+            return count > 0;
+        }
+
+        // Phương thức kiểm tra sản phẩm có trong đơn hàng chưa 
+        public bool CustomerCheck(string customerId)
+        {
+            using SqlConnection con = new SqlConnection(connectionString);
+            con.Open();
+
+            string query = "SELECT COUNT(*) FROM Invoices WHERE CustomerID = @CustomerID";
+            SqlCommand cmd = new SqlCommand(query, con);
+
+            cmd.Parameters.AddWithValue("@CustomerID", customerId);
+
+            int count = (int)cmd.ExecuteScalar();
+
+            con.Close();
+
+            return count > 0;
+        }
     }
 }

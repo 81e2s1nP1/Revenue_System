@@ -3,16 +3,36 @@
   "WorkspaceRootPath": "D:\\C Sharp\\ASoft\\Roadmap\\Bai Tap Web Co Ban\\Source Code\\Revenue_System\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{ACA74835-24A8-4C23-B808-3F1845351EF7}|Revenue_System\\Revenue_System.csproj|d:\\c sharp\\asoft\\roadmap\\bai tap web co ban\\source code\\revenue_system\\revenue_system\\wwwroot\\js\\main.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
-      "RelativeMoniker": "D:0:0:{ACA74835-24A8-4C23-B808-3F1845351EF7}|Revenue_System\\Revenue_System.csproj|solutionrelative:revenue_system\\wwwroot\\js\\main.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{ACA74835-24A8-4C23-B808-3F1845351EF7}|Revenue_System\\Revenue_System.csproj|d:\\c sharp\\asoft\\roadmap\\bai tap web co ban\\source code\\revenue_system\\revenue_system\\views\\invoice\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{ACA74835-24A8-4C23-B808-3F1845351EF7}|Revenue_System\\Revenue_System.csproj|solutionrelative:revenue_system\\views\\invoice\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{ACA74835-24A8-4C23-B808-3F1845351EF7}|Revenue_System\\Revenue_System.csproj|d:\\c sharp\\asoft\\roadmap\\bai tap web co ban\\source code\\revenue_system\\revenue_system\\views\\product\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{ACA74835-24A8-4C23-B808-3F1845351EF7}|Revenue_System\\Revenue_System.csproj|solutionrelative:revenue_system\\views\\product\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{ACA74835-24A8-4C23-B808-3F1845351EF7}|Revenue_System\\Revenue_System.csproj|d:\\c sharp\\asoft\\roadmap\\bai tap web co ban\\source code\\revenue_system\\revenue_system\\views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{ACA74835-24A8-4C23-B808-3F1845351EF7}|Revenue_System\\Revenue_System.csproj|solutionrelative:revenue_system\\views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{ACA74835-24A8-4C23-B808-3F1845351EF7}|Revenue_System\\Revenue_System.csproj|d:\\c sharp\\asoft\\roadmap\\bai tap web co ban\\source code\\revenue_system\\revenue_system\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{ACA74835-24A8-4C23-B808-3F1845351EF7}|Revenue_System\\Revenue_System.csproj|solutionrelative:revenue_system\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{ACA74835-24A8-4C23-B808-3F1845351EF7}|Revenue_System\\Revenue_System.csproj|d:\\c sharp\\asoft\\roadmap\\bai tap web co ban\\source code\\revenue_system\\revenue_system\\serviceimplements\\invoicedataaccesslayer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{ACA74835-24A8-4C23-B808-3F1845351EF7}|Revenue_System\\Revenue_System.csproj|solutionrelative:revenue_system\\serviceimplements\\invoicedataaccesslayer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{ACA74835-24A8-4C23-B808-3F1845351EF7}|Revenue_System\\Revenue_System.csproj|d:\\c sharp\\asoft\\roadmap\\bai tap web co ban\\source code\\revenue_system\\revenue_system\\controllers\\productcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{ACA74835-24A8-4C23-B808-3F1845351EF7}|Revenue_System\\Revenue_System.csproj|solutionrelative:revenue_system\\controllers\\productcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{ACA74835-24A8-4C23-B808-3F1845351EF7}|Revenue_System\\Revenue_System.csproj|d:\\c sharp\\asoft\\roadmap\\bai tap web co ban\\source code\\revenue_system\\revenue_system\\serviceimplements\\productdataaccesslayer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{ACA74835-24A8-4C23-B808-3F1845351EF7}|Revenue_System\\Revenue_System.csproj|solutionrelative:revenue_system\\serviceimplements\\productdataaccesslayer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{ACA74835-24A8-4C23-B808-3F1845351EF7}|Revenue_System\\Revenue_System.csproj|d:\\c sharp\\asoft\\roadmap\\bai tap web co ban\\source code\\revenue_system\\revenue_system\\wwwroot\\css\\main.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
+      "RelativeMoniker": "D:0:0:{ACA74835-24A8-4C23-B808-3F1845351EF7}|Revenue_System\\Revenue_System.csproj|solutionrelative:revenue_system\\wwwroot\\css\\main.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{ACA74835-24A8-4C23-B808-3F1845351EF7}|Revenue_System\\Revenue_System.csproj|d:\\c sharp\\asoft\\roadmap\\bai tap web co ban\\source code\\revenue_system\\revenue_system\\controllers\\invoicecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{ACA74835-24A8-4C23-B808-3F1845351EF7}|Revenue_System\\Revenue_System.csproj|solutionrelative:revenue_system\\controllers\\invoicecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -22,46 +42,104 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 2,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "main.js",
-              "DocumentMoniker": "D:\\C Sharp\\ASoft\\Roadmap\\Bai Tap Web Co Ban\\Source Code\\Revenue_System\\Revenue_System\\wwwroot\\js\\main.js",
-              "RelativeDocumentMoniker": "Revenue_System\\wwwroot\\js\\main.js",
-              "ToolTip": "D:\\C Sharp\\ASoft\\Roadmap\\Bai Tap Web Co Ban\\Source Code\\Revenue_System\\Revenue_System\\wwwroot\\js\\main.js",
-              "RelativeToolTip": "Revenue_System\\wwwroot\\js\\main.js",
-              "ViewState": "AgIAACwAAAAAAAAAAAAswEAAAAAqAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
-              "WhenOpened": "2024-10-01T03:34:22.052Z",
-              "EditorCaption": ""
+              "DocumentIndex": 6,
+              "Title": "main.css",
+              "DocumentMoniker": "D:\\C Sharp\\ASoft\\Roadmap\\Bai Tap Web Co Ban\\Source Code\\Revenue_System\\Revenue_System\\wwwroot\\css\\main.css",
+              "RelativeDocumentMoniker": "Revenue_System\\wwwroot\\css\\main.css",
+              "ToolTip": "D:\\C Sharp\\ASoft\\Roadmap\\Bai Tap Web Co Ban\\Source Code\\Revenue_System\\Revenue_System\\wwwroot\\css\\main.css",
+              "RelativeToolTip": "Revenue_System\\wwwroot\\css\\main.css",
+              "ViewState": "AgIAAHcAAAAAAAAAAAAAAI4AAAAYAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
+              "WhenOpened": "2024-10-01T06:20:34.819Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 1,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "D:\\C Sharp\\ASoft\\Roadmap\\Bai Tap Web Co Ban\\Source Code\\Revenue_System\\Revenue_System\\Views\\Home\\Index.cshtml",
+              "RelativeDocumentMoniker": "Revenue_System\\Views\\Home\\Index.cshtml",
+              "ToolTip": "D:\\C Sharp\\ASoft\\Roadmap\\Bai Tap Web Co Ban\\Source Code\\Revenue_System\\Revenue_System\\Views\\Home\\Index.cshtml",
+              "RelativeToolTip": "Revenue_System\\Views\\Home\\Index.cshtml",
+              "ViewState": "AgIAAB4AAAAAAAAAAAAAAC4AAAAQAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-10-01T06:18:30.931Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
               "Title": "index.cshtml",
               "DocumentMoniker": "D:\\C Sharp\\ASoft\\Roadmap\\Bai Tap Web Co Ban\\Source Code\\Revenue_System\\Revenue_System\\Views\\Product\\index.cshtml",
               "RelativeDocumentMoniker": "Revenue_System\\Views\\Product\\index.cshtml",
               "ToolTip": "D:\\C Sharp\\ASoft\\Roadmap\\Bai Tap Web Co Ban\\Source Code\\Revenue_System\\Revenue_System\\Views\\Product\\index.cshtml",
               "RelativeToolTip": "Revenue_System\\Views\\Product\\index.cshtml",
-              "ViewState": "AgIAAFoAAAAAAAAAAAAAAGcAAAA8AAAAAAAAAA==",
+              "ViewState": "AgIAACQAAAAAAAAAAAAAADIAAAA2AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-10-01T03:33:58.48Z",
+              "WhenOpened": "2024-10-01T06:18:10.41Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "index.cshtml",
-              "DocumentMoniker": "D:\\C Sharp\\ASoft\\Roadmap\\Bai Tap Web Co Ban\\Source Code\\Revenue_System\\Revenue_System\\Views\\Invoice\\index.cshtml",
-              "RelativeDocumentMoniker": "Revenue_System\\Views\\Invoice\\index.cshtml",
-              "ToolTip": "D:\\C Sharp\\ASoft\\Roadmap\\Bai Tap Web Co Ban\\Source Code\\Revenue_System\\Revenue_System\\Views\\Invoice\\index.cshtml",
-              "RelativeToolTip": "Revenue_System\\Views\\Invoice\\index.cshtml",
-              "ViewState": "AgIAAG8AAAAAAAAAAAAAAK0AAABEAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-10-01T03:33:48.717Z",
-              "EditorCaption": ""
+              "DocumentIndex": 3,
+              "Title": "InvoiceDataAccessLayer.cs",
+              "DocumentMoniker": "D:\\C Sharp\\ASoft\\Roadmap\\Bai Tap Web Co Ban\\Source Code\\Revenue_System\\Revenue_System\\ServiceImplements\\InvoiceDataAccessLayer.cs",
+              "RelativeDocumentMoniker": "Revenue_System\\ServiceImplements\\InvoiceDataAccessLayer.cs",
+              "ToolTip": "D:\\C Sharp\\ASoft\\Roadmap\\Bai Tap Web Co Ban\\Source Code\\Revenue_System\\Revenue_System\\ServiceImplements\\InvoiceDataAccessLayer.cs",
+              "RelativeToolTip": "Revenue_System\\ServiceImplements\\InvoiceDataAccessLayer.cs",
+              "ViewState": "AgIAAP0AAAAAAAAAAAAMwAsBAAA4AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-01T06:17:07.777Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "HomeController.cs",
+              "DocumentMoniker": "D:\\C Sharp\\ASoft\\Roadmap\\Bai Tap Web Co Ban\\Source Code\\Revenue_System\\Revenue_System\\Controllers\\HomeController.cs",
+              "RelativeDocumentMoniker": "Revenue_System\\Controllers\\HomeController.cs",
+              "ToolTip": "D:\\C Sharp\\ASoft\\Roadmap\\Bai Tap Web Co Ban\\Source Code\\Revenue_System\\Revenue_System\\Controllers\\HomeController.cs",
+              "RelativeToolTip": "Revenue_System\\Controllers\\HomeController.cs",
+              "ViewState": "AgIAADMAAAAAAAAAAAAuwEAAAAA0AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-01T06:13:41.801Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "InvoiceController.cs",
+              "DocumentMoniker": "D:\\C Sharp\\ASoft\\Roadmap\\Bai Tap Web Co Ban\\Source Code\\Revenue_System\\Revenue_System\\Controllers\\InvoiceController.cs",
+              "RelativeDocumentMoniker": "Revenue_System\\Controllers\\InvoiceController.cs",
+              "ToolTip": "D:\\C Sharp\\ASoft\\Roadmap\\Bai Tap Web Co Ban\\Source Code\\Revenue_System\\Revenue_System\\Controllers\\InvoiceController.cs",
+              "RelativeToolTip": "Revenue_System\\Controllers\\InvoiceController.cs",
+              "ViewState": "AgIAACMAAAAAAAAAAAAgwCwAAAAMAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-01T06:13:00.488Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "ProductController.cs",
+              "DocumentMoniker": "D:\\C Sharp\\ASoft\\Roadmap\\Bai Tap Web Co Ban\\Source Code\\Revenue_System\\Revenue_System\\Controllers\\ProductController.cs",
+              "RelativeDocumentMoniker": "Revenue_System\\Controllers\\ProductController.cs",
+              "ToolTip": "D:\\C Sharp\\ASoft\\Roadmap\\Bai Tap Web Co Ban\\Source Code\\Revenue_System\\Revenue_System\\Controllers\\ProductController.cs",
+              "RelativeToolTip": "Revenue_System\\Controllers\\ProductController.cs",
+              "ViewState": "AgIAACsAAAAAAAAAAAAkwDoAAAA0AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-01T06:12:10.642Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "ProductDataAccessLayer.cs",
+              "DocumentMoniker": "D:\\C Sharp\\ASoft\\Roadmap\\Bai Tap Web Co Ban\\Source Code\\Revenue_System\\Revenue_System\\ServiceImplements\\ProductDataAccessLayer.cs",
+              "RelativeDocumentMoniker": "Revenue_System\\ServiceImplements\\ProductDataAccessLayer.cs",
+              "ToolTip": "D:\\C Sharp\\ASoft\\Roadmap\\Bai Tap Web Co Ban\\Source Code\\Revenue_System\\Revenue_System\\ServiceImplements\\ProductDataAccessLayer.cs",
+              "RelativeToolTip": "Revenue_System\\ServiceImplements\\ProductDataAccessLayer.cs",
+              "ViewState": "AgIAAEYAAAAAAAAAAAA5wFMAAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-01T06:11:46.612Z"
             }
           ]
         }
