@@ -79,14 +79,14 @@
 
             <div class="nav">
                 <ul>
-                    <li><button onclick="showCustomerForm()">New Product</button>
+                    <li><button onclick="showProductForm()">New Product</button>
                 </ul>
             </div>
 
             <div class="overlay" id="overlay"></div>
 
             <!-- Form Đăng Nhập thêm Sản Phẩm-->
-            <div class="customer-form" id="customerForm">
+            <div class="customer-form" id="productForm">
                 <h2>Thêm Sản Phẩm Mới</h2>
                 <form asp-action="Create" method="post">
                     <div class="form-group">
@@ -102,7 +102,7 @@
                         <input type="text" id="price" name="Price" required>
                     </div>
                     <button type="submit">Thêm Sản Phẩm</button>
-                    <button type="button" onclick="hideCustomerForm()">Hủy</button>
+                    <button type="button" onclick="hideProductForm()">Hủy</button>
                 </form>
             </div>
 
@@ -133,6 +133,6 @@
 
     <!-- end main-->
 
-    <script src="/js/main.js"></script>
+    <script src="/js/products.js"></script>
 </body>
 </html>

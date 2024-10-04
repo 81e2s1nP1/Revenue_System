@@ -17,8 +17,16 @@
       "PackagePath": "staticwebassets\\favicon.ico"
     },
     {
+      "Id": "D:\\C Sharp\\ASoft\\Roadmap\\Bai Tap Web Co Ban\\Source Code\\Revenue_System\\Revenue_System\\wwwroot\\js\\invoice.js",
+      "PackagePath": "staticwebassets\\js\\invoice.js"
+    },
+    {
       "Id": "D:\\C Sharp\\ASoft\\Roadmap\\Bai Tap Web Co Ban\\Source Code\\Revenue_System\\Revenue_System\\wwwroot\\js\\main.js",
       "PackagePath": "staticwebassets\\js\\main.js"
+    },
+    {
+      "Id": "D:\\C Sharp\\ASoft\\Roadmap\\Bai Tap Web Co Ban\\Source Code\\Revenue_System\\Revenue_System\\wwwroot\\js\\products.js",
+      "PackagePath": "staticwebassets\\js\\products.js"
     },
     {
       "Id": "D:\\C Sharp\\ASoft\\Roadmap\\Bai Tap Web Co Ban\\Source Code\\Revenue_System\\Revenue_System\\wwwroot\\lib\\bootstrap\\LICENSE",

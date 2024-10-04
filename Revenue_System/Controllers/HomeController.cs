@@ -37,7 +37,7 @@ namespace Revenue_System.Controllers
         {
             if (ModelState.IsValid)
             {
-             
+
                 customerDataAccessLayer.InsertCustomer(customerModel);
                 return RedirectToAction("Index");
             }
