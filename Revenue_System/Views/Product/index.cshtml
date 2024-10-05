@@ -1,138 +1,65 @@
 ﻿@{
     ViewData["Title"] = "Product Page";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
-@model List<Revenue_System.Models.ProductModel>
 
-<!DOCTYPE html>
-<html lang="vi">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <link rel="stylesheet" href="~/css/header.css">
-    <link rel="stylesheet" href="~/css/main.css">
-    <title>Trang Web của Tôi</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-        }
-        main {
-            padding: 20px;
-        }
-    </style>
-</head>
-<body>
+<main>
+    <div class="container">
+        <div>
+            <h2>Product Form</h2>
+            <div id="grid"></div>
 
-    <header>
-        <nav>
-            <ul>
-                <li><a href="#">ASoft</a></li>
-                <li><a asp-controller="Home" asp-action="Index">Home</a></li>
-                <li><a asp-controller="Invoice" asp-action="Index">Invoices</a></li>
-                <li><a asp-controller="Product" asp-action="Index">Product</a></li>
-                <li><a href="#">Dropdown <i class="fa-solid fa-caret-down"></i></a></li>
-            </ul>
-            <div class="search-bar">
-                <input type="text" placeholder="Looking for...">
-                <i class="fa fa-search"></i>
-            </div>
-        </nav>
-    </header>
-
-    <!-- begin main -->
-
-    <main>
-        <div class="container">
-            @if (TempData["ErrorMessage"] != null)
-            {
-                <div class="alert alert-danger">
-                    <h2>@TempData["ErrorMessage"]</h2>
-                </div>
-            }
-            <div>
-                <table>
-                    <tr>
-                        <th class="attribute-table">Product ID</th>
-                        <th class="attribute-table">Product Name</th>
-                        <th class="attribute-table">Price</th>
-                        <th class="attribute-table">Active</th>
-                    </tr>
-                    @foreach (var products in Model)
-                    {
-                        <tr>
-                            <td class="attribute-table">@products.ProductID</td>
-                            <td class="attribute-table">@products.ProductName</td>
-                            <td class="attribute-table">@products.Price $</td>
-                            <td class="attribute-table">
-                                <button onclick="showUpdateProductForm('@products.ProductID', '@products.ProductName', '@products.Price')">Edit</button>
-                                <form asp-action="Delete" method="post" onsubmit="return confirm('Bạn có chắc chắn muốn xóa khách hàng này không?');">
-                                    <input type="hidden" name="id" value="@products.ProductID" />
-                                    <button id="btnDelete" type="submit">Delete</button>
-                                </form>
-                            </td>
-                        </tr>
-                    }
-                </table>
-            </div>
-
-            <div class="nav">
-                <ul>
-                    <li><button onclick="showProductForm()">New Product</button>
-                </ul>
-            </div>
-
-            <div class="overlay" id="overlay"></div>
-
-            <!-- Form Đăng Nhập thêm Sản Phẩm-->
-            <div class="customer-form" id="productForm">
-                <h2>Thêm Sản Phẩm Mới</h2>
-                <form asp-action="Create" method="post">
-                    <div class="form-group">
-                        <label for="customerID">Product ID:</label>
-                        <input type="text" id="productID" name="ProductID" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="customerName">Product Name:</label>
-                        <input type="text" id="productName" name="ProductName" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="phone">Price:</label>
-                        <input type="text" id="price" name="Price" required>
-                    </div>
-                    <button type="submit">Thêm Sản Phẩm</button>
-                    <button type="button" onclick="hideProductForm()">Hủy</button>
-                </form>
-            </div>
-
-            <!-- Form Cập Nhật Sản Phẩm -->
-            <div class="customer-form" id="updateProductForm" style="display:none;">
-                <h2>Cập Nhật Khách Hàng</h2>
-                <form asp-action="Update" method="post">
-                    <div class="form-group">
-                        <label>Customer ID:</label>
-                        <span id="displayCustomerID"></span>
-                        <input type="hidden" id="updateProductID" name="ProductID" required placeholder="Mã sản phẩm">
-                    </div>
-                    <div class="form-group">
-                        <label for="updateCustomerName">Customer Name:</label>
-                        <input type="text" id="updateProductName" name="ProductName" required placeholder="Tên sản phẩm">
-                    </div>
-                    <div class="form-group">
-                        <label for="updatePhone">Phone Number:</label>
-                        <input type="text" id="updatePrice" name="Price" required placeholder="Gía của sản phẩm">
-                    </div>
-                    <button type="submit">Cập Nhật Khách Hàng</button>
-                    <button type="button" onclick="hideUpdateProductForm()">Hủy</button>
-                </form>
-            </div>
-
+            <button class="k-button" onclick="showProductForm()">New Product</button>
         </div>
-    </main>
 
-    <!-- end main-->
+        <div class="overlay" id="overlay"></div>
 
-    <script src="/js/products.js"></script>
-</body>
-</html>
+        <!-- Form Đăng Nhập thêm Sản Phẩm -->
+        <div class="customer-form" id="productForm">
+            <h2>Thêm Sản Phẩm Mới</h2>
+            <form id="createProductForm">
+                <div class="form-group">
+                    <label for="productID">Product ID:</label>
+                    <input type="text" id="productID" name="ProductID" required>
+                </div>
+                <div class="form-group">
+                    <label for="productName">Product Name:</label>
+                    <input type="text" id="productName" name="ProductName" required>
+                </div>
+                <div class="form-group">
+                    <label for="price">Price:</label>
+                    <input type="text" id="price" name="Price" required>
+                </div>
+                <button type="button" onclick="createProduct()">Thêm Sản Phẩm</button>
+                <button type="button" onclick="hideProductForm()">Hủy</button>
+            </form>
+        </div>
+
+        <!-- Form Cập Nhật Sản Phẩm -->
+        <div class="customer-form" id="updateProductForm" style="display:none;">
+            <h2>Cập Nhật Sản Phẩm</h2>
+            <form id="updateProductFormContent">
+                <div class="form-group">
+                    <label>Product ID:</label>
+                    <span id="displayProductID"></span>
+                    <input type="hidden" id="updateProductID" name="ProductID" required>
+                </div>
+                <div class="form-group">
+                    <label for="updateProductName">Product Name:</label>
+                    <input type="text" id="updateProductName" name="ProductName" required>
+                </div>
+                <div class="form-group">
+                    <label for="updatePrice">Price:</label>
+                    <input type="text" id="updatePrice" name="Price" required>
+                </div>
+                <button type="button" onclick="updateProduct()">Cập Nhật Sản Phẩm</button>
+                <button type="button" onclick="hideUpdateProductForm()">Hủy</button>
+            </form>
+        </div>
+
+    </div>
+</main>
+
+@section Scripts {
+    <script src="~/js/products.js"></script>
+}

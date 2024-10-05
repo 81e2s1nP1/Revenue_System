@@ -1,60 +1,88 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Revenue_System.Models;
 using Revenue_System.ServiceImplements;
+using System.Diagnostics;
 
 namespace Revenue_System.Controllers
 {
     public class InvoiceController : Controller
     {
-        private readonly ILogger<HomeController> _logger;
+        private readonly ILogger<InvoiceController> _logger;
         private InvoiceDataAccessLayer invoiceDataAccessLayer = new InvoiceDataAccessLayer();
 
-        public InvoiceController(ILogger<HomeController> logger)
+        public InvoiceController(ILogger<InvoiceController> logger)
         {
             _logger = logger;
         }
 
         public IActionResult Index()
         {
+            return View();
+        }
+
+        // GET: /Invoice/GetInvoices
+        [HttpGet]
+        public JsonResult GetInvoices()
+        {
             List<InvoiceWithDetailsModel> invoiceWithDetailsModels = invoiceDataAccessLayer.GetInvoiceWithDetails();
 
-            var customerIDs = invoiceDataAccessLayer.GetAllCustomerIDs(); 
+            var customerIDs = invoiceDataAccessLayer.GetAllCustomerIDs();
             var productIDs = invoiceDataAccessLayer.GetAllProductIDs();
 
-            ViewBag.CustomerIDs = customerIDs;
-            ViewBag.ProductIDs = productIDs;
+            var result = new
+            {
+                Invoices = invoiceWithDetailsModels,
+                CustomerIDs = customerIDs,
+                ProductIDs = productIDs
+            };
 
-            return View(invoiceWithDetailsModels);
+            return Json(result);
         }
 
 
-        // INVOICES CONTROLLER
-        // Create new invoices
         [HttpPost]
-        [ValidateAntiForgeryToken]
-        public IActionResult Create([Bind] InvoiceModel invoiceModel, InvoiceDetailModel invoiceDetailModel)
-        {   
-                invoiceDataAccessLayer.InsertInvoice(invoiceModel, invoiceDetailModel);
-                return RedirectToAction("Index");
-        }
-
-        //Delete customer
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public IActionResult Delete(string id)
-        {   
-            invoiceDataAccessLayer.DeleteInvoice(id);
-            return RedirectToAction("Index");
-        }
-
-        //Update customer infor
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public IActionResult Update([Bind] InvoiceModel invoiceModel, [Bind] InvoiceDetailModel invoiceDetailModel)
+        public JsonResult Create([Bind] InvoiceModel invoiceModel, [Bind] InvoiceDetailModel invoiceDetailModel)
         {
-        
-                invoiceDataAccessLayer.UpdateInvoiceAndInvoiceDetail(invoiceModel, invoiceDetailModel);
-                return RedirectToAction("Index");
+            if (ModelState.IsValid)
+            {
+                invoiceDataAccessLayer.InsertInvoice(invoiceModel, invoiceDetailModel);
+                return Json(new { success = true, message = "Invoice created successfully." });
+            }
+            return Json(new { success = false, message = "Error creating invoice." });
+        }
+
+
+        // Delete invoice
+        [HttpPost]
+        public JsonResult Delete([FromBody] InvoiceModel model)
+        {
+            if (model == null || string.IsNullOrEmpty(model.InvoiceID))
+            {
+                return Json(new { success = false, message = "Invoice ID không hợp lệ." });
+            }
+            invoiceDataAccessLayer.DeleteInvoice(model.InvoiceID);
+            return Json(new { success = true, message = "Invoice deleted successfully." });
+        }
+
+
+        [HttpPost]
+        public JsonResult Update([FromBody] UpdateInvoiceRequest request)
+        {
+            Console.WriteLine("invoiceModel: " + request.InvoiceModel);
+            Console.WriteLine("invoiceDetailModel: " + request.InvoiceDetailModel);
+
+            //if (ModelState.IsValid)
+            //{
+                invoiceDataAccessLayer.UpdateInvoiceAndInvoiceDetail(request.InvoiceModel, request.InvoiceDetailModel);
+                return Json(new { success = true, message = "Invoice updated successfully." });
+            //}
+            //return Json(new { success = false, message = "Error updating invoice." });
+        }
+
+        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
+        public IActionResult Error()
+        {
+            return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
     }
 }

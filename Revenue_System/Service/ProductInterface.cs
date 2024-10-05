@@ -1,12 +1,13 @@
 ﻿using Revenue_System.Models;
+using System.Collections.Generic;
 
-namespace Revenue_System.Service
+namespace Revenue_System.ServiceInterfaces
 {
     public interface ProductInterface
     {
-        List<ProductInterface> GetProducts();
-        bool deleteProdcut(int id);
-        bool addProduct(ProductModel product);
-        bool updateProduct(ProductModel product);
+        void InsertProduct(ProductModel productModel);
+        List<ProductModel> GetAllProducts();
+        void UpdateProduct(ProductModel productModel);
+        void DeleteProduct(string productId);
     }
 }

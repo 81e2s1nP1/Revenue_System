@@ -1,12 +1,17 @@
 ﻿using Revenue_System.Models;
+using System.Collections.Generic;
 
-namespace Revenue_System.Service
+namespace Revenue_System.ServiceInterfaces
 {
-    public interface InvoiceDetailModelInterface
+    public interface InvoiceDetailInterface
     {
-        List<InvoiceDetailModel> GetInvoiceDetails();
-        bool deleteInvoiceDetail(int id);
-        bool addInvoiceDetail(InvoiceDetailModel invoiceDetails);
-        bool updateInvoiceDetail(InvoiceDetailModel invoiceDetails);
+        List<InvoiceWithDetailsModel> GetInvoiceWithDetails();
+        List<string> GetAllCustomerIDs();
+        List<string> GetAllProductIDs();
+        void UpdateInvoiceAndInvoiceDetail(InvoiceModel invoiceModel, InvoiceDetailModel invoiceDetailModel);
+        void InsertInvoice(InvoiceModel invoiceModel, InvoiceDetailModel invoiceDetailModel);
+        void DeleteInvoice(string invoiceID);
+        bool ProductCheck(string productId);
+        bool CustomerCheck(string customerId);
     }
 }

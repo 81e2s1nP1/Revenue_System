@@ -1,18 +1,19 @@
 ﻿using Revenue_System.Models;
+using Revenue_System.ServiceInterfaces;
 using System.Data.SqlClient;
 
 namespace Revenue_System.ServiceImplements
 {
-    public class ProductDataAccessLayer
+    public class ProductDataAccessLayer : ProductInterface
     {
-        string connectionString = "data source=PA; database=system_revenue; integrated security=SSPI";
+        private readonly string connectionString = "data source=PA; database=system_revenue; integrated security=SSPI";
 
-        // Phương thức chèn khách hàng vào bảng
+        // Phương thức chèn sản phẩm vào bảng
         public void InsertProduct(ProductModel productModel)
         {
             using SqlConnection con = new SqlConnection(connectionString);
             string sqlQuery = "INSERT INTO Products (ProductID, ProductName, Price) VALUES (@ProductID, @ProductName, @Price)";
-            SqlCommand cmd = new SqlCommand(sqlQuery, con);
+            using SqlCommand cmd = new SqlCommand(sqlQuery, con);
 
             cmd.Parameters.AddWithValue("@ProductID", productModel.ProductID.ToUpper());
             cmd.Parameters.AddWithValue("@ProductName", productModel.ProductName);
@@ -20,67 +21,60 @@ namespace Revenue_System.ServiceImplements
 
             con.Open();
             cmd.ExecuteNonQuery();
-            con.Close();
         }
 
         // Phương thức lấy toàn bộ danh sách sản phẩm trong database
         public List<ProductModel> GetAllProducts()
         {
-            List<ProductModel> lstProduct = new List<ProductModel>();
+            var lstProduct = new List<ProductModel>();
 
             using SqlConnection con = new SqlConnection(connectionString);
-
             string sqlQuery = "SELECT ProductID, ProductName, Price FROM Products";
-            SqlCommand cmd = new SqlCommand(sqlQuery, con);
+            using SqlCommand cmd = new SqlCommand(sqlQuery, con);
 
             con.Open();
-            SqlDataReader rdr = cmd.ExecuteReader();
+            using SqlDataReader rdr = cmd.ExecuteReader();
             while (rdr.Read())
             {
-                ProductModel product = new ProductModel();
-
-                product.ProductID = rdr["ProductID"].ToString();
-                product.ProductName = rdr["ProductName"].ToString();
-                product.Price = Convert.ToDecimal(rdr["Price"]);
+                var product = new ProductModel
+                {
+                    ProductID = rdr["ProductID"].ToString(),
+                    ProductName = rdr["ProductName"].ToString(),
+                    Price = Convert.ToDecimal(rdr["Price"])
+                };
 
                 lstProduct.Add(product);
             }
-            con.Close();
+
             return lstProduct;
         }
 
-        //Phương thức cập nhật thông tin của sản phẩm
-        public void UpdatePoduct(ProductModel productModel)
+        // Phương thức cập nhật thông tin của sản phẩm
+        public void UpdateProduct(ProductModel productModel)
         {
-            using (SqlConnection con = new SqlConnection(connectionString))
-            {
-                string sqlQuery = "UPDATE Products SET ProductName = @ProductName, Price = @Price WHERE ProductID = @ProductID";
-                SqlCommand cmd = new SqlCommand(sqlQuery, con);
+            using SqlConnection con = new SqlConnection(connectionString);
+            string sqlQuery = "UPDATE Products SET ProductName = @ProductName, Price = @Price WHERE ProductID = @ProductID";
+            using SqlCommand cmd = new SqlCommand(sqlQuery, con);
 
-                cmd.Parameters.AddWithValue("@ProductName", productModel.ProductName);
-                cmd.Parameters.AddWithValue("@Price", productModel.Price);
-                cmd.Parameters.AddWithValue("@ProductID", productModel.ProductID);
+            cmd.Parameters.AddWithValue("@ProductName", productModel.ProductName);
+            cmd.Parameters.AddWithValue("@Price", productModel.Price);
+            cmd.Parameters.AddWithValue("@ProductID", productModel.ProductID);
 
-                con.Open();
-                cmd.ExecuteNonQuery();
-                con.Close();
-            }
+            con.Open();
+            cmd.ExecuteNonQuery();
         }
 
-        //Phương thức xóa sản phẩm theo id
-        public void DeleteProduct(string id)
+        // Phương thức xóa sản phẩm theo id
+        public void DeleteProduct(string productId)
         {
-            using (SqlConnection con = new SqlConnection(connectionString))
-            {
-                string delete_product = "DELETE FROM Products WHERE ProductID = @ProductID";
-                SqlCommand cmd = new SqlCommand(delete_product, con);
+            using SqlConnection con = new SqlConnection(connectionString);
+            string sqlQuery = "DELETE FROM Products WHERE ProductID = @ProductID";
+            using SqlCommand cmd = new SqlCommand(sqlQuery, con);
 
-                cmd.Parameters.AddWithValue("@ProductID", id);
+            cmd.Parameters.AddWithValue("@ProductID", productId);
 
-                con.Open();
-                cmd.ExecuteNonQuery();
-                con.Close();
-            }
+            con.Open();
+            cmd.ExecuteNonQuery();
         }
     }
 }

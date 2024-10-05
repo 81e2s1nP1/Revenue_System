@@ -2,6 +2,7 @@
 using Revenue_System.Models;
 using Revenue_System.ServiceImplements;
 using System.Diagnostics;
+using Microsoft.AspNetCore.Cors;
 
 namespace Revenue_System.Controllers
 {
@@ -16,11 +17,18 @@ namespace Revenue_System.Controllers
             _logger = logger;
         }
 
+        // GET: /Home/Index
         public IActionResult Index()
         {
-            List<CustomerModel> lstCustomers = customerDataAccessLayer.GetAllCustomer();
+            return View();
+        }
 
-            return View(lstCustomers);
+        // GET: /Home/GetCustomers
+        [HttpGet]
+        public JsonResult GetCustomers()
+        {
+            List<CustomerModel> lstCustomers = customerDataAccessLayer.GetAllCustomer();
+            return Json(lstCustomers);
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
@@ -32,45 +40,40 @@ namespace Revenue_System.Controllers
         // CUSTOMER CONTROLLER
         // Create new customer
         [HttpPost]
-        [ValidateAntiForgeryToken]
-        public IActionResult Create([Bind] CustomerModel customerModel)
+        public JsonResult Create([Bind] CustomerModel customerModel)
         {
             if (ModelState.IsValid)
             {
-
                 customerDataAccessLayer.InsertCustomer(customerModel);
-                return RedirectToAction("Index");
+                return Json(new { success = true, message = "Customer created successfully." });
             }
-            return RedirectToAction("Index");
+            return Json(new { success = false, message = "Error creating customer." });
         }
 
-        //Update customer infor
+        // Update customer info
         [HttpPost]
-        [ValidateAntiForgeryToken]
-        public IActionResult Update([Bind] CustomerModel customerModel)
+        public JsonResult Update([FromBody] CustomerModel customerModel)
         {
             if (ModelState.IsValid)
             {
                 customerDataAccessLayer.UpdateCustomer(customerModel);
-                return RedirectToAction("Index");
+                return Json(new { success = true, message = "Customer updated successfully." });
             }
-            return RedirectToAction("Index");
+            return Json(new { success = false, message = "Error updating customer." });
         }
 
-        //Delete customer
+        // Delete customer
         [HttpPost]
-        [ValidateAntiForgeryToken]
-        public IActionResult Delete(string id)
+        public JsonResult Delete(string id)
         {
             if (invoiceDataAccessLayer.CustomerCheck(id))
             {
-                TempData["ErrorMessage"] = "Khách hàng hiện đang tồn tại hóa đơn và không thể xóa.";
-                return RedirectToAction("Index");
+                return Json(new { success = false, message = "Khách hàng hiện đang tồn tại hóa đơn và không thể xóa." });
             }
             else
             {
                 customerDataAccessLayer.DeleteCustomer(id);
-                return RedirectToAction("Index");
+                return Json(new { success = true, message = "Customer deleted successfully." });
             }
         }
     }

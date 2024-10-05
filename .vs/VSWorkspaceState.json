@@ -1,7 +1,12 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\Revenue_System",
+    "\\Revenue_System\\Service",
+    "\\Revenue_System\\Views",
+    "\\Revenue_System\\Views\\Home",
+    "\\Revenue_System\\Views\\Shared"
   ],
-  "SelectedNode": "\\Revenue_System.sln",
+  "SelectedNode": "\\Revenue_System\\Revenue_System.csproj",
   "PreviewInSolutionExplorer": false
 }

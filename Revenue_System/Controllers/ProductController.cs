@@ -1,69 +1,79 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Revenue_System.Models;
 using Revenue_System.ServiceImplements;
+using System.Diagnostics;
 
 namespace Revenue_System.Controllers
 {
     public class ProductController : Controller
     {
-        private readonly ILogger<HomeController> _logger;
+        private readonly ILogger<ProductController> _logger;
         private ProductDataAccessLayer productDataAccessLayer = new ProductDataAccessLayer();
         private InvoiceDataAccessLayer invoiceDataAccessLayer = new InvoiceDataAccessLayer();
 
-        public ProductController(ILogger<HomeController> logger)
+        public ProductController(ILogger<ProductController> logger)
         {
             _logger = logger;
         }
 
+        // GET: /Product/Index
         public IActionResult Index()
         {
-            List<ProductModel> lstProductModel = productDataAccessLayer.GetAllProducts();
-            return View(lstProductModel);
+            return View();
         }
 
-        // PRODUCT CONTROLLER
+        // GET: /Product/GetProducts
+        [HttpGet]
+        public JsonResult GetProducts()
+        {
+            List<ProductModel> lstProducts = productDataAccessLayer.GetAllProducts();
+            return Json(lstProducts);
+        }
+
         // Create new product
         [HttpPost]
-        [ValidateAntiForgeryToken]
-        public IActionResult Create([Bind] ProductModel productModel)
+        public JsonResult Create([FromBody] ProductModel productModel)
         {
+            Console.WriteLine("productModel: " + productModel);
             if (ModelState.IsValid)
             {
                 productDataAccessLayer.InsertProduct(productModel);
-                return RedirectToAction("Index");
+                return Json(new { success = true, message = "Product created successfully." });
             }
-            return RedirectToAction("Index");
+            return Json(new { success = false, message = "Error creating product." });
         }
 
-
-        //Update customer infor
+        // Update product info
         [HttpPost]
-        [ValidateAntiForgeryToken]
-        public IActionResult Update([Bind] ProductModel productModel)
+        public JsonResult Update([FromBody] ProductModel productModel)
         {
             if (ModelState.IsValid)
             {
-                productDataAccessLayer.UpdatePoduct(productModel);
-                return RedirectToAction("Index");
+                productDataAccessLayer.UpdateProduct(productModel);
+                return Json(new { success = true, message = "Product updated successfully." });
             }
-            return RedirectToAction("Index");
+            return Json(new { success = false, message = "Error updating product." });
         }
 
         // Delete product by id 
         [HttpPost]
-        [ValidateAntiForgeryToken]
-        public IActionResult Delete(string id)
-        {   
-            if(invoiceDataAccessLayer.ProductCheck(id))
+        public JsonResult Delete(string id)
+        {
+            if (invoiceDataAccessLayer.ProductCheck(id))
             {
-                TempData["ErrorMessage"] = "Sản phẩm hiện đang tồn tại hóa đơn và không thể xóa.";
-                return RedirectToAction("Index");
+                return Json(new { success = false, message = "Sản phẩm hiện đang tồn tại hóa đơn và không thể xóa." });
             }
             else
             {
                 productDataAccessLayer.DeleteProduct(id);
-                return RedirectToAction("Index");
+                return Json(new { success = true, message = "Product deleted successfully." });
             }
+        }
+
+        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
+        public IActionResult Error()
+        {
+            return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
     }
 }

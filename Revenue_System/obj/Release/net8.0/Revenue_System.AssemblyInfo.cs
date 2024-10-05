@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Revenue_System")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Release")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+40270f8b87ec8681f426205d0a2b7b157093b68e")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+8b0c848108549948192a4c19cfea79f7a85615eb")]
 [assembly: System.Reflection.AssemblyProductAttribute("Revenue_System")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Revenue_System")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

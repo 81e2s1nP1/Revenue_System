@@ -1,4 +1,6 @@
-﻿namespace Revenue_System.Models
+﻿using Newtonsoft.Json;
+
+namespace Revenue_System.Models
 {
     public class InvoiceWithDetailsModel
     {

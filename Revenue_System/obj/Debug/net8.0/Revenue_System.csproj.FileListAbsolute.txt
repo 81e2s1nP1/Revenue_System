@@ -37,3 +37,4 @@ D:\C Sharp\ASoft\Roadmap\Bai Tap Web Co Ban\Source Code\Revenue_System\Revenue_S
 D:\C Sharp\ASoft\Roadmap\Bai Tap Web Co Ban\Source Code\Revenue_System\Revenue_System\obj\Debug\net8.0\Revenue_System.genruntimeconfig.cache
 D:\C Sharp\ASoft\Roadmap\Bai Tap Web Co Ban\Source Code\Revenue_System\Revenue_System\obj\Debug\net8.0\ref\Revenue_System.dll
 D:\C Sharp\ASoft\Roadmap\Bai Tap Web Co Ban\Source Code\Revenue_System\Revenue_System\obj\Debug\net8.0\Revenue_System.sourcelink.json
+D:\C Sharp\ASoft\Roadmap\Bai Tap Web Co Ban\Source Code\Revenue_System\Revenue_System\bin\Debug\net8.0\Newtonsoft.Json.dll
