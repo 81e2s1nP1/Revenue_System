@@ -9,17 +9,6 @@ function hideProductForm() {
     document.getElementById('overlay').style.display = 'none';
 }
 
-// Update
-//function showUpdateProductForm(productID, productName, price) {
-//    document.getElementById('updateProductForm').style.display = 'block';
-//    document.getElementById('overlay').style.display = 'block';
-
-//    document.getElementById('displayProductID').textContent = productID;
-//    document.getElementById('updateProductID').value = productID;
-//    document.getElementById('updateProductName').value = productName;
-//    document.getElementById('updatePrice').value = price;
-//}
-
 function hideUpdateProductForm() {
     document.getElementById('updateProductForm').style.display = 'none';
     document.getElementById('overlay').style.display = 'none';

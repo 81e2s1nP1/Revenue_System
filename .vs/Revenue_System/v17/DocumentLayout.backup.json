@@ -50,8 +50,7 @@
               "RelativeToolTip": "Revenue_System\\Models\\InvoiceModel.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-05T11:20:52.514Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-10-05T11:20:52.514Z"
             },
             {
               "$type": "Document",
@@ -63,8 +62,7 @@
               "RelativeToolTip": "Revenue_System\\Models\\InvoiceDetailsModel.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-05T11:20:43.66Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-10-05T11:20:43.66Z"
             },
             {
               "$type": "Document",
@@ -76,8 +74,7 @@
               "RelativeToolTip": "Revenue_System\\Controllers\\InvoiceController.cs",
               "ViewState": "AgIAAD8AAAAAAAAAAAAowEMAAAAIAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-05T11:11:53.395Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-10-05T11:11:53.395Z"
             },
             {
               "$type": "Document",
@@ -89,8 +86,7 @@
               "RelativeToolTip": "Revenue_System\\Views\\Invoice\\index.cshtml",
               "ViewState": "AgIAAC0AAAAAAAAAAADwv0wAAAAjAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-10-05T10:45:34.51Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-10-05T10:45:34.51Z"
             },
             {
               "$type": "Document",
@@ -100,7 +96,7 @@
               "RelativeDocumentMoniker": "Revenue_System\\wwwroot\\js\\invoice.js",
               "ToolTip": "D:\\C Sharp\\ASoft\\Roadmap\\Bai Tap Web Co Ban\\Source Code\\Revenue_System\\Revenue_System\\wwwroot\\js\\invoice.js",
               "RelativeToolTip": "Revenue_System\\wwwroot\\js\\invoice.js",
-              "ViewState": "AgIAAFQAAAAAAAAAAAAwwHMAAAAaAAAAAAAAAA==",
+              "ViewState": "AgIAANYAAAAAAAAAAAAqwAsAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
               "WhenOpened": "2024-10-05T10:47:07.262Z",
               "EditorCaption": ""
@@ -115,8 +111,7 @@
               "RelativeToolTip": "Revenue_System\\wwwroot\\js\\products.js",
               "ViewState": "AgIAAEcAAAAAAAAAAAAgwFIAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
-              "WhenOpened": "2024-10-05T10:45:06.252Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-10-05T10:45:06.252Z"
             },
             {
               "$type": "Document",
@@ -128,8 +123,7 @@
               "RelativeToolTip": "Revenue_System\\Views\\Product\\index.cshtml",
               "ViewState": "AgIAAB4AAAAAAAAAAAAAABQAAAAoAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-10-05T10:44:49.964Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-10-05T10:44:49.964Z"
             }
           ]
         }

@@ -73,7 +73,6 @@ table {
     padding: 8px;
 }
 
-/* Định dạng footer */
 footer {
     background-color: #f1f1f1;
     text-align: center;
@@ -99,27 +98,27 @@ main {
     }
 
 .customer-form {
-    display: none; /* Ẩn ban đầu */
-    position: fixed; /* Đặt vị trí cố định */
-    top: 50%; /* Đặt giữa theo chiều dọc */
-    left: 50%; /* Đặt giữa theo chiều ngang */
-    transform: translate(-50%, -50%); /* Đẩy về giữa */
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
     border: 1px solid #ccc;
     padding: 20px;
     background-color: #f9f9f9;
-    z-index: 1000; /* Đảm bảo form ở trên cùng */
-    width: 300px; /* Đặt chiều rộng cho form */
+    z-index: 1000;
+    width: 300px;
 }
 
 .overlay {
-    display: none; /* Ẩn ban đầu */
-    position: fixed; /* Đặt vị trí cố định */
+    display: none;
+    position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.5); /* Màu nền mờ */
-    z-index: 999; /* Đảm bảo lớp phủ ở dưới form */
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 999;
 }
 
 .form-group {
@@ -131,20 +130,18 @@ main {
         margin-bottom: 5px;
     }
 
-    /* Điều chỉnh kích thước input */
     .form-group input {
-        width: 100%; /* Chiều rộng đầy đủ của thẻ cha */
-        padding: 8px; /* Thêm padding để dễ sử dụng */
-        box-sizing: border-box; /* Đảm bảo padding không làm tăng kích thước */
+        width: 100%;
+        padding: 8px;
+        box-sizing: border-box;
         border: 2px solid;
     }
 
-/* CSS cho button trong form đăng nhập */
 .customer-form button {
-    width: 48%; /* Đặt chiều rộng cho các button bằng nhau */
-    padding: 8px; /* Thêm padding để dễ sử dụng */
-    margin: 5px; /* Khoảng cách giữa các button */
-    cursor: pointer; /* Thay đổi con trỏ khi di chuột qua */
+    width: 48%;
+    padding: 8px;
+    margin: 5px;
+    cursor: pointer;
 }
 
 .alert {
@@ -152,3 +149,4 @@ main {
     text-align: center;
     margin-bottom: 10px;
 }
+
