@@ -1,0 +1,135 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "D:\\C Sharp\\ASoft\\Winfrom Test App\\SourceCode\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{C3C9F6B4-CB39-4053-83AD-6FCC1D7F35BE}|WinFormsApp1\\WinFormsApp1.csproj|d:\\c sharp\\asoft\\winfrom test app\\sourcecode\\winformsapp1\\views\\customers.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{C3C9F6B4-CB39-4053-83AD-6FCC1D7F35BE}|WinFormsApp1\\WinFormsApp1.csproj|solutionrelative:winformsapp1\\views\\customers.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C3C9F6B4-CB39-4053-83AD-6FCC1D7F35BE}|WinFormsApp1\\WinFormsApp1.csproj|d:\\c sharp\\asoft\\winfrom test app\\sourcecode\\winformsapp1\\views\\invoices.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{C3C9F6B4-CB39-4053-83AD-6FCC1D7F35BE}|WinFormsApp1\\WinFormsApp1.csproj|solutionrelative:winformsapp1\\views\\invoices.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C3C9F6B4-CB39-4053-83AD-6FCC1D7F35BE}|WinFormsApp1\\WinFormsApp1.csproj|d:\\c sharp\\asoft\\winfrom test app\\sourcecode\\winformsapp1\\views\\products.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{C3C9F6B4-CB39-4053-83AD-6FCC1D7F35BE}|WinFormsApp1\\WinFormsApp1.csproj|solutionrelative:winformsapp1\\views\\products.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C3C9F6B4-CB39-4053-83AD-6FCC1D7F35BE}|WinFormsApp1\\WinFormsApp1.csproj|d:\\c sharp\\asoft\\winfrom test app\\sourcecode\\winformsapp1\\views\\home.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C3C9F6B4-CB39-4053-83AD-6FCC1D7F35BE}|WinFormsApp1\\WinFormsApp1.csproj|solutionrelative:winformsapp1\\views\\home.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C3C9F6B4-CB39-4053-83AD-6FCC1D7F35BE}|WinFormsApp1\\WinFormsApp1.csproj|d:\\c sharp\\asoft\\winfrom test app\\sourcecode\\winformsapp1\\views\\customers.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C3C9F6B4-CB39-4053-83AD-6FCC1D7F35BE}|WinFormsApp1\\WinFormsApp1.csproj|solutionrelative:winformsapp1\\views\\customers.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C3C9F6B4-CB39-4053-83AD-6FCC1D7F35BE}|WinFormsApp1\\WinFormsApp1.csproj|d:\\c sharp\\asoft\\winfrom test app\\sourcecode\\winformsapp1\\views\\home.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C3C9F6B4-CB39-4053-83AD-6FCC1D7F35BE}|WinFormsApp1\\WinFormsApp1.csproj|solutionrelative:winformsapp1\\views\\home.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C3C9F6B4-CB39-4053-83AD-6FCC1D7F35BE}|WinFormsApp1\\WinFormsApp1.csproj|d:\\c sharp\\asoft\\winfrom test app\\sourcecode\\winformsapp1\\views\\home.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{C3C9F6B4-CB39-4053-83AD-6FCC1D7F35BE}|WinFormsApp1\\WinFormsApp1.csproj|solutionrelative:winformsapp1\\views\\home.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 2,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Invoices.cs [Design]",
+              "DocumentMoniker": "D:\\C Sharp\\ASoft\\Winfrom Test App\\SourceCode\\WinFormsApp1\\Views\\Invoices.cs",
+              "RelativeDocumentMoniker": "WinFormsApp1\\Views\\Invoices.cs",
+              "ToolTip": "D:\\C Sharp\\ASoft\\Winfrom Test App\\SourceCode\\WinFormsApp1\\Views\\Invoices.cs [Design]",
+              "RelativeToolTip": "WinFormsApp1\\Views\\Invoices.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-15T09:36:52.091Z",
+              "EditorCaption": " [Design]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Products.cs [Design]",
+              "DocumentMoniker": "D:\\C Sharp\\ASoft\\Winfrom Test App\\SourceCode\\WinFormsApp1\\Views\\Products.cs",
+              "RelativeDocumentMoniker": "WinFormsApp1\\Views\\Products.cs",
+              "ToolTip": "D:\\C Sharp\\ASoft\\Winfrom Test App\\SourceCode\\WinFormsApp1\\Views\\Products.cs [Design]",
+              "RelativeToolTip": "WinFormsApp1\\Views\\Products.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-15T09:27:30.839Z",
+              "EditorCaption": " [Design]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Customers.cs [Design]",
+              "DocumentMoniker": "D:\\C Sharp\\ASoft\\Winfrom Test App\\SourceCode\\WinFormsApp1\\Views\\Customers.cs",
+              "RelativeDocumentMoniker": "WinFormsApp1\\Views\\Customers.cs",
+              "ToolTip": "D:\\C Sharp\\ASoft\\Winfrom Test App\\SourceCode\\WinFormsApp1\\Views\\Customers.cs [Design]*",
+              "RelativeToolTip": "WinFormsApp1\\Views\\Customers.cs [Design]*",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-15T09:13:07.396Z",
+              "EditorCaption": " [Design]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Home.Designer.cs",
+              "DocumentMoniker": "D:\\C Sharp\\ASoft\\Winfrom Test App\\SourceCode\\WinFormsApp1\\Views\\Home.Designer.cs",
+              "RelativeDocumentMoniker": "WinFormsApp1\\Views\\Home.Designer.cs",
+              "ToolTip": "D:\\C Sharp\\ASoft\\Winfrom Test App\\SourceCode\\WinFormsApp1\\Views\\Home.Designer.cs",
+              "RelativeToolTip": "WinFormsApp1\\Views\\Home.Designer.cs",
+              "ViewState": "AgIAABMAAAAAAAAAAAAQwAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-15T09:24:07.628Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "Customers.cs",
+              "DocumentMoniker": "D:\\C Sharp\\ASoft\\Winfrom Test App\\SourceCode\\WinFormsApp1\\Views\\Customers.cs",
+              "RelativeDocumentMoniker": "WinFormsApp1\\Views\\Customers.cs",
+              "ToolTip": "D:\\C Sharp\\ASoft\\Winfrom Test App\\SourceCode\\WinFormsApp1\\Views\\Customers.cs*",
+              "RelativeToolTip": "WinFormsApp1\\Views\\Customers.cs*",
+              "ViewState": "AgIAAAkAAAAAAAAAAAAjwB8AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-15T09:13:08.824Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "Home.cs",
+              "DocumentMoniker": "D:\\C Sharp\\ASoft\\Winfrom Test App\\SourceCode\\WinFormsApp1\\Views\\Home.cs",
+              "RelativeDocumentMoniker": "WinFormsApp1\\Views\\Home.cs",
+              "ToolTip": "D:\\C Sharp\\ASoft\\Winfrom Test App\\SourceCode\\WinFormsApp1\\Views\\Home.cs",
+              "RelativeToolTip": "WinFormsApp1\\Views\\Home.cs",
+              "ViewState": "AgIAAAoAAAAAAAAAAAAQwCcAAAAdAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-15T09:12:36.094Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "Home.cs [Design]",
+              "DocumentMoniker": "D:\\C Sharp\\ASoft\\Winfrom Test App\\SourceCode\\WinFormsApp1\\Views\\Home.cs",
+              "RelativeDocumentMoniker": "WinFormsApp1\\Views\\Home.cs",
+              "ToolTip": "D:\\C Sharp\\ASoft\\Winfrom Test App\\SourceCode\\WinFormsApp1\\Views\\Home.cs [Design]",
+              "RelativeToolTip": "WinFormsApp1\\Views\\Home.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-15T09:12:33.854Z",
+              "EditorCaption": " [Design]"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
