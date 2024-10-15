@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\C Sharp\\ASoft\\Roadmap\\Bai Tap Web Co Ban\\Source Code\\Revenue_System\\Revenue_System\\Revenue_System.csproj": {}
+    "D:\\C Sharp\\ASoft\\Revenue_System - Copy - Copy\\Revenue_System\\Revenue_System.csproj": {}
   },
   "projects": {
-    "D:\\C Sharp\\ASoft\\Roadmap\\Bai Tap Web Co Ban\\Source Code\\Revenue_System\\Revenue_System\\Revenue_System.csproj": {
+    "D:\\C Sharp\\ASoft\\Revenue_System - Copy - Copy\\Revenue_System\\Revenue_System.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\C Sharp\\ASoft\\Roadmap\\Bai Tap Web Co Ban\\Source Code\\Revenue_System\\Revenue_System\\Revenue_System.csproj",
+        "projectUniqueName": "D:\\C Sharp\\ASoft\\Revenue_System - Copy - Copy\\Revenue_System\\Revenue_System.csproj",
         "projectName": "Revenue_System",
-        "projectPath": "D:\\C Sharp\\ASoft\\Roadmap\\Bai Tap Web Co Ban\\Source Code\\Revenue_System\\Revenue_System\\Revenue_System.csproj",
+        "projectPath": "D:\\C Sharp\\ASoft\\Revenue_System - Copy - Copy\\Revenue_System\\Revenue_System.csproj",
         "packagesPath": "C:\\Users\\acer\\.nuget\\packages\\",
-        "outputPath": "D:\\C Sharp\\ASoft\\Roadmap\\Bai Tap Web Co Ban\\Source Code\\Revenue_System\\Revenue_System\\obj\\",
+        "outputPath": "D:\\C Sharp\\ASoft\\Revenue_System - Copy - Copy\\Revenue_System\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\acer\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -47,10 +47,6 @@
         "net8.0": {
           "targetAlias": "net8.0",
           "dependencies": {
-            "Newtonsoft.Json": {
-              "target": "Package",
-              "version": "[13.0.3, )"
-            },
             "System.Data.SqlClient": {
               "target": "Package",
               "version": "[4.8.6, )"

@@ -1,6 +1,9 @@
 {
   "ExpandedNodes": [
-    "\\Views\\Shared"
+    "",
+    "\\wwwroot",
+    "\\wwwroot\\js"
   ],
+  "SelectedNode": "\\Revenue_System.sln",
   "PreviewInSolutionExplorer": false
 }

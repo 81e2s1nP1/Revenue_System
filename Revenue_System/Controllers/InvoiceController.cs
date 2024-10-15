@@ -2,6 +2,7 @@
 using Revenue_System.Models;
 using Revenue_System.ServiceImplements;
 using System.Diagnostics;
+using System.Reflection;
 
 namespace Revenue_System.Controllers
 {
@@ -9,6 +10,8 @@ namespace Revenue_System.Controllers
     {
         private readonly ILogger<InvoiceController> _logger;
         private InvoiceDataAccessLayer invoiceDataAccessLayer = new InvoiceDataAccessLayer();
+        private ProductDataAccessLayer productDataAccessLayer = new ProductDataAccessLayer();
+        private CustomerDataAccessLayer customerDataAccessLayer = new CustomerDataAccessLayer();
 
         public InvoiceController(ILogger<InvoiceController> logger)
         {
@@ -17,72 +20,86 @@ namespace Revenue_System.Controllers
 
         public IActionResult Index()
         {
-            return View();
+            List<InvoiceWithDetailsModel> invoiceWithDetailsModels = invoiceDataAccessLayer.GetInvoiceWithDetails();
+            var customers = customerDataAccessLayer.GetAllCustomer();
+            var productList = productDataAccessLayer.GetAllProducts();
+
+            ViewBag.Customers = customers;
+            ViewBag.Products = productList;
+
+            return View(invoiceWithDetailsModels);
         }
 
-        // GET: /Invoice/GetInvoices
+        // Get all invoices with details
         [HttpGet]
         public JsonResult GetInvoices()
         {
             List<InvoiceWithDetailsModel> invoiceWithDetailsModels = invoiceDataAccessLayer.GetInvoiceWithDetails();
-
-            var customerIDs = invoiceDataAccessLayer.GetAllCustomerIDs();
-            var productIDs = invoiceDataAccessLayer.GetAllProductIDs();
-
-            var result = new
-            {
-                Invoices = invoiceWithDetailsModels,
-                CustomerIDs = customerIDs,
-                ProductIDs = productIDs
-            };
-
-            return Json(result);
+            return Json(invoiceWithDetailsModels);
         }
 
-
+        // POST: Insert new invoice
         [HttpPost]
-        public JsonResult Create([Bind] InvoiceModel invoiceModel, [Bind] InvoiceDetailModel invoiceDetailModel)
+        public JsonResult Create([FromBody] InvoiceCreateModel invoiceCreateModel)
         {
-            if (ModelState.IsValid)
+            Console.WriteLine("da vo");
+            try
             {
-                invoiceDataAccessLayer.InsertInvoice(invoiceModel, invoiceDetailModel);
-                return Json(new { success = true, message = "Invoice created successfully." });
+                Console.WriteLine("SelectedQuantities: " + invoiceCreateModel.SelectedQuantities);
+                foreach (var productId in invoiceCreateModel.ProductIDs)
+                {
+                    Console.WriteLine("da vo day: " + productId);
+                }
+                List<int> numbers = invoiceCreateModel.SelectedQuantities.Split(',')
+                                  .Select(int.Parse)
+                                  .ToList();
+                invoiceDataAccessLayer.InsertInvoice(invoiceCreateModel.InvoiceModel, numbers, invoiceCreateModel.ProductIDs);
+
+                TempData["SuccessMessage"] = "Invoice created successfully. Would you like to add another invoice?";
+                return Json(new { success = true, message = TempData["SuccessMessage"] });
             }
-            return Json(new { success = false, message = "Error creating invoice." });
-        }
-
-
-        // Delete invoice
-        [HttpPost]
-        public JsonResult Delete([FromBody] InvoiceModel model)
-        {
-            if (model == null || string.IsNullOrEmpty(model.InvoiceID))
+            catch (Exception ex)
             {
-                return Json(new { success = false, message = "Invoice ID không hợp lệ." });
+                Console.WriteLine(ex);
+                TempData["ErrorMessage"] = "The invoice ID or invoice detail ID already exists.";
+                return Json(new { success = false, message = TempData["ErrorMessage"] });
             }
-            invoiceDataAccessLayer.DeleteInvoice(model.InvoiceID);
-            return Json(new { success = true, message = "Invoice deleted successfully." });
         }
 
-
+        // DELETE: Delete invoice
         [HttpPost]
-        public JsonResult Update([FromBody] UpdateInvoiceRequest request)
+        public JsonResult Delete(string id, string invoiceid)
         {
-            Console.WriteLine("invoiceModel: " + request.InvoiceModel);
-            Console.WriteLine("invoiceDetailModel: " + request.InvoiceDetailModel);
-
-            //if (ModelState.IsValid)
-            //{
-                invoiceDataAccessLayer.UpdateInvoiceAndInvoiceDetail(request.InvoiceModel, request.InvoiceDetailModel);
-                return Json(new { success = true, message = "Invoice updated successfully." });
-            //}
-            //return Json(new { success = false, message = "Error updating invoice." });
+            try
+            {
+                invoiceDataAccessLayer.DeleteInvoice(id, invoiceid);
+                TempData["SuccessMessage"] = "Delete Successfully";
+                return Json(new { success = true, message = TempData["SuccessMessage"] });
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex);
+                TempData["ErrorMessage"] = "Delete Failure";
+                return Json(new { success = false, message = TempData["ErrorMessage"] });
+            }
         }
 
-        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-        public IActionResult Error()
+        // PUT: Update invoice and invoice detail
+        [HttpPost]
+        public JsonResult Update([Bind] InvoiceModel invoiceModel, [Bind] InvoiceDetailModel invoiceDetailModel)
         {
-            return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+            try
+            {
+                invoiceDataAccessLayer.UpdateInvoiceAndInvoiceDetail(invoiceModel, invoiceDetailModel);
+                TempData["SuccessMessage"] = "Invoice updated successfully";
+                return Json(new { success = true, message = TempData["SuccessMessage"] });
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex);
+                TempData["ErrorMessage"] = "Update Failure";
+                return Json(new { success = false, message = TempData["ErrorMessage"] });
+            }
         }
     }
 }

@@ -1,5 +1,110 @@
-﻿// CUSTOMER FORM
-//create
+﻿$(document).ready(function () {
+    // Kendo Grid for displaying customers
+    $("#customerGrid").kendoGrid({
+        dataSource: {
+            data: @Html.Raw(Json.Serialize(Model)),
+            schema: {
+                model: {
+                    fields: {
+                        customerID: { type: "string" },
+                        customerName: { type: "string" },
+                        phone: { type: "string" }
+                    }
+                }
+            },
+            pageSize: 5
+        },
+        height: 400,
+        scrollable: true,
+        sortable: true,
+        pageable: {
+            input: true,
+            numeric: false
+        },
+        columns: [
+            { field: "customerID", title: "Customer ID", width: "130px", attributes: { class: "attribute-table" } },
+            { field: "customerName", title: "Customer Name", width: "250px", attributes: { class: "attribute-table" } },
+            { field: "phone", title: "Phone Number", width: "150px", attributes: { class: "attribute-table" } },
+            { command: [{ text: "Edit", click: editCustomer }, { text: "Delete", click: deleteCustomer }], title: "Action", width: "200px" }
+        ]
+    });
+
+    // Attach submit event for the update form
+    $("#updateCustomerForm").on("submit", function (e) {
+        e.preventDefault();
+        submitUpdateCustomerForm();
+    });
+});
+
+function editCustomer(e) {
+    e.preventDefault();
+    let dataItem = this.dataItem($(e.currentTarget).closest("tr"));
+
+    $("#displayCustomerID").text(dataItem.customerID);
+    $("#updateCustomerID").val(dataItem.customerID);
+    $("#updateCustomerName").val(dataItem.customerName);
+    $("#updatePhone").val(dataItem.phone);
+    $("#updateCustomerForm").show();
+    $("#overlay").show();
+}
+
+function deleteCustomer(e) {
+    e.preventDefault();
+    let dataItem = this.dataItem($(e.currentTarget).closest("tr"));
+    if (confirm('Are you sure you want to delete this customer?')) {
+        $.ajax({
+            type: "POST",
+            url: '/Home/Delete',
+            data: { id: dataItem.customerID },
+            success: function (response) {
+                if (response.success) {
+                    showSpinner()
+                } else {
+                    showAlert(response.message, false);
+                }
+            },
+            error: function () {
+                showAlert("An error occurred, please try again later.", false);
+            }
+        });
+    }
+}
+
+// Function to submit the customer update form via AJAX
+function submitUpdateCustomerForm() {
+    var customerData = {
+        CustomerID: $("#updateCustomerID").val(),
+        CustomerName: $("#updateCustomerName").val(),
+        Phone: $("#updatePhone").val()
+    };
+
+    $.ajax({
+        url: '/Home/Update',
+        type: 'POST',
+        data: customerData,
+        success: function (response) {
+            if (response.success) {
+                hideUpdateCustomerForm();
+                showSpinner();
+            } else {
+                showAlert(response.message, false);
+            }
+        },
+        error: function () {
+            showAlert("An error occurred, please try again later.", false);
+        }
+    });
+}
+
+// Function to display alerts
+function showAlert(message, isSuccess) {
+    $("#alert-overlay").show();
+    $(".alert-form").show();
+    $("#alertMessage").text(message);
+    $(".okButton").off().on("click", hideAlertForm);
+}
+
+// Functions to show/hide forms
 function showCustomerForm() {
     document.getElementById('customerForm').style.display = 'block';
     document.getElementById('overlay').style.display = 'block';
@@ -10,145 +115,21 @@ function hideCustomerForm() {
     document.getElementById('overlay').style.display = 'none';
 }
 
-//update
-function showUpdateCustomerForm(customerID, customerName, phone) {
-    document.getElementById('updateCustomerForm').style.display = 'block';
-    document.getElementById('overlay').style.display = 'block';
-
-    document.getElementById('displayCustomerID').textContent = customerID;
-    document.getElementById('updateCustomerID').value = customerID;
-    document.getElementById('updateCustomerName').value = customerName;
-    document.getElementById('updatePhone').value = phone;
-}
-
 function hideUpdateCustomerForm() {
     document.getElementById('updateCustomerForm').style.display = 'none';
     document.getElementById('overlay').style.display = 'none';
 }
 
-$(document).ready(function () {
-    $("#grid").kendoGrid({
-        dataSource: {
-            transport: {
-                read: {
-                    url: '/Home/GetCustomers',
-                    dataType: "json"
-                },
-                create: {
-                    url: '/Home/Create',
-                    type: "POST",
-                    dataType: "json"
-                },
-                update: {
-                    url: '/Home/Update',
-                    type: "POST",
-                    dataType: "json"
-                },
-                destroy: {
-                    url: '/Home/Delete',
-                    type: "POST",
-                    dataType: "json"
-                },
-            },
-            schema: {
-                model: {
-                    id: "CustomerID",
-                    fields: {
-                        customerID: { editable: false, nullable: true },
-                        customerName: { validation: { required: true } },
-                        phone: { validation: { required: true } }
-                    }
-                }
-            },
-            pageSize: 10
-        },
-        pageable: true,
-        sortable: true,
-        columns: [
-            { field: "customerID", title: "Customer ID" },
-            { field: "customerName", title: "Customer Name" },
-            { field: "phone", title: "Phone Number" },
-            { command: [{ text: "Edit", click: editCustomer }, { text: "Delete", click: deleteCustomer }], title: "Action", width: "200px" }
-        ]
-    });
-});
+function showSpinner() {
+    $("#loadingSpinner").show();
 
-function createCustomer() {
-    var data = {
-        customerID: $("#customerID").val(),
-        customerName: $("#customerName").val(),
-        phone: $("#phone").val()
-    };
-
-    $.ajax({
-        type: "POST",
-        url: '/Home/Create',
-        data: data,
-        success: function (response) {
-            if (response.success) {
-                $("#grid").data("kendoGrid").dataSource.read();
-                hideCustomerForm();
-            } else {
-                alert(response.message);
-            }
-        }
-    });
+    setTimeout(function () {
+        window.location.reload();
+    }, 800);
 }
 
-function editCustomer(e) {
-    e.preventDefault();
-    var dataItem = this.dataItem($(e.currentTarget).closest("tr"));
-
-    $("#displayCustomerID").text(dataItem.customerID);
-    $("#updateCustomerID").val(dataItem.customerID);
-    $("#updateCustomerName").val(dataItem.customerName);
-    $("#updatePhone").val(dataItem.phone);
-    $("#updateCustomerForm").show();
-    $("#overlay").show();
-}
-
-function updateCustomer() {
-    var data = {
-        customerID: $("#updateCustomerID").val(),
-        customerName: $("#updateCustomerName").val(),
-        phone: $("#updatePhone").val()
-    };
-
-    $.ajax({
-        type: "POST",
-        url: '/Home/Update',
-        data: JSON.stringify(data),
-        contentType: "application/json",
-        success: function (response) {
-            if (response.success) {
-                $("#grid").data("kendoGrid").dataSource.read();
-                hideUpdateCustomerForm();
-            } else {
-                alert(response.message);
-            }
-        },
-        error: function (jqXHR, textStatus, errorThrown) {
-            console.error("Error: " + textStatus, errorThrown);
-            alert("Cập nhật không thành công. Vui lòng kiểm tra và thử lại.");
-        }
-    });
-}
-
-function deleteCustomer(e) {
-    e.preventDefault();
-    var dataItem = this.dataItem($(e.currentTarget).closest("tr"));
-    if (confirm('Bạn có chắc chắn muốn xóa khách hàng này không?')) {
-        $.ajax({
-            type: "POST",
-            url: '/Home/Delete',
-            data: { id: dataItem.customerID },
-            success: function (response) {
-                if (response.success) {
-                    $("#grid").data("kendoGrid").dataSource.read();
-                } else {
-                    alert(response.message);
-                }
-            }
-        });
-    }
+function hideAlertForm() {
+    $("#alert-overlay").hide();
+    $(".alert-form").hide();
+    showSpinner();
 }

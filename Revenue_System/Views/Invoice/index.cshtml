@@ -1,92 +1,554 @@
-﻿@{
-    ViewData["Title"] = "Invoices Page";
-    Layout = "~/Views/Shared/_Layout.cshtml";
+﻿@model List<Revenue_System.Models.InvoiceWithDetailsModel>
+
+@{
+    ViewData["Title"] = "Invoice List";
 }
 
+<style>
+    /* CSS for overlay and form */
+    .alert-overlay {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.5);
+        z-index: 999;
+    }
+
+    .alert-form {
+        display: none;
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background: white;
+        padding: 20px;
+        border-radius: 5px;
+        z-index: 1000;
+    }
+
+    /* CSS for loading spinner */
+    .spinner-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.5);
+        z-index: 1000;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .spinner {
+        border: 8px solid rgba(255, 255, 255, 0.3);
+        border-top: 8px solid #fff;
+        border-radius: 50%;
+        width: 60px;
+        height: 60px;
+        animation: spin 1s linear infinite;
+    }
+
+    @@keyframes spin {
+        0% {
+            transform: rotate(0deg);
+        }
+
+        100% {
+            transform: rotate(360deg);
+        }
+    }
+
+    select {
+            border: solid 2px black;
+            width: 422px;
+            padding: 5px;
+        }
+
+            select[multiple] option:checked {
+                background-color: #4CAF50;
+                color: white;
+            }
+
+    #selectedProductsList {
+            height: 200px;
+            max-height: 200px;
+            overflow-y: auto;
+        }
+
+    .flex-container {
+            display: flex;
+            justify-content: space-between; /* Tạo khoảng cách giữa 2 khối */
+            gap: 20px; /* Khoảng cách giữa 2 khối */
+        }
+
+        .block-1 {
+            width: 40%;
+        }
+
+        .block-1, .block-2 {
+            flex: 1; /* Đảm bảo 2 khối có kích thước bằng nhau */
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            background-color: #f9f9f9;
+        }
+
+        .form-actions {
+            margin-top: 20px;
+            margin-left: 480px;
+            text-align: center;
+
+            button {
+                font-weight: bold;
+            }
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+    .customer-form button {
+            width: 200px; 
+            padding: 8px; 
+            margin-left:5px;
+            cursor: pointer;
+        }
+
+    .k-table-thead {
+        background-color: #4CAF50;
+        color: white;
+        font-weight: bold;
+        text-align: center;
+    }
+
+    #invoiceGrid .k-table-row {
+            font-family: 'Roboto', sans-serif;
+            font-weight: bold;
+    }
+
+    .red-text {
+        color: red;
+    }
+
+    thead {
+        background-color: #4CAF50;
+        color: white;
+    }
+</style>
+
 <main>
-    <div class="container">
-        <h2>Invoices Form</h2>
-        <div id="grid"></div>
+    <div class="invoiceContainer">
+        <div>
+            <h2>
+                INVOICES
+            </h2>
+            <div id="invoiceGrid"></div>
+        </div>
 
-        <button class="k-button" onclick="showinvoiceForm()">New Invoices</button>
-    </div>
+        <div class="nav">
+            <ul>
+                <li><button onclick="showinvoiceForm()">New Invoice  <i class="fa-solid fa-plus"></i></button></li>
+            </ul>
+        </div>
 
-    <div class="overlay" id="overlay"></div>
+        <div class="overlay" id="overlay"></div>
 
-    <!-- Form Tạo Hóa Đơn mới -->
-    <div class="customer-form" id="invoiceForm" style="display:none;">
-        <h2>Tạo Hóa Đơn Mới</h2>
-        <form id="createInvoiceForm">
-            <div class="form-group">
-                <label for="InvoiceID">Invoice ID</label>
-                <input type="text" class="form-control" id="InvoiceID" name="InvoiceID" required />
-            </div>
+        <div class="alert-overlay" id="alert-overlay"></div>
+        <div class="alert-form">
+            <p id="alertMessage">@TempData["ErrorMessage"]</p>
+            <button class="okButton" onclick="hideAlertForm()">Hide</button>
+        </div>
 
-            <div class="form-group">
-                <label for="CustomerID">Customer ID</label>
-                <select class="form-control" id="CustomerID" name="CustomerID" required>
-                    <option value="">Chọn Customer ID</option>
-                    <!-- Các option sẽ được thêm vào đây bằng JavaScript -->
-                </select>
-            </div>
+        <div id="loadingSpinner" class="spinner-overlay" style="display: none;">
+            <div class="spinner"></div>
+        </div>
 
-            <div class="form-group">
-                <label for="InvoiceDate">Invoice Date</label>
-                <input type="date" class="form-control" id="InvoiceDate" name="InvoiceDate" required />
-            </div>
 
-            <div class="form-group">
-                <label for="InvoiceDetailID">Invoice Detail ID</label>
-                <input type="text" class="form-control" id="InvoiceDetailID" name="InvoiceDetailID" required />
-            </div>
+            <!-- CREATE INVOICE-->
+        <div class="customer-form" id="invoiceForm" style="width: 100%; max-width: 1000px;">
+            <h3>INVOICE-FORM</h3>
+            <form asp-action="Create" method="post" id="createInvoiceForm">
+                <div class="flex-container">
+                    <!-- Block 1 -->
+                    <div class="block-1">
+                        <div class="form-group">
+                            <label for="CustomerID" class="bold">Customer Information</label>
+                            <select class="form-control" id="CustomerID" name="InvoiceModel.CustomerID" required>
+                                <option>Format: [ID] - [Name] - [Phone]</option>
+                                @foreach (var customerId in ViewBag.Customers)
+                                {
+                                    <option value="@customerId.CustomerID">@customerId.CustomerID - @customerId.CustomerName - @customerId.Phone</option>
+                                }
+                            </select>
+                        </div>
 
-            <div class="form-group">
-                <label for="ProductID">Product ID</label>
-                <select class="form-control" id="ProductID" name="ProductID" required>
-                    <option value="">Chọn Product ID</option>
-                    <!-- Các option sẽ được thêm vào đây bằng JavaScript -->
-                </select>
-            </div>
+                        <div class="form-group">
+                            <label for="InvoiceDate" class="bold">Date Launch:</label>
+                            <input type="date" class="form-control" id="InvoiceDate" name="InvoiceModel.InvoiceDate" required />
+                        </div>
 
-            <div class="form-group">
-                <label for="Quantity">Quantity</label>
-                <input type="number" class="form-control" id="Quantity" name="Quantity" required />
-            </div>
+                        <div class="form-group">
+                            <label for="ProductID" class="bold">Products List:</label>
+                            <select class="form-control" id="ProductID" name="ProductIDs" multiple required>
+                                @foreach (var product in ViewBag.Products)
+                                {
+                                    <option value="@product.ProductID" data-price="@product.Price">@product.ProductName</option>
+                                }
+                            </select>
+                        </div>
 
-            <button type="button" class="btn btn-primary" onclick="createInvoice()">Create Invoice</button>
-            <button type="button" onclick="hideinvoiceForm()">Hủy</button>
-        </form>
-    </div>
+                        <div class="form-group">
+                            <label for="Curency" class="bold">Curency: <span>VND</span></label>
+                        </div>
+                    </div>
 
-    <!-- Form Cập Nhật Đơn Hàng -->
-    <div class="customer-form" id="updateInvoiceForm" style="display:none;">
-        <h2>Cập Nhật Sản Phẩm</h2>
-        <form id="updateProductFormContent">
-            <div class="form-group">
-                <label>Invoice ID:</label>
-                <span id="displayInvoiceID"></span>
-                <input type="hidden" id="updateInvoiceID" name="InvoiceID" required>
+                    <!-- Block 2 -->
+                    <div class="block-2">
+                        <div class="form-group">
+                            <label for="SelectedProducts" class="bold">Selected Products:</label>
+                            <table id="selectedProductsTable" class="table table-bordered">
+                                <thead>
+                                    <tr>
+                                        <th>Product Name</th>
+                                        <th>Price (VND)</th>
+                                        <th>Quantity</th>
+                                        <th>Total Price (VND)</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="selectedProductsList">
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="TotalAmount" class="bold">Total Amount: <span id="totalAmount" class="red-text bold">0</span><span class="red-text bold"> VND</span></label>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Hidden input -->
+                <input type="hidden" id="SelectedQuantities" name="SelectedQuantities" />
+
+                <hr />
+
+                <div class="form-actions">
+                    <button type="submit" class="btn btn-primary">Launch Invoice</button>
+                    <button type="button" onclick="hideinvoiceForm()">Cancel</button>
+                </div>
+            </form>
+        </div>
+
+            <!-- Form Cập Nhật Hóa Đơn -->
+            <div class="customer-form" id="updateInvoiceForm">
+                <h3>UPDATE INVOICE</h3>
+                <form asp-action="Update" method="post">
+                    <input type="hidden" id="UpdateInvoiceID" name="InvoiceModel.InvoiceID" />
+                    <input type="hidden" id="UpdateInvoiceDetailID" name="InvoiceDetailModel.InvoiceDetailID" />
+                    <div class="form-group">
+                        <label for="UpdateQuantity" class="bold">Quantity:</label>
+                        <input type="number" class="form-control" id="UpdateQuantity" name="InvoiceDetailModel.Quantity" required min="1" max="100000" />
+                    </div>
+                    <div class="form-group">
+                        <label for="UpdateInvoiceDate" class="bold">Invoice Date:</label>
+                        <input type="date" class="form-control" id="UpdateInvoiceDate" name="InvoiceModel.InvoiceDate" required />
+                    </div>
+                    <button type="submit">Update</button>
+                    <button type="button" onclick="hideUpdateInvoiceForm()">Cancel</button>
+                </form>
             </div>
-            <div class="form-group">
-                <label>Invoice Details ID:</label>
-                <span id="displayInvoiceDetailsID"></span>
-                <input type="hidden" id="updateInvoiceDetailsID" name="InvoiceDetailsID" required>
-            </div>
-            <div class="form-group">
-                <label for="updateQuantity">Quantity:</label>
-                <input type="number" id="updateQuantity" name="Quantity" required>
-            </div>
-            <div class="form-group">
-                <label for="UpdateDate">Price:</label>
-                <input type="date" id="UpdateDate" name="Date" required>
-            </div>
-            <button type="button" onclick="updateInvoiceAndInvoiceDetail()">Cập Nhật Sản Phẩm</button>
-            <button type="button" onclick="hideUpdateInvoiceForm()">Hủy</button>
-        </form>
+        </div>
     </div>
 </main>
 
-@section Scripts {
-    <script src="~/js/invoice.js"></script>
-}
+<script>
+    $(document).ready(function () {
+        // Kendo Grid for displaying invoices
+        $("#invoiceGrid").kendoGrid({
+            dataSource: {
+                data: @Html.Raw(Json.Serialize(Model)),
+                schema: {
+                    model: {
+                        id: "invoiceModel.invoiceID",
+                        fields: {
+                            invoiceID: { from: "invoiceModel.invoiceID", editable: false, nullable: true },
+                            customerID: { from: "invoiceModel.customerID", validation: { required: true } },
+                            invoiceDate: { from: "invoiceModel.invoiceDate", validation: { required: true } },
+                            productID: { from: "invoiceDetailModel.productID", validation: { required: true } },
+                            quantity: { from: "invoiceDetailModel.quantity", validation: { required: true } },
+                            price: { from: "productModel.price", validation: { required: true } },
+                            totalPrice: { from: "invoiceDetailModel.totalPrice", validation: { required: true } }
+                        }
+                    }
+                },
+                pageSize: 5
+            },
+            height: 400,
+            width: 1000,
+            scrollable: true,
+            sortable: true,
+            pageable: {
+                input: true,
+                numeric: false
+            },
+            columns: [
+                { field: "invoiceID", title: "Invoice ID", width: "110px" },
+                { field: "customerID", title: "Customer ID", width: "110px" },
+                { field: "invoiceDate", title: "Invoice Date", width: "110px", template: "#= kendo.toString(kendo.parseDate(invoiceModel.invoiceDate), 'dd/MM/yyyy') #" },
+                { field: "productID", title: "Product ID", width: "110px" },
+                { field: "quantity", title: "Quantity", width: "90px" },
+                { field: "price", title: "Price (VND)", width: "150px", format: "{0:N0}" },
+                { field: "totalPrice", title: "Total Price (VND)", width: "150px", format: "{0:N0}" },
+                { command: [
+                    { text: "Edit", click: editInvoice }, 
+                    { text: "Delete", click: deleteInvoice }
+                ], title: "Actions", width: "200px" }
+            ]
+        });
 
+        // Attach submit event for the create form
+            $("#createInvoiceForm").on("submit", function (e) {
+            e.preventDefault();
+            submitCreateInvoiceForm();
+        });
+
+        // Attach submit event for the update form
+        $("#updateInvoiceForm").on("submit", function (e) {
+            e.preventDefault();
+            submitUpdateInvoiceForm();
+        });
+    });
+
+    function editInvoice(e) {
+        e.preventDefault();
+        let dataItem = this.dataItem($(e.currentTarget).closest("tr"));
+        showUpdateInvoiceForm(dataItem["invoiceID"], dataItem["invoiceDetailModel"]["invoiceDetailID"], dataItem["quantity"], kendo.toString(dataItem["invoiceDate"], "dd/MM/yyyy"));
+    }
+
+    function deleteInvoice(e) {
+        e.preventDefault();
+        let dataItem = this.dataItem($(e.currentTarget).closest("tr"));
+        if (confirm('Are you sure you want to delete this order?')) {
+            $.ajax({
+                url: '/Invoice/Delete',
+                type: 'POST',
+                data: {
+                    id: dataItem.invoiceDetailModel.invoiceDetailID,
+                    invoiceID: dataItem.invoiceModel.invoiceID
+                },
+                success: function (response) {
+                    if (response.success) {
+                        showSpinner()
+                    } else {
+                        showAlert(response.message, false);
+                    }
+                },
+                error: function () {
+                    alert("An error occurred, please try again.");
+                }
+            });
+        }
+    }
+
+    // Function to submit the customer update form via AJAX
+    function submitCreateInvoiceForm() {
+        let invoiceData = {
+            InvoiceModel: {
+                CustomerID: $("#CustomerID").val(),
+                InvoiceDate: $("#InvoiceDate").val()
+            },
+            SelectedQuantities: $("#SelectedQuantities").val(),
+            ProductIDs: []
+        };
+
+        $("#ProductID option:selected").each(function () {
+            invoiceData.ProductIDs.push($(this).val());
+        });
+
+        $.ajax({
+            url: '/Invoice/Create',
+            type: 'POST',
+            contentType: 'application/json',
+            data: JSON.stringify(invoiceData),
+            success: function (response) {
+                if (response.success) {
+                    hideinvoiceForm();
+                    showSpinner();
+                } else {
+                    hideinvoiceForm();
+                    showAlert(response.message, false);
+                }
+            },
+            error: function () {
+                hideinvoiceForm();
+                showAlert("An error occurred, please try again later.", false);
+            }
+        });
+    }
+
+    // Function to submit Invoice update form via AJAX
+    function submitUpdateInvoiceForm() {
+        let invoiceDataUpdt = {
+            InvoiceID: $("#UpdateInvoiceID").val(),
+            InvoiceDetailID: $("#UpdateInvoiceDetailID").val(),
+            Quantity: $("#UpdateQuantity").val(),
+            InvoiceDate: $("#UpdateInvoiceDate").val()
+        };
+        $.ajax({
+            url: '/Invoice/Update',
+            type: 'POST',
+            data: invoiceDataUpdt,
+            success: function (response) {
+                if (response.success) {
+                    hideUpdateInvoiceForm();
+                    showSpinner();
+                } else {
+                    showAlert(response.message, false);
+                }
+            },
+            error: function () {
+                hideUpdateInvoiceForm();
+                showAlert("An error occurred, please try again later.", false);
+            }
+        });
+    }
+
+    // Hàm hiển thị form thêm hóa đơn mới
+    function showinvoiceForm() {
+        document.getElementById("overlay").style.display = "block";
+        document.getElementById("invoiceForm").style.display = "block";
+    }
+
+    // Hàm ẩn form thêm hóa đơn mới
+    function hideinvoiceForm() {
+        document.getElementById("overlay").style.display = "none";
+        document.getElementById("invoiceForm").style.display = "none";
+    }
+
+    // Hiển thị các sản phẩm đã chọn cùng với số
+    const selectedQuantities = [];
+
+        document.getElementById('ProductID').addEventListener('change', function (e) {
+            const selectedOptions = Array.from(this.selectedOptions);
+            const selectedList = document.getElementById('selectedProductsList');
+            selectedList.innerHTML = '';
+            let totalAmount = 0;
+
+            // Clear the selectedQuantities array
+            selectedQuantities.length = 0;
+
+            selectedOptions.forEach(function (option, index) {
+                const price = parseFloat(option.getAttribute('data-price'));
+                const row = document.createElement('tr');
+
+                // Initialize quantity to 1
+                selectedQuantities[index] = 1;
+
+                row.innerHTML = `
+                            <td>${option.text}</td>
+                            <td>${price.toLocaleString()}</td>
+                            <td>
+                                <input type="hidden" name="SelectedProducts[${option.value}].ProductID" value="${option.value}" />
+                                <input type="number" name="SelectedProducts[${option.value}].Quantity" value="1" min="1" max="100000" />
+                            </td>
+                            <td class="total-price">${price.toLocaleString()}</td>
+                        `
+                    ;
+
+                // Handle quantity input changes
+                const quantityInput = row.querySelector('input[type="number"]');
+                quantityInput.addEventListener('input', function () {
+                    const quantity = parseInt(quantityInput.value) || 1;
+                    selectedQuantities[index] = quantity;
+                    quantityInput.value = quantity;
+                    const totalPriceCell = row.querySelector('.total-price');
+                    const totalPrice = price * quantity;
+                    totalPriceCell.textContent = totalPrice.toLocaleString();
+                    document.getElementById('SelectedQuantities').value = selectedQuantities;
+                    updateTotalAmount();
+                });
+                selectedList.appendChild(row);
+
+                totalAmount += price;
+            });
+
+            document.getElementById('SelectedQuantities').value = selectedQuantities.join(',');
+            document.getElementById('totalAmount').textContent = totalAmount.toLocaleString();
+        });
+
+        // Function to update the total amount
+        function updateTotalAmount() {
+            let totalAmount = 0;
+            const selectedList = document.getElementById('selectedProductsList').children;
+
+            for (let row of selectedList) {
+                const priceText = row.querySelector('.total-price').textContent.replace(/\./g, '');
+                let totalPrice = parseFloat(priceText.replace(/,/g, ''));
+
+                totalAmount += totalPrice;
+            }
+            document.getElementById('totalAmount').textContent = totalAmount.toLocaleString();
+        }
+
+    // Hiển thị form cập nhật hóa đơn
+    function showUpdateInvoiceForm(invoiceId, invoiceDetailId, quantity, invoiceDate) {
+        document.getElementById("overlay").style.display = "block";
+        document.getElementById("updateInvoiceForm").style.display = "block";
+
+        document.getElementById("UpdateInvoiceID").value = invoiceId;
+        document.getElementById("UpdateInvoiceDetailID").value = invoiceDetailId;
+        document.getElementById("UpdateQuantity").value = quantity;
+
+        // Kiểm tra nếu invoiceDate đã ở định dạng ISO (yyyy-MM-ddTHH:mm:ss)
+        if (invoiceDate.includes("T")) {
+            // Lấy phần ngày trước ký tự 'T'
+            var isoDate = invoiceDate.split("T")[0];
+            document.getElementById('UpdateInvoiceDate').value = isoDate;
+        } else {
+            // Nếu không, chuyển đổi InvoiceDate sử dụng kendo.parseDate
+            var parsedDate = kendo.parseDate(invoiceDate, "dd/MM/yyyy");
+            if (parsedDate) {
+                var formattedDate = kendo.toString(parsedDate, "yyyy-MM-dd");
+                document.getElementById('UpdateInvoiceDate').value = formattedDate;
+            } else {
+                console.error("Invalid invoice date format: " + invoiceDate);
+            }
+        }
+    }
+
+
+    // Ẩn form cập nhật hóa đơn
+    function hideUpdateInvoiceForm() {
+        document.getElementById("overlay").style.display = "none";
+        document.getElementById("updateInvoiceForm").style.display = "none";
+    }
+
+    function showSpinner() {
+            $("#loadingSpinner").show();
+
+            setTimeout(function() {
+                window.location.reload();
+            }, 800);
+   }
+ 
+    function hideAlertForm() {
+        $("#alert-overlay").hide();
+        $(".alert-form").hide();
+        showSpinner();
+    }
+
+    // Function to display alerts
+    function showAlert(message, isSuccess) {
+        $("#alert-overlay").show();
+        $(".alert-form").show();
+        $("#alertMessage").text(message);
+        $(".okButton").off().on("click", hideAlertForm);
+    }
+
+    // Đặt giá trị mặc định cho ngày
+    const today = new Date().toISOString().split('T')[0];
+    document.getElementById('InvoiceDate').value = today;
+</script>   

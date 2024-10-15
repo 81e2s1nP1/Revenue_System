@@ -1,0 +1,11 @@
+D:\C Sharp\ASoft\Revenue_System - Copy - Copy\Revenue_System\obj\Release\net8.0\PubTmp\Out\Revenue_System.exe
+D:\C Sharp\ASoft\Revenue_System - Copy - Copy\Revenue_System\obj\Release\net8.0\PubTmp\Out\Revenue_System.dll
+D:\C Sharp\ASoft\Revenue_System - Copy - Copy\Revenue_System\obj\Release\net8.0\PubTmp\Out\Revenue_System.deps.json
+D:\C Sharp\ASoft\Revenue_System - Copy - Copy\Revenue_System\obj\Release\net8.0\PubTmp\Out\Revenue_System.runtimeconfig.json
+D:\C Sharp\ASoft\Revenue_System - Copy - Copy\Revenue_System\obj\Release\net8.0\PubTmp\Out\Revenue_System.pdb
+D:\C Sharp\ASoft\Revenue_System - Copy - Copy\Revenue_System\obj\Release\net8.0\PubTmp\Out\System.Data.SqlClient.dll
+D:\C Sharp\ASoft\Revenue_System - Copy - Copy\Revenue_System\obj\Release\net8.0\PubTmp\Out\runtimes\win-arm64\native\sni.dll
+D:\C Sharp\ASoft\Revenue_System - Copy - Copy\Revenue_System\obj\Release\net8.0\PubTmp\Out\runtimes\win-x64\native\sni.dll
+D:\C Sharp\ASoft\Revenue_System - Copy - Copy\Revenue_System\obj\Release\net8.0\PubTmp\Out\runtimes\win-x86\native\sni.dll
+D:\C Sharp\ASoft\Revenue_System - Copy - Copy\Revenue_System\obj\Release\net8.0\PubTmp\Out\runtimes\unix\lib\netcoreapp2.1\System.Data.SqlClient.dll
+D:\C Sharp\ASoft\Revenue_System - Copy - Copy\Revenue_System\obj\Release\net8.0\PubTmp\Out\runtimes\win\lib\netcoreapp2.1\System.Data.SqlClient.dll

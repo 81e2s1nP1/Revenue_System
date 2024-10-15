@@ -4,33 +4,68 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <link rel="stylesheet" href="~/css/header.css">
-    <link rel="stylesheet" href="~/css/main.css">
-
+    <link rel="stylesheet" href="/css/header.css">
+    <link rel="stylesheet" href="/css/main.css">
     @* Add Kendo UI file *@
     <link rel="stylesheet" href="https://kendo.cdn.telerik.com/themes/8.2.1/default/default-main.css" />
     <script src="~/lib/jquery/dist/jquery.js"></script>
-
     <title>Trang Web của Tôi</title>
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
+        .invoiceContainer {
+            width: 50%;
+            margin-left: 270px;
+            justify-content: center;
         }
 
-        main {
-            padding: 20px;
+        .customer-form {
+            display: none;
+        }
+
+        select {
+            border: solid 2px black;
+            width: 500px;
+            padding: 5px;
+        }
+
+            select[multiple] option:checked {
+                background-color: #4CAF50;
+                color: white;
+            }
+
+        #selectedProductsList {
+            height: 100px;
+            max-height: 100px;
+            overflow-y: auto;
+            border: 1px solid #ccc;
+            padding: 5px;
+            margin: 5px 0;
+        }
+
+        .product-quantity {
+            margin-top: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .product-quantity input {
+                width: 60px;
+                padding: 5px;
+                margin-left: 10px;
+        }
+
+        .k-table-row {
+            font-family: 'Roboto', sans-serif;
+            font-weight: bold;
         }
     </style>
 </head>
 <body>
-
     <header>
         <nav>
             <ul>
-                <li><a href="#">ASoft</a></li>
-                <li><a asp-controller="Home" asp-action="Index">Home</a></li>
+                <li><a asp-controller="Home" asp-action="Index">ASOFT</a></li>
+                <li><a asp-controller="Home" asp-action="Index">Customers</a></li>
                 <li><a asp-controller="Invoice" asp-action="Index">Invoices</a></li>
                 <li><a asp-controller="Product" asp-action="Index">Product</a></li>
                 <li><a href="#">Dropdown <i class="fa-solid fa-caret-down"></i></a></li>
@@ -41,9 +76,7 @@
             </div>
         </nav>
     </header>
-
     @RenderBody()
-
     <footer>
         <p>&copy; 2024 - My ASP.NET Application</p>
     </footer>
@@ -51,6 +84,6 @@
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://kendo.cdn.telerik.com/2024.3.806/js/kendo.all.min.js"></script>
 
-    @await RenderSectionAsync("Scripts", required: false) 
+    @await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>

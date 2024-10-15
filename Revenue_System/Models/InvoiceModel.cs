@@ -5,6 +5,7 @@
         public string InvoiceID { get; set; }
         public string CustomerID { get; set; }
         public DateTime InvoiceDate { get; set; }
+        public List<InvoiceDetailModel> InvoiceDetails { get; set; }
 
         public override string ToString()
         {

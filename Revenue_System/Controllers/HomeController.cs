@@ -2,7 +2,6 @@
 using Revenue_System.Models;
 using Revenue_System.ServiceImplements;
 using System.Diagnostics;
-using Microsoft.AspNetCore.Cors;
 
 namespace Revenue_System.Controllers
 {
@@ -17,10 +16,16 @@ namespace Revenue_System.Controllers
             _logger = logger;
         }
 
-        // GET: /Home/Index
         public IActionResult Index()
         {
-            return View();
+            List<CustomerModel> lstCustomers = customerDataAccessLayer.GetAllCustomer();
+            return View(lstCustomers);
+        }
+
+        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
+        public IActionResult Error()
+        {
+            return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
 
         // GET: /Home/GetCustomers
@@ -31,49 +36,53 @@ namespace Revenue_System.Controllers
             return Json(lstCustomers);
         }
 
-        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-        public IActionResult Error()
-        {
-            return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
-        }
-
-        // CUSTOMER CONTROLLER
         // Create new customer
         [HttpPost]
-        public JsonResult Create([Bind] CustomerModel customerModel)
+        public JsonResult Create(CustomerModel customerModel)
         {
-            if (ModelState.IsValid)
+            try
             {
                 customerDataAccessLayer.InsertCustomer(customerModel);
-                return Json(new { success = true, message = "Customer created successfully." });
+                TempData["SuccessMessage"] = "New Customer created successfully. Would you like to add another customer?";
+                return Json(new { success = true, message = TempData["SuccessMessage"] });
             }
-            return Json(new { success = false, message = "Error creating customer." });
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex);
+                TempData["ErrorMessage"] = "The customer ID or invoice detail ID already exists";
+                return Json(new { success = false, message = TempData["ErrorMessage"] });
+            }
         }
 
-        // Update customer info
+        // Update customer information
         [HttpPost]
-        public JsonResult Update([FromBody] CustomerModel customerModel)
+        public JsonResult Update([Bind] CustomerModel customerModel)
         {
             if (ModelState.IsValid)
             {
                 customerDataAccessLayer.UpdateCustomer(customerModel);
-                return Json(new { success = true, message = "Customer updated successfully." });
+                TempData["SuccessMessage"] = "Customer updated successfully";
+                return Json(new { success = true, message = TempData["SuccessMessage"] });
             }
-            return Json(new { success = false, message = "Error updating customer." });
+            TempData["ErrorMessage"] = "Invalid model data";
+            return Json(new { success = false, message = TempData["ErrorMessage"] });
         }
 
         // Delete customer
         [HttpPost]
         public JsonResult Delete(string id)
         {
+            Console.WriteLine("delete: " + id);
             if (invoiceDataAccessLayer.CustomerCheck(id))
             {
-                return Json(new { success = false, message = "Khách hàng hiện đang tồn tại hóa đơn và không thể xóa." });
+                TempData["ErrorMessage"] = "The customer currently has existing invoices and cannot be deleted";
+                return Json(new { success = false, message = TempData["ErrorMessage"] });
             }
             else
             {
                 customerDataAccessLayer.DeleteCustomer(id);
-                return Json(new { success = true, message = "Customer deleted successfully." });
+                TempData["SuccessMessage"] = "Delete Successfully";
+                return Json(new { success = true, message = TempData["SuccessMessage"] });
             }
         }
     }

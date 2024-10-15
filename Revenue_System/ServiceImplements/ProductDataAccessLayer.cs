@@ -1,80 +1,109 @@
 ﻿using Revenue_System.Models;
-using Revenue_System.ServiceInterfaces;
 using System.Data.SqlClient;
 
 namespace Revenue_System.ServiceImplements
 {
-    public class ProductDataAccessLayer : ProductInterface
+    public class ProductDataAccessLayer
     {
-        private readonly string connectionString = "data source=PA; database=system_revenue; integrated security=SSPI";
+        string connectionString = "data source=PA; database=system_revenue; integrated security=SSPI";
 
-        // Phương thức chèn sản phẩm vào bảng
         public void InsertProduct(ProductModel productModel)
         {
             using SqlConnection con = new SqlConnection(connectionString);
-            string sqlQuery = "INSERT INTO Products (ProductID, ProductName, Price) VALUES (@ProductID, @ProductName, @Price)";
-            using SqlCommand cmd = new SqlCommand(sqlQuery, con);
-
-            cmd.Parameters.AddWithValue("@ProductID", productModel.ProductID.ToUpper());
-            cmd.Parameters.AddWithValue("@ProductName", productModel.ProductName);
-            cmd.Parameters.AddWithValue("@Price", productModel.Price);
-
             con.Open();
-            cmd.ExecuteNonQuery();
+
+            using SqlTransaction transaction = con.BeginTransaction();
+            try
+            {
+                // Get the current maximum ProductID value (ignoring the prefix "AT")
+                string sqlMaxProductID = "SELECT ISNULL(MAX(CAST(SUBSTRING(ProductID, 3, LEN(ProductID)) AS INT)), 0) FROM Products";
+                SqlCommand cmdMaxProductID = new SqlCommand(sqlMaxProductID, con, transaction);
+                int maxProductID = (int)cmdMaxProductID.ExecuteScalar();
+
+                // Create a new ProductID by incrementing the maxProductID
+                string productIDCurrent = "AT" + (maxProductID + 1).ToString("D3");
+
+                // Insert the product into the Products table
+                string sqlQuery = "INSERT INTO Products (ProductID, ProductName, Price) VALUES (@ProductID, @ProductName, @Price)";
+                SqlCommand cmd = new SqlCommand(sqlQuery, con, transaction);
+
+                cmd.Parameters.AddWithValue("@ProductID", productIDCurrent);
+                cmd.Parameters.AddWithValue("@ProductName", productModel.ProductName);
+                cmd.Parameters.AddWithValue("@Price", productModel.Price);
+
+                cmd.ExecuteNonQuery();
+                transaction.Commit();
+            }
+            catch (Exception ex)
+            {
+                transaction.Rollback();
+                throw new Exception("An error occurred while adding the product: " + ex.Message);
+            }
+            finally
+            {
+                con.Close();
+            }
         }
 
-        // Phương thức lấy toàn bộ danh sách sản phẩm trong database
+        // Method to retrieve all products from the database
         public List<ProductModel> GetAllProducts()
         {
-            var lstProduct = new List<ProductModel>();
+            List<ProductModel> productList = new List<ProductModel>();
 
             using SqlConnection con = new SqlConnection(connectionString);
+
             string sqlQuery = "SELECT ProductID, ProductName, Price FROM Products";
-            using SqlCommand cmd = new SqlCommand(sqlQuery, con);
+            SqlCommand cmd = new SqlCommand(sqlQuery, con);
 
             con.Open();
-            using SqlDataReader rdr = cmd.ExecuteReader();
+            SqlDataReader rdr = cmd.ExecuteReader();
             while (rdr.Read())
             {
-                var product = new ProductModel
+                ProductModel product = new ProductModel
                 {
                     ProductID = rdr["ProductID"].ToString(),
                     ProductName = rdr["ProductName"].ToString(),
                     Price = Convert.ToDecimal(rdr["Price"])
                 };
 
-                lstProduct.Add(product);
+                productList.Add(product);
             }
-
-            return lstProduct;
+            con.Close();
+            return productList;
         }
 
-        // Phương thức cập nhật thông tin của sản phẩm
+        // Method to update product information
         public void UpdateProduct(ProductModel productModel)
         {
             using SqlConnection con = new SqlConnection(connectionString);
-            string sqlQuery = "UPDATE Products SET ProductName = @ProductName, Price = @Price WHERE ProductID = @ProductID";
-            using SqlCommand cmd = new SqlCommand(sqlQuery, con);
+            {
+                string sqlQuery = "UPDATE Products SET ProductName = @ProductName, Price = @Price WHERE ProductID = @ProductID";
+                SqlCommand cmd = new SqlCommand(sqlQuery, con);
 
-            cmd.Parameters.AddWithValue("@ProductName", productModel.ProductName);
-            cmd.Parameters.AddWithValue("@Price", productModel.Price);
-            cmd.Parameters.AddWithValue("@ProductID", productModel.ProductID);
+                cmd.Parameters.AddWithValue("@ProductName", productModel.ProductName);
+                cmd.Parameters.AddWithValue("@Price", productModel.Price);
+                cmd.Parameters.AddWithValue("@ProductID", productModel.ProductID);
 
-            con.Open();
-            cmd.ExecuteNonQuery();
+                con.Open();
+                cmd.ExecuteNonQuery();
+                con.Close();
+            }
         }
 
-        // Phương thức xóa sản phẩm theo id
-        public void DeleteProduct(string productId)
+        // Method to delete a product by id
+        public void DeleteProduct(string id)
         {
             using SqlConnection con = new SqlConnection(connectionString);
-            string sqlQuery = "DELETE FROM Products WHERE ProductID = @ProductID";
-            using SqlCommand cmd = new SqlCommand(sqlQuery, con);
+            {
+                string deleteProduct = "DELETE FROM Products WHERE ProductID = @ProductID";
+                SqlCommand cmd = new SqlCommand(deleteProduct, con);
 
-            cmd.Parameters.AddWithValue("@ProductID", productId);
+                cmd.Parameters.AddWithValue("@ProductID", id);
 
-            con.Open();
-            cmd.ExecuteNonQuery();
+                con.Open();
+                cmd.ExecuteNonQuery();
+                con.Close();
+            }
         }
     }
 }

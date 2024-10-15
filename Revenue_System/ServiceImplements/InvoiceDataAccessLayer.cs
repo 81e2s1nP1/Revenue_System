@@ -1,43 +1,45 @@
 ﻿using Revenue_System.Models;
-using Revenue_System.ServiceInterfaces;
+using System.Data;
 using System.Data.SqlClient;
 
 namespace Revenue_System.ServiceImplements
 {
-    public class InvoiceDataAccessLayer : InvoiceDetailInterface
+    public class InvoiceDataAccessLayer
     {
-        private readonly string connectionString = "data source=PA; database=system_revenue; integrated security=SSPI";
+        private string connectionString = "data source=PA; database=system_revenue; integrated security=SSPI";
 
-        // Lấy danh sách đơn hàng và chi tiết đơn hàng
+        // Retrieve the list of invoices and their details
         public List<InvoiceWithDetailsModel> GetInvoiceWithDetails()
         {
-            var lstInvoiceWithDetails = new List<InvoiceWithDetailsModel>();
+            List<InvoiceWithDetailsModel> invoiceWithDetailsList = new List<InvoiceWithDetailsModel>();
 
             using SqlConnection con = new SqlConnection(connectionString);
+
             string sqlQuery = @"
-                SELECT 
-                    id.InvoiceDetailID, 
-                    id.InvoiceID, 
-                    id.ProductID, 
-                    id.Quantity, 
-                    id.TotalPrice, 
-                    i.CustomerID, 
-                    i.InvoiceDate,
-                    p.Price
-                FROM 
-                    InvoiceDetails id
-                JOIN 
-                    Invoices i ON id.InvoiceID = i.InvoiceID
-                JOIN 
-                    Products p ON id.ProductID = p.ProductID";
+            SELECT 
+                id.InvoiceDetailID, 
+                id.InvoiceID, 
+                id.ProductID, 
+                id.Quantity, 
+                id.TotalPrice, 
+                i.CustomerID, 
+                i.InvoiceDate,
+                p.Price
+            FROM 
+                InvoiceDetails id
+            JOIN 
+                Invoices i ON id.InvoiceID = i.InvoiceID
+            JOIN 
+                Products p ON id.ProductID = p.ProductID";
 
-            using SqlCommand cmd = new SqlCommand(sqlQuery, con);
+            SqlCommand cmd = new SqlCommand(sqlQuery, con);
             con.Open();
+            SqlDataReader rdr = cmd.ExecuteReader();
 
-            using SqlDataReader rdr = cmd.ExecuteReader();
             while (rdr.Read())
             {
-                var invoiceDetailModel = new InvoiceDetailModel
+                // Create InvoiceDetailModel object
+                InvoiceDetailModel invoiceDetailModel = new InvoiceDetailModel
                 {
                     InvoiceDetailID = rdr["InvoiceDetailID"].ToString(),
                     InvoiceID = rdr["InvoiceID"].ToString(),
@@ -46,185 +48,226 @@ namespace Revenue_System.ServiceImplements
                     TotalPrice = Convert.ToDecimal(rdr["Price"]) * Convert.ToInt32(rdr["Quantity"])
                 };
 
-                var invoiceModel = new InvoiceModel
+                // Create InvoiceModel object
+                InvoiceModel invoiceModel = new InvoiceModel
                 {
                     InvoiceID = rdr["InvoiceID"].ToString(),
                     CustomerID = rdr["CustomerID"].ToString(),
                     InvoiceDate = Convert.ToDateTime(rdr["InvoiceDate"])
                 };
 
-                var productModel = new ProductModel
+                // Create ProductModel object
+                ProductModel productModel = new ProductModel
                 {
                     Price = Convert.ToDecimal(rdr["Price"])
                 };
 
-                lstInvoiceWithDetails.Add(new InvoiceWithDetailsModel
+                // Create InvoiceWithDetailsModel object
+                InvoiceWithDetailsModel invoiceWithDetailsModel = new InvoiceWithDetailsModel
                 {
                     invoiceDetailModel = invoiceDetailModel,
                     invoiceModel = invoiceModel,
                     productModel = productModel
-                });
+                };
+
+                // Add the object to the list
+                invoiceWithDetailsList.Add(invoiceWithDetailsModel);
             }
-            return lstInvoiceWithDetails;
+            con.Close();
+            return invoiceWithDetailsList;
         }
 
-        // Phương thức lấy danh sách CustomerID
-        public List<string> GetAllCustomerIDs()
+        // Method to retrieve the list of customers
+        public List<CustomerModel> GetAllCustomers()
         {
-            var lstCustomerIDs = new List<string>();
+            List<CustomerModel> customerList = new List<CustomerModel>();
 
             using SqlConnection con = new SqlConnection(connectionString);
-            string sqlQuery = "SELECT DISTINCT CustomerID FROM Customers";
 
-            using SqlCommand cmd = new SqlCommand(sqlQuery, con);
+            string sqlQuery = "SELECT DISTINCT CustomerID, CustomerName, Phone FROM Customers";
+            SqlCommand cmd = new SqlCommand(sqlQuery, con);
+
             con.Open();
+            SqlDataReader rdr = cmd.ExecuteReader();
 
-            using SqlDataReader rdr = cmd.ExecuteReader();
             while (rdr.Read())
             {
-                lstCustomerIDs.Add(rdr["CustomerID"].ToString());
+                CustomerModel customer = new CustomerModel
+                {
+                    CustomerID = rdr["CustomerID"].ToString(),
+                    CustomerName = rdr["CustomerName"].ToString(),
+                    Phone = rdr["Phone"].ToString()
+                };
+
+                customerList.Add(customer);
             }
-            return lstCustomerIDs;
+            con.Close();
+
+            return customerList;
         }
 
-        // Phương thức lấy danh sách ProductID
-        public List<string> GetAllProductIDs()
-        {
-            var lstProductIDs = new List<string>();
-
-            using SqlConnection con = new SqlConnection(connectionString);
-            string sqlQuery = "SELECT DISTINCT ProductID FROM Products";
-
-            using SqlCommand cmd = new SqlCommand(sqlQuery, con);
-            con.Open();
-
-            using SqlDataReader rdr = cmd.ExecuteReader();
-            while (rdr.Read())
-            {
-                lstProductIDs.Add(rdr["ProductID"].ToString());
-            }
-            return lstProductIDs;
-        }
-
-        // Phương thức cập nhật lại đơn hàng, chi tiết đơn hàng
+        // Method to update invoice and invoice details
         public void UpdateInvoiceAndInvoiceDetail(InvoiceModel invoiceModel, InvoiceDetailModel invoiceDetailModel)
         {
             using SqlConnection con = new SqlConnection(connectionString);
-            con.Open();
+            string sqlUpdateInvoice = "UPDATE Invoices SET InvoiceDate = @InvoiceDate WHERE InvoiceID = @InvoiceID";
+            string sqlUpdateInvoiceDetail = "UPDATE InvoiceDetails SET Quantity = @Quantity WHERE InvoiceDetailID = @InvoiceDetailID AND InvoiceID = @InvoiceID";
 
-            using SqlTransaction transaction = con.BeginTransaction();
+            SqlCommand cmdUpdateInvoice = new SqlCommand(sqlUpdateInvoice, con);
+            SqlCommand cmdUpdateInvoiceDetail = new SqlCommand(sqlUpdateInvoiceDetail, con);
+
+            cmdUpdateInvoice.Parameters.AddWithValue("@InvoiceDate", invoiceModel.InvoiceDate);
+            cmdUpdateInvoice.Parameters.AddWithValue("@InvoiceID", invoiceModel.InvoiceID);
+
+            cmdUpdateInvoiceDetail.Parameters.AddWithValue("@Quantity", invoiceDetailModel.Quantity);
+            cmdUpdateInvoiceDetail.Parameters.AddWithValue("@InvoiceDetailID", invoiceDetailModel.InvoiceDetailID);
+            cmdUpdateInvoiceDetail.Parameters.AddWithValue("@InvoiceID", invoiceModel.InvoiceID);
+
             try
             {
-                string sqlUpdateInvoiceModel = "UPDATE Invoices SET InvoiceDate = @InvoiceDate WHERE InvoiceID = @InvoiceID";
-                using SqlCommand cmdUpdateInvoiceModel = new SqlCommand(sqlUpdateInvoiceModel, con, transaction);
-                cmdUpdateInvoiceModel.Parameters.AddWithValue("@InvoiceDate", invoiceModel.InvoiceDate);
-                cmdUpdateInvoiceModel.Parameters.AddWithValue("@InvoiceID", invoiceModel.InvoiceID);
-                cmdUpdateInvoiceModel.ExecuteNonQuery();
-
-                string sqlUpdateInvoiceDetailModel = "UPDATE InvoiceDetails SET Quantity = @Quantity WHERE InvoiceDetailID = @InvoiceDetailID AND InvoiceID = @InvoiceID";
-                using SqlCommand cmdUpdateInvoiceDetailModel = new SqlCommand(sqlUpdateInvoiceDetailModel, con, transaction);
-                cmdUpdateInvoiceDetailModel.Parameters.AddWithValue("@Quantity", invoiceDetailModel.Quantity);
-                cmdUpdateInvoiceDetailModel.Parameters.AddWithValue("@InvoiceDetailID", invoiceDetailModel.InvoiceDetailID);
-                cmdUpdateInvoiceDetailModel.Parameters.AddWithValue("@InvoiceID", invoiceModel.InvoiceID);
-                cmdUpdateInvoiceDetailModel.ExecuteNonQuery();
-
-                transaction.Commit();
+                con.Open();
+                cmdUpdateInvoice.ExecuteNonQuery();
+                cmdUpdateInvoiceDetail.ExecuteNonQuery();
             }
             catch (SqlException ex)
             {
-                transaction.Rollback();
-                throw new Exception("Có lỗi xảy ra khi cập nhật dữ liệu.", ex);
+                throw new Exception("Error occurred while updating data.", ex);
+            }
+            finally
+            {
+                con.Close();
             }
         }
 
-        // Phương thức thêm đơn hàng vào bảng
-        public void InsertInvoice(InvoiceModel invoiceModel, InvoiceDetailModel invoiceDetailModel)
+        // Method to insert invoice and its details
+        public void InsertInvoice(InvoiceModel invoiceModel, List<int> quantities, List<string> productIDs)
         {
             using SqlConnection con = new SqlConnection(connectionString);
             con.Open();
-
             using SqlTransaction transaction = con.BeginTransaction();
+
             try
             {
-                // Thêm đơn hàng (Invoices)
-                string sqlQueryInvoices = "INSERT INTO Invoices (InvoiceID, CustomerID, InvoiceDate) VALUES (@InvoiceID, @CustomerID, @InvoiceDate)";
-                using SqlCommand cmdInvoices = new SqlCommand(sqlQueryInvoices, con, transaction);
-                cmdInvoices.Parameters.AddWithValue("@InvoiceID", invoiceModel.InvoiceID.ToUpper());
-                cmdInvoices.Parameters.AddWithValue("@CustomerID", invoiceModel.CustomerID);
-                cmdInvoices.Parameters.AddWithValue("@InvoiceDate", invoiceModel.InvoiceDate);
-                cmdInvoices.ExecuteNonQuery();
+                string sqlMaxInvoiceID = "SELECT ISNULL(MAX(CAST(SUBSTRING(InvoiceID, 4, LEN(InvoiceID)) AS INT)), 0) FROM Invoices";
+                SqlCommand cmdMaxInvoiceID = new SqlCommand(sqlMaxInvoiceID, con, transaction);
+                int maxInvoiceID = (int)cmdMaxInvoiceID.ExecuteScalar();
 
-                // Thêm chi tiết đơn hàng (InvoiceDetails)
-                string sqlQueryInvoiceDetails = "INSERT INTO InvoiceDetails (InvoiceDetailID, InvoiceID, ProductID, Quantity, TotalPrice) VALUES (@InvoiceDetailID, @InvoiceID, @ProductID, @Quantity, @TotalPrice)";
-                using SqlCommand cmdInvoiceDetails = new SqlCommand(sqlQueryInvoiceDetails, con, transaction);
-                cmdInvoiceDetails.Parameters.AddWithValue("@InvoiceDetailID", invoiceDetailModel.InvoiceDetailID.ToUpper());
-                cmdInvoiceDetails.Parameters.AddWithValue("@InvoiceID", invoiceModel.InvoiceID.ToUpper());
-                cmdInvoiceDetails.Parameters.AddWithValue("@ProductID", invoiceDetailModel.ProductID);
-                cmdInvoiceDetails.Parameters.AddWithValue("@Quantity", invoiceDetailModel.Quantity);
-                cmdInvoiceDetails.Parameters.AddWithValue("@TotalPrice", invoiceDetailModel.TotalPrice ?? 0);
+                string newInvoiceID = "ABC" + (maxInvoiceID + 1).ToString("D5");
 
-                cmdInvoiceDetails.ExecuteNonQuery();
-                transaction.Commit();
-            }
-            catch (Exception ex)
-            {
-                transaction.Rollback();
-                throw new Exception("Có lỗi xảy ra trong quá trình thêm hóa đơn và chi tiết hóa đơn: " + ex.Message);
-            }
-        }
+                string sqlInsertInvoice = "INSERT INTO Invoices (InvoiceID, CustomerID, InvoiceDate) VALUES (@InvoiceID, @CustomerID, @InvoiceDate)";
+                SqlCommand cmdInsertInvoice = new SqlCommand(sqlInsertInvoice, con, transaction);
+                cmdInsertInvoice.Parameters.AddWithValue("@InvoiceID", newInvoiceID);
+                cmdInsertInvoice.Parameters.AddWithValue("@CustomerID", invoiceModel.CustomerID);
+                cmdInsertInvoice.Parameters.AddWithValue("@InvoiceDate", invoiceModel.InvoiceDate);
+                cmdInsertInvoice.ExecuteNonQuery();
 
-        // Phương thức xóa hóa đơn (Invoices) và tự động xóa chi tiết hóa đơn (InvoiceDetails)
-        public void DeleteInvoice(string invoiceID)
-        {
-            using SqlConnection con = new SqlConnection(connectionString);
-            con.Open();
+                string sqlMaxInvoiceDetailID = "SELECT ISNULL(MAX(CAST(SUBSTRING(InvoiceDetailID, 4, LEN(InvoiceDetailID)) AS INT)), 0) FROM InvoiceDetails";
+                SqlCommand cmdMaxInvoiceDetailID = new SqlCommand(sqlMaxInvoiceDetailID, con, transaction);
+                int maxInvoiceDetailID = (int)cmdMaxInvoiceDetailID.ExecuteScalar();
 
-            using SqlTransaction transaction = con.BeginTransaction();
-            try
-            {
-                // Xóa chi tiết hóa đơn trước
-                string sqlQueryInvoiceDetail = "DELETE FROM InvoiceDetails WHERE InvoiceID = @InvoiceID";
-                using SqlCommand cmdQueryInvoiceDetail = new SqlCommand(sqlQueryInvoiceDetail, con, transaction);
-                cmdQueryInvoiceDetail.Parameters.AddWithValue("@InvoiceID", invoiceID.ToUpper());
-                cmdQueryInvoiceDetail.ExecuteNonQuery();
+                for (int i = 0; i < productIDs.Count; i++)
+                {
+                    string sqlInsertInvoiceDetail = "INSERT INTO InvoiceDetails (InvoiceDetailID, InvoiceID, ProductID, Quantity, TotalPrice) VALUES (@InvoiceDetailID, @InvoiceID, @ProductID, @Quantity, @TotalPrice)";
+                    SqlCommand cmdInsertInvoiceDetail = new SqlCommand(sqlInsertInvoiceDetail, con, transaction);
 
-                // Xóa hóa đơn chính
-                string sqlQuery = "DELETE FROM Invoices WHERE InvoiceID = @InvoiceID";
-                using SqlCommand cmd = new SqlCommand(sqlQuery, con, transaction);
-                cmd.Parameters.AddWithValue("@InvoiceID", invoiceID.ToUpper());
-                cmd.ExecuteNonQuery();
+                    string newInvoiceDetailID = "AAA" + (maxInvoiceDetailID + 1).ToString("D5");
+                    maxInvoiceDetailID++;
+
+                    cmdInsertInvoiceDetail.Parameters.AddWithValue("@InvoiceDetailID", newInvoiceDetailID);
+                    cmdInsertInvoiceDetail.Parameters.AddWithValue("@InvoiceID", newInvoiceID);
+                    cmdInsertInvoiceDetail.Parameters.AddWithValue("@ProductID", productIDs[i]);
+                    cmdInsertInvoiceDetail.Parameters.AddWithValue("@Quantity", quantities[i]);
+                    cmdInsertInvoiceDetail.Parameters.AddWithValue("@TotalPrice", 100);
+
+                    cmdInsertInvoiceDetail.ExecuteNonQuery();
+                }
 
                 transaction.Commit();
             }
             catch (Exception ex)
             {
                 transaction.Rollback();
-                throw new Exception("Có lỗi xảy ra trong quá trình xóa hóa đơn: " + ex.Message);
+                throw new Exception("Error occurred while inserting invoice and its details: " + ex.Message);
+            }
+            finally
+            {
+                con.Close();
             }
         }
 
-        // Phương thức kiểm tra sản phẩm có trong đơn hàng chưa 
+        // Method to delete invoice and its details
+        public void DeleteInvoice(string invoiceDetailID, string invoiceID)
+        {
+            using SqlConnection con = new SqlConnection(connectionString);
+            con.Open();
+            using SqlTransaction transaction = con.BeginTransaction();
+
+            try
+            {
+                string sqlDeleteInvoiceDetail = "DELETE FROM InvoiceDetails WHERE InvoiceDetailID = @InvoiceDetailID";
+                SqlCommand cmdDeleteInvoiceDetail = new SqlCommand(sqlDeleteInvoiceDetail, con, transaction);
+                cmdDeleteInvoiceDetail.Parameters.AddWithValue("@InvoiceDetailID", invoiceDetailID.ToUpper());
+                int rowsAffected = cmdDeleteInvoiceDetail.ExecuteNonQuery();
+
+                if (rowsAffected == 1)
+                {
+                    string sqlCountInvoiceDetails = "SELECT COUNT(*) FROM InvoiceDetails WHERE InvoiceID = @InvoiceID";
+                    SqlCommand cmdCount = new SqlCommand(sqlCountInvoiceDetails, con, transaction);
+                    cmdCount.Parameters.AddWithValue("@InvoiceID", invoiceID.ToUpper());
+                    int detailCount = (int)cmdCount.ExecuteScalar();
+
+                    if (detailCount == 0)
+                    {
+                        string sqlDeleteInvoice = "DELETE FROM Invoices WHERE InvoiceID = @InvoiceID";
+                        SqlCommand cmdDeleteInvoice = new SqlCommand(sqlDeleteInvoice, con, transaction);
+                        cmdDeleteInvoice.Parameters.AddWithValue("@InvoiceID", invoiceID.ToUpper());
+                        cmdDeleteInvoice.ExecuteNonQuery();
+                    }
+                }
+
+                transaction.Commit();
+            }
+            catch (Exception ex)
+            {
+                transaction.Rollback();
+                throw new Exception("Error occurred while deleting invoice: " + ex.Message);
+            }
+            finally
+            {
+                con.Close();
+            }
+        }
+
+        // Method to check if a product exists in any invoice
         public bool ProductCheck(string productId)
         {
-            return CheckExists("InvoiceDetails", "ProductID", productId);
-        }
-
-        // Phương thức kiểm tra khách hàng có trong hóa đơn chưa 
-        public bool CustomerCheck(string customerId)
-        {
-            return CheckExists("Invoices", "CustomerID", customerId);
-        }
-
-        // Phương thức kiểm tra sự tồn tại của một mục trong bảng
-        private bool CheckExists(string tableName, string columnName, string value)
-        {
             using SqlConnection con = new SqlConnection(connectionString);
-            string query = $"SELECT COUNT(*) FROM {tableName} WHERE {columnName} = @Value";
-            using SqlCommand cmd = new SqlCommand(query, con);
-            cmd.Parameters.AddWithValue("@Value", value);
             con.Open();
 
-            return (int)cmd.ExecuteScalar() > 0;
+            string query = "SELECT COUNT(*) FROM InvoiceDetails WHERE ProductID = @ProductID";
+            SqlCommand cmd = new SqlCommand(query, con);
+            cmd.Parameters.AddWithValue("@ProductID", productId);
+
+            int count = (int)cmd.ExecuteScalar();
+            return count > 0;
+        }
+
+        // Method to check if the product is in the order
+        public bool CustomerCheck(string customerId)
+        {
+            using SqlConnection con = new SqlConnection(connectionString);
+            con.Open();
+
+            string query = "SELECT COUNT(*) FROM Invoices WHERE CustomerID = @CustomerID";
+            SqlCommand cmd = new SqlCommand(query, con);
+
+            cmd.Parameters.AddWithValue("@CustomerID", customerId);
+
+            int count = (int)cmd.ExecuteScalar();
+
+            con.Close();
+
+            return count > 0;
         }
     }
 }

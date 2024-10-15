@@ -7,73 +7,80 @@ namespace Revenue_System.Controllers
 {
     public class ProductController : Controller
     {
-        private readonly ILogger<ProductController> _logger;
+        private readonly ILogger<HomeController> _logger;
         private ProductDataAccessLayer productDataAccessLayer = new ProductDataAccessLayer();
         private InvoiceDataAccessLayer invoiceDataAccessLayer = new InvoiceDataAccessLayer();
-
-        public ProductController(ILogger<ProductController> logger)
-        {
-            _logger = logger;
-        }
-
-        // GET: /Product/Index
         public IActionResult Index()
         {
-            return View();
-        }
-
-        // GET: /Product/GetProducts
-        [HttpGet]
-        public JsonResult GetProducts()
-        {
-            List<ProductModel> lstProducts = productDataAccessLayer.GetAllProducts();
-            return Json(lstProducts);
-        }
-
-        // Create new product
-        [HttpPost]
-        public JsonResult Create([FromBody] ProductModel productModel)
-        {
-            Console.WriteLine("productModel: " + productModel);
-            if (ModelState.IsValid)
-            {
-                productDataAccessLayer.InsertProduct(productModel);
-                return Json(new { success = true, message = "Product created successfully." });
-            }
-            return Json(new { success = false, message = "Error creating product." });
-        }
-
-        // Update product info
-        [HttpPost]
-        public JsonResult Update([FromBody] ProductModel productModel)
-        {
-            if (ModelState.IsValid)
-            {
-                productDataAccessLayer.UpdateProduct(productModel);
-                return Json(new { success = true, message = "Product updated successfully." });
-            }
-            return Json(new { success = false, message = "Error updating product." });
-        }
-
-        // Delete product by id 
-        [HttpPost]
-        public JsonResult Delete(string id)
-        {
-            if (invoiceDataAccessLayer.ProductCheck(id))
-            {
-                return Json(new { success = false, message = "Sản phẩm hiện đang tồn tại hóa đơn và không thể xóa." });
-            }
-            else
-            {
-                productDataAccessLayer.DeleteProduct(id);
-                return Json(new { success = true, message = "Product deleted successfully." });
-            }
+            List<ProductModel> lstProductModel = productDataAccessLayer.GetAllProducts();
+            return View(lstProductModel);
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+        }
+        public ProductController(ILogger<HomeController> logger)
+        {
+            _logger = logger;
+        }
+
+        // Get all products
+        [HttpGet]
+        public JsonResult GetAllProducts()
+        {
+            List<ProductModel> lstProductModel = productDataAccessLayer.GetAllProducts();
+            return Json(lstProductModel);
+        }
+
+        // Create new product
+        [HttpPost]
+        public JsonResult Create(ProductModel productModel)
+        {
+            try
+            {
+                productDataAccessLayer.InsertProduct(productModel);
+                TempData["SuccessMessage"] = "New product created successfully.";
+                return Json(new { success = true, message = TempData["SuccessMessage"] });
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("error: " + ex);
+                TempData["ErrorMessage"] = "The product ID already exists";
+                return Json(new { success = false, message = TempData["ErrorMessage"] });
+            }
+        }
+
+        // Update product
+        [HttpPost]
+        public JsonResult Update([Bind] ProductModel productModel)
+        {
+            if (ModelState.IsValid)
+            {
+                productDataAccessLayer.UpdateProduct(productModel);
+                TempData["SuccessMessage"] = "Product updated successfully.";
+                return Json(new { success = true, message = TempData["SuccessMessage"] });
+            }
+            TempData["ErrorMessage"] = "Invalid model data.";
+            return Json(new { success = false, message = TempData["ErrorMessage"] });
+        }
+
+        // Delete product by id
+        [HttpPost]
+        public JsonResult Delete(string id)
+        {
+            if (invoiceDataAccessLayer.ProductCheck(id))
+            {
+                TempData["ErrorMessage"] = "The product is currently associated with existing invoices and cannot be deleted.";
+                return Json(new { success = false, message = TempData["ErrorMessage"] });
+            }
+            else
+            {
+                productDataAccessLayer.DeleteProduct(id);
+                TempData["SuccessMessage"] = "Delete Successfully.";
+                return Json(new { success = true, message = TempData["SuccessMessage"] });
+            }
         }
     }
 }
