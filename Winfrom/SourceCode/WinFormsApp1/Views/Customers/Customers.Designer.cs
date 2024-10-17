@@ -37,6 +37,7 @@ namespace WinFormsApp1.Views
             // 
             // CustomerTable
             // 
+            CustomerTable.Font = new Font("Arial", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
             CustomerTable.Location = new Point(12, 96);
             CustomerTable.Name = "CustomerTable";
             CustomerTable.Size = new Size(931, 385);
@@ -56,12 +57,13 @@ namespace WinFormsApp1.Views
             // label1
             // 
             label1.AutoSize = true;
-            label1.Font = new Font("Showcard Gothic", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label1.Font = new Font("Arial", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label1.Location = new Point(22, 55);
             label1.Name = "label1";
-            label1.Size = new Size(170, 23);
+            label1.Size = new Size(187, 24);
             label1.TabIndex = 0;
             label1.Text = "CUSTOMERS-LIST";
+            label1.Click += label1_Click;
             // 
             // panel3
             // 
@@ -77,7 +79,7 @@ namespace WinFormsApp1.Views
             // showUpdateForm
             // 
             showUpdateForm.BackColor = Color.DodgerBlue;
-            showUpdateForm.Font = new Font("Showcard Gothic", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            showUpdateForm.Font = new Font("Arial", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
             showUpdateForm.Location = new Point(457, 3);
             showUpdateForm.Name = "showUpdateForm";
             showUpdateForm.Size = new Size(155, 47);
@@ -89,7 +91,7 @@ namespace WinFormsApp1.Views
             // button2
             // 
             button2.BackColor = Color.DodgerBlue;
-            button2.Font = new Font("Showcard Gothic", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            button2.Font = new Font("Arial", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
             button2.Location = new Point(618, 3);
             button2.Name = "button2";
             button2.Size = new Size(155, 47);
@@ -101,7 +103,7 @@ namespace WinFormsApp1.Views
             // button1
             // 
             button1.BackColor = Color.DodgerBlue;
-            button1.Font = new Font("Showcard Gothic", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            button1.Font = new Font("Arial", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
             button1.Location = new Point(776, 3);
             button1.Name = "button1";
             button1.Size = new Size(155, 47);

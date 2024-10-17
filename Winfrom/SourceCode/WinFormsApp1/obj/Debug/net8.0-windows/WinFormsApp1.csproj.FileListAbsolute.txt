@@ -15,7 +15,6 @@ D:\C Sharp\ASoft\Winfrom Test App\SourceCode\WinFormsApp1\obj\Debug\net8.0-windo
 D:\C Sharp\ASoft\Winfrom Test App\SourceCode\WinFormsApp1\obj\Debug\net8.0-windows\ref\WinFormsApp1.dll
 D:\C Sharp\ASoft\Winfrom Test App\SourceCode\WinFormsApp1\obj\Debug\net8.0-windows\WinFormsApp1.Home.resources
 D:\C Sharp\ASoft\Winfrom Test App\SourceCode\WinFormsApp1\obj\Debug\net8.0-windows\WinFormsApp1.Views.Invoices.resources
-D:\C Sharp\ASoft\Winfrom Test App\SourceCode\WinFormsApp1\obj\Debug\net8.0-windows\WinFormsApp1.Views.Products.resources
 D:\C Sharp\ASoft\Winfrom Test App\SourceCode\WinFormsApp1\obj\Debug\net8.0-windows\WinFormsApp1.Properties.Resources.resources
 D:\C Sharp\ASoft\Winfrom Test App\SourceCode\WinFormsApp1\obj\Debug\net8.0-windows\WinFormsApp1.csproj.AssemblyReference.cache
 D:\C Sharp\ASoft\Winfrom Test App\SourceCode\WinFormsApp1\bin\Debug\net8.0-windows\System.Data.SqlClient.dll
@@ -28,3 +27,6 @@ D:\C Sharp\ASoft\Winfrom Test App\SourceCode\WinFormsApp1\obj\Debug\net8.0-windo
 D:\C Sharp\ASoft\Winfrom Test App\SourceCode\WinFormsApp1\obj\Debug\net8.0-windows\WinFormsApp1.Views.Customers.CustomerInsert.resources
 D:\C Sharp\ASoft\Winfrom Test App\SourceCode\WinFormsApp1\obj\Debug\net8.0-windows\WinFormsApp1.Views.CustomerList.resources
 D:\C Sharp\ASoft\Winfrom Test App\SourceCode\WinFormsApp1\obj\Debug\net8.0-windows\WinFormsApp1.Views.Customers.CustomerUpdate.resources
+D:\C Sharp\ASoft\Winfrom Test App\SourceCode\WinFormsApp1\obj\Debug\net8.0-windows\WinFormsApp1.Views.Products.ProductInsert.resources
+D:\C Sharp\ASoft\Winfrom Test App\SourceCode\WinFormsApp1\obj\Debug\net8.0-windows\WinFormsApp1.Views.ProductList.resources
+D:\C Sharp\ASoft\Winfrom Test App\SourceCode\WinFormsApp1\obj\Debug\net8.0-windows\WinFormsApp1.Views.Products.ProductUpdate.resources

@@ -31,10 +31,10 @@
             panel1 = new Panel();
             label1 = new Label();
             panel2 = new Panel();
+            button3 = new Button();
             button2 = new Button();
             button1 = new Button();
             panel3 = new Panel();
-            button3 = new Button();
             panel1.SuspendLayout();
             panel2.SuspendLayout();
             SuspendLayout();
@@ -51,9 +51,10 @@
             // label1
             // 
             label1.AutoSize = true;
+            label1.Font = new Font("Arial", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label1.Location = new Point(22, 55);
             label1.Name = "label1";
-            label1.Size = new Size(144, 23);
+            label1.Size = new Size(153, 24);
             label1.TabIndex = 0;
             label1.Text = "INVOICES-LIST";
             label1.Click += label1_Click;
@@ -69,9 +70,21 @@
             panel2.TabIndex = 1;
             panel2.Paint += pBottomInvoice;
             // 
+            // button3
+            // 
+            button3.BackColor = Color.DodgerBlue;
+            button3.Font = new Font("Arial", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            button3.Location = new Point(452, 0);
+            button3.Name = "button3";
+            button3.Size = new Size(155, 47);
+            button3.TabIndex = 2;
+            button3.Text = "UPDATE";
+            button3.UseVisualStyleBackColor = false;
+            // 
             // button2
             // 
             button2.BackColor = Color.DodgerBlue;
+            button2.Font = new Font("Arial", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
             button2.Location = new Point(613, 0);
             button2.Name = "button2";
             button2.Size = new Size(155, 47);
@@ -82,11 +95,12 @@
             // button1
             // 
             button1.BackColor = Color.DodgerBlue;
+            button1.Font = new Font("Arial", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
             button1.Location = new Point(774, 0);
             button1.Name = "button1";
             button1.Size = new Size(154, 47);
             button1.TabIndex = 0;
-            button1.Text = "Launch";
+            button1.Text = "LAUNCH";
             button1.UseVisualStyleBackColor = false;
             button1.Click += button1_Click;
             // 
@@ -97,16 +111,6 @@
             panel3.Size = new Size(931, 385);
             panel3.TabIndex = 1;
             panel3.Paint += pMiddleInvoice;
-            // 
-            // button3
-            // 
-            button3.BackColor = Color.DodgerBlue;
-            button3.Location = new Point(452, 3);
-            button3.Name = "button3";
-            button3.Size = new Size(155, 47);
-            button3.TabIndex = 2;
-            button3.Text = "UPDATE";
-            button3.UseVisualStyleBackColor = false;
             // 
             // Invoices
             // 

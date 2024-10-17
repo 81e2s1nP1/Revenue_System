@@ -38,7 +38,7 @@
             // 
             // panel1
             // 
-            panel1.BackColor = Color.DodgerBlue;
+            panel1.BackColor = Color.RoyalBlue;
             panel1.Controls.Add(button3);
             panel1.Controls.Add(button2);
             panel1.Controls.Add(button1);
@@ -52,7 +52,7 @@
             // button3
             // 
             button3.BackColor = Color.Gainsboro;
-            button3.Font = new Font("Showcard Gothic", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            button3.Font = new Font("Arial", 12F, FontStyle.Bold);
             button3.Location = new Point(32, 464);
             button3.Name = "button3";
             button3.Size = new Size(194, 69);
@@ -64,7 +64,7 @@
             // button2
             // 
             button2.BackColor = Color.Gainsboro;
-            button2.Font = new Font("Showcard Gothic", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            button2.Font = new Font("Arial", 12F, FontStyle.Bold);
             button2.Location = new Point(32, 346);
             button2.Name = "button2";
             button2.Size = new Size(194, 69);
@@ -76,7 +76,7 @@
             // button1
             // 
             button1.BackColor = Color.Gainsboro;
-            button1.Font = new Font("Showcard Gothic", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            button1.Font = new Font("Arial", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             button1.Location = new Point(32, 236);
             button1.Name = "button1";
             button1.Size = new Size(194, 69);
@@ -107,6 +107,7 @@
             FormBorderStyle = FormBorderStyle.None;
             Name = "Home";
             Padding = new Padding(6);
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "Customers-List";
             Load += fCustomers_Load;
             panel1.ResumeLayout(false);

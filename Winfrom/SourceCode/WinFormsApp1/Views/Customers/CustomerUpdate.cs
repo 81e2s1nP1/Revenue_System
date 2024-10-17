@@ -15,10 +15,12 @@ namespace WinFormsApp1.Views.Customers
     public partial class CustomerUpdate : Form
     {
         private CustomerDataAccessLayer customerDataAccessLayer;
+        private CustomerList customerList;
         public CustomerUpdate()
         {
             InitializeComponent();
             customerDataAccessLayer = new CustomerDataAccessLayer();
+            customerList = new CustomerList();
         }
 
         private void LTitleForm_Click(object sender, EventArgs e)
@@ -54,21 +56,38 @@ namespace WinFormsApp1.Views.Customers
 
         }
 
+        //handle click update customer event
         private void UPDATE_Click(object sender, EventArgs e)
-        { }
-        //private void UPDATE_Click(object sender, EventArgs e)
-        //{
-        //        string customerId = textBoxCusIDUpdate.Text;
-        //        string customerName = textBoxCusNameUpdate.Text;
-        //        string phone = textBoxCusPhoneUpdate.Text;
-        //        //CustomerModel customer = new CustomerModel(customerId, customerName, phone);
-        //        // Delete customer from the database
-        //        customerDataAccessLayer.UpdateCustomer(customer);
+        {
+            string customerId = textBoxCusIDUpdate.Text;
+            string customerName = textBoxCusNameUpdate.Text;
+            string phone = textBoxCusPhoneUpdate.Text;
+            if (string.IsNullOrEmpty(customerName) || string.IsNullOrEmpty(phone))
+            {
+                MessageBox.Show("Please enter both customer name and phone number.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
 
-        //        // Refresh the customer list
-        //        //ReloadCustomerList();
+            CustomerModel updateCustomer = new CustomerModel
+            {
+                CustomerID = customerId.Trim(),
+                CustomerName = customerName.Trim(),
+                Phone = phone.Trim()
+            };
 
-        //        MessageBox.Show("Customer deleted successfully!");
-        //}
+            try
+            {
+                customerDataAccessLayer.UpdateCustomer(updateCustomer);
+                MessageBox.Show("Customer updated successfully!", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                this.Hide();
+
+                // Refresh the customer list
+                //customerList.ReloadCustomerList();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("An error occurred: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
     }
 }

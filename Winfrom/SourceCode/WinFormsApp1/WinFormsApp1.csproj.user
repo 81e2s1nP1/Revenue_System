@@ -16,7 +16,13 @@
     <Compile Update="Views\Invoices\Invoices.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="Views\Products\ProductInsert.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="Views\Products\Products.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Views\Products\ProductUpdate.cs">
       <SubType>Form</SubType>
     </Compile>
   </ItemGroup>

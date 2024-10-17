@@ -59,7 +59,7 @@ namespace WinFormsApp1
         // Event handler for button2 click (showing products)
         private void button2_Click(object sender, EventArgs e)
         {
-            ShowChildFormInPanel(new Products(), panel2);
+            ShowChildFormInPanel(new ProductList(), panel2);
         }
 
         // Event handler for button3 click (showing invoices)
