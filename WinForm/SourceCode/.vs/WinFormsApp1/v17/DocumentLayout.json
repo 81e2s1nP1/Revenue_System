@@ -7,7 +7,7 @@
       "RelativeMoniker": "D:0:0:{C3C9F6B4-CB39-4053-83AD-6FCC1D7F35BE}|WinFormsApp1\\WinFormsApp1.csproj|solutionrelative:winformsapp1\\views\\invoices\\invoiceinsert.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{C3C9F6B4-CB39-4053-83AD-6FCC1D7F35BE}|WinFormsApp1\\WinFormsApp1.csproj|d:\\c sharp\\asoft\\winfrom test app\\sourcecode\\winformsapp1\\views\\invoices\\invoiceinsert.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "AbsoluteMoniker": "D:0:0:{C3C9F6B4-CB39-4053-83AD-6FCC1D7F35BE}|WinFormsApp1\\WinFormsApp1.csproj|D:\\C Sharp\\ASoft\\Winfrom Test App\\SourceCode\\winformsapp1\\views\\invoices\\invoiceinsert.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
       "RelativeMoniker": "D:0:0:{C3C9F6B4-CB39-4053-83AD-6FCC1D7F35BE}|WinFormsApp1\\WinFormsApp1.csproj|solutionrelative:winformsapp1\\views\\invoices\\invoiceinsert.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     },
     {
@@ -15,11 +15,11 @@
       "RelativeMoniker": "D:0:0:{C3C9F6B4-CB39-4053-83AD-6FCC1D7F35BE}|WinFormsApp1\\WinFormsApp1.csproj|solutionrelative:winformsapp1\\views\\invoices\\invoices.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{C3C9F6B4-CB39-4053-83AD-6FCC1D7F35BE}|WinFormsApp1\\WinFormsApp1.csproj|d:\\c sharp\\asoft\\winfrom test app\\sourcecode\\winformsapp1\\views\\invoices\\invoiceupdate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "AbsoluteMoniker": "D:0:0:{C3C9F6B4-CB39-4053-83AD-6FCC1D7F35BE}|WinFormsApp1\\WinFormsApp1.csproj|D:\\C Sharp\\ASoft\\Winfrom Test App\\SourceCode\\winformsapp1\\views\\invoices\\invoiceupdate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
       "RelativeMoniker": "D:0:0:{C3C9F6B4-CB39-4053-83AD-6FCC1D7F35BE}|WinFormsApp1\\WinFormsApp1.csproj|solutionrelative:winformsapp1\\views\\invoices\\invoiceupdate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{C3C9F6B4-CB39-4053-83AD-6FCC1D7F35BE}|WinFormsApp1\\WinFormsApp1.csproj|d:\\c sharp\\asoft\\winfrom test app\\sourcecode\\winformsapp1\\views\\invoices\\invoices.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "AbsoluteMoniker": "D:0:0:{C3C9F6B4-CB39-4053-83AD-6FCC1D7F35BE}|WinFormsApp1\\WinFormsApp1.csproj|D:\\C Sharp\\ASoft\\Winfrom Test App\\SourceCode\\winformsapp1\\views\\invoices\\invoices.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
       "RelativeMoniker": "D:0:0:{C3C9F6B4-CB39-4053-83AD-6FCC1D7F35BE}|WinFormsApp1\\WinFormsApp1.csproj|solutionrelative:winformsapp1\\views\\invoices\\invoices.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     },
     {
@@ -44,7 +44,7 @@
               "RelativeDocumentMoniker": "WinFormsApp1\\Views\\Invoices\\InvoiceInsert.cs",
               "ToolTip": "D:\\C Sharp\\ASoft\\Winfrom Test App\\SourceCode\\WinFormsApp1\\Views\\Invoices\\InvoiceInsert.cs",
               "RelativeToolTip": "WinFormsApp1\\Views\\Invoices\\InvoiceInsert.cs",
-              "ViewState": "AgIAAE4AAAAAAAAAAAAAAGMAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAHoAAAAAAAAAAAAiwLoAAAAJAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-10-21T03:27:42.912Z",
               "EditorCaption": ""
@@ -58,8 +58,7 @@
               "ToolTip": "D:\\C Sharp\\ASoft\\Winfrom Test App\\SourceCode\\WinFormsApp1\\Views\\Invoices\\InvoiceInsert.cs [Design]",
               "RelativeToolTip": "WinFormsApp1\\Views\\Invoices\\InvoiceInsert.cs [Design]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-21T03:27:37.064Z",
-              "EditorCaption": " [Design]"
+              "WhenOpened": "2024-10-21T03:27:37.064Z"
             },
             {
               "$type": "Document",
@@ -83,8 +82,7 @@
               "ToolTip": "D:\\C Sharp\\ASoft\\Winfrom Test App\\SourceCode\\WinFormsApp1\\Views\\Invoices\\Invoices.cs [Design]",
               "RelativeToolTip": "WinFormsApp1\\Views\\Invoices\\Invoices.cs [Design]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-21T03:26:59.248Z",
-              "EditorCaption": " [Design]"
+              "WhenOpened": "2024-10-21T03:26:59.248Z"
             },
             {
               "$type": "Document",
@@ -108,8 +106,7 @@
               "ToolTip": "D:\\C Sharp\\ASoft\\Winfrom Test App\\SourceCode\\WinFormsApp1\\Views\\Invoices\\InvoiceUpdate.cs [Design]",
               "RelativeToolTip": "WinFormsApp1\\Views\\Invoices\\InvoiceUpdate.cs [Design]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-21T03:23:52.791Z",
-              "EditorCaption": " [Design]"
+              "WhenOpened": "2024-10-21T03:23:52.791Z"
             }
           ]
         }

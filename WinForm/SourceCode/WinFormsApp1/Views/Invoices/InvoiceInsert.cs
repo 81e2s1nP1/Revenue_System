@@ -124,6 +124,12 @@ namespace WinFormsApp1.Views.Invoices
                 // Get the number of rows in DataGridView
                 int rowCount = dataGridView.Rows.Count;
 
+                // Check if any products are selected
+                if (rowCount == 0)
+                {
+                    throw new InvalidOperationException("No products selected.");
+                }
+
                 // Initialize lists to store product IDs and quantities
                 List<string> productIds = new List<string>();
                 List<int> quantities = new List<int>(); // List to store quantities
