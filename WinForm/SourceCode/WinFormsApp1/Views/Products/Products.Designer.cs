@@ -121,10 +121,11 @@
             Controls.Add(panel2);
             Controls.Add(panel1);
             Font = new Font("Showcard Gothic", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            FormBorderStyle = FormBorderStyle.None;
+            FormBorderStyle = FormBorderStyle.Fixed3D;
             Margin = new Padding(5, 3, 5, 3);
             Name = "ProductList";
             Text = "Products";
+            Load += ProductList_Load;
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
             panel2.ResumeLayout(false);

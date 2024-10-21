@@ -148,60 +148,61 @@ namespace WinFormsApp1.Services
         }
 
         // Method to insert invoice and its details
-        public void InsertInvoice(InvoiceModel invoiceModel, List<int> quantities, List<string> productIDs)
-        {
-            using SqlConnection con = new SqlConnection(connectionString);
-            con.Open();
-            using SqlTransaction transaction = con.BeginTransaction();
-
-            try
+            public void InsertInvoice(InvoiceModel invoiceModel, List<int> quantities, List<string> productIDs)
             {
-                string sqlMaxInvoiceID = "SELECT ISNULL(MAX(CAST(SUBSTRING(InvoiceID, 4, LEN(InvoiceID)) AS INT)), 0) FROM Invoices";
-                SqlCommand cmdMaxInvoiceID = new SqlCommand(sqlMaxInvoiceID, con, transaction);
-                int maxInvoiceID = (int)cmdMaxInvoiceID.ExecuteScalar();
+                using SqlConnection con = new SqlConnection(connectionString);
+                con.Open();
+                using SqlTransaction transaction = con.BeginTransaction();
 
-                string newInvoiceID = "ABC" + (maxInvoiceID + 1).ToString("D5");
-
-                string sqlInsertInvoice = "INSERT INTO Invoices (InvoiceID, CustomerID, InvoiceDate) VALUES (@InvoiceID, @CustomerID, @InvoiceDate)";
-                SqlCommand cmdInsertInvoice = new SqlCommand(sqlInsertInvoice, con, transaction);
-                cmdInsertInvoice.Parameters.AddWithValue("@InvoiceID", newInvoiceID);
-                cmdInsertInvoice.Parameters.AddWithValue("@CustomerID", invoiceModel.CustomerID);
-                cmdInsertInvoice.Parameters.AddWithValue("@InvoiceDate", invoiceModel.InvoiceDate);
-                cmdInsertInvoice.ExecuteNonQuery();
-
-                string sqlMaxInvoiceDetailID = "SELECT ISNULL(MAX(CAST(SUBSTRING(InvoiceDetailID, 4, LEN(InvoiceDetailID)) AS INT)), 0) FROM InvoiceDetails";
-                SqlCommand cmdMaxInvoiceDetailID = new SqlCommand(sqlMaxInvoiceDetailID, con, transaction);
-                int maxInvoiceDetailID = (int)cmdMaxInvoiceDetailID.ExecuteScalar();
-
-                for (int i = 0; i < productIDs.Count; i++) //Create Invoice Details belong InvoiceID 
+                try
                 {
-                    string sqlInsertInvoiceDetail = "INSERT INTO InvoiceDetails (InvoiceDetailID, InvoiceID, ProductID, Quantity, TotalPrice) VALUES (@InvoiceDetailID, @InvoiceID, @ProductID, @Quantity, @TotalPrice)";
-                    SqlCommand cmdInsertInvoiceDetail = new SqlCommand(sqlInsertInvoiceDetail, con, transaction);
+                    //string sqlMaxInvoiceID = "SELECT ISNULL(MAX(CAST(SUBSTRING(InvoiceID, 4, LEN(InvoiceID)) AS INT)), 0) FROM Invoices";
+                    //SqlCommand cmdMaxInvoiceID = new SqlCommand(sqlMaxInvoiceID, con, transaction);
+                    //int maxInvoiceID = (int)cmdMaxInvoiceID.ExecuteScalar();
 
-                    string newInvoiceDetailID = "AAA" + (maxInvoiceDetailID + 1).ToString("D5");
-                    maxInvoiceDetailID++;
+                    //string newInvoiceID = "ABC" + (maxInvoiceID + 1).ToString("D5");
+                    string newInvoiceID = GetNewInvoiceID();
 
-                    cmdInsertInvoiceDetail.Parameters.AddWithValue("@InvoiceDetailID", newInvoiceDetailID);
-                    cmdInsertInvoiceDetail.Parameters.AddWithValue("@InvoiceID", newInvoiceID);
-                    cmdInsertInvoiceDetail.Parameters.AddWithValue("@ProductID", productIDs[i]);
-                    cmdInsertInvoiceDetail.Parameters.AddWithValue("@Quantity", quantities[i]);
-                    cmdInsertInvoiceDetail.Parameters.AddWithValue("@TotalPrice", 100);
+                    string sqlInsertInvoice = "INSERT INTO Invoices (InvoiceID, CustomerID, InvoiceDate) VALUES (@InvoiceID, @CustomerID, @InvoiceDate)";
+                    SqlCommand cmdInsertInvoice = new SqlCommand(sqlInsertInvoice, con, transaction);
+                    cmdInsertInvoice.Parameters.AddWithValue("@InvoiceID", newInvoiceID);
+                    cmdInsertInvoice.Parameters.AddWithValue("@CustomerID", invoiceModel.CustomerID);
+                    cmdInsertInvoice.Parameters.AddWithValue("@InvoiceDate", invoiceModel.InvoiceDate);
+                    cmdInsertInvoice.ExecuteNonQuery();
 
-                    cmdInsertInvoiceDetail.ExecuteNonQuery();
+                    string sqlMaxInvoiceDetailID = "SELECT ISNULL(MAX(CAST(SUBSTRING(InvoiceDetailID, 4, LEN(InvoiceDetailID)) AS INT)), 0) FROM InvoiceDetails";
+                    SqlCommand cmdMaxInvoiceDetailID = new SqlCommand(sqlMaxInvoiceDetailID, con, transaction);
+                    int maxInvoiceDetailID = (int)cmdMaxInvoiceDetailID.ExecuteScalar();
+
+                    for (int i = 0; i < productIDs.Count; i++) //Create Invoice Details belong InvoiceID 
+                    {
+                        string sqlInsertInvoiceDetail = "INSERT INTO InvoiceDetails (InvoiceDetailID, InvoiceID, ProductID, Quantity, TotalPrice) VALUES (@InvoiceDetailID, @InvoiceID, @ProductID, @Quantity, @TotalPrice)";
+                        SqlCommand cmdInsertInvoiceDetail = new SqlCommand(sqlInsertInvoiceDetail, con, transaction);
+
+                        string newInvoiceDetailID = "AAA" + (maxInvoiceDetailID + 1).ToString("D5");
+                        maxInvoiceDetailID++;
+
+                        cmdInsertInvoiceDetail.Parameters.AddWithValue("@InvoiceDetailID", newInvoiceDetailID);
+                        cmdInsertInvoiceDetail.Parameters.AddWithValue("@InvoiceID", newInvoiceID);
+                        cmdInsertInvoiceDetail.Parameters.AddWithValue("@ProductID", productIDs[i]);
+                        cmdInsertInvoiceDetail.Parameters.AddWithValue("@Quantity", quantities[i]);
+                        cmdInsertInvoiceDetail.Parameters.AddWithValue("@TotalPrice", 100);
+
+                        cmdInsertInvoiceDetail.ExecuteNonQuery();
+                    }
+
+                    transaction.Commit();
                 }
-
-                transaction.Commit();
+                catch (Exception ex)
+                {
+                    transaction.Rollback();
+                    throw new Exception("Error occurred while inserting invoice and its details: " + ex.Message);
+                }
+                finally
+                {
+                    con.Close();
+                }
             }
-            catch (Exception ex)
-            {
-                transaction.Rollback();
-                throw new Exception("Error occurred while inserting invoice and its details: " + ex.Message);
-            }
-            finally
-            {
-                con.Close();
-            }
-        }
 
         // Method to delete invoice and its details
         public void DeleteInvoice(string invoiceDetailID, string invoiceID)
@@ -276,6 +277,30 @@ namespace WinFormsApp1.Services
             con.Close();
 
             return count > 0;
+        }
+
+        public string GetNewInvoiceID() {
+            using SqlConnection con = new SqlConnection(connectionString);
+            con.Open();
+            using SqlTransaction transaction = con.BeginTransaction();
+            string newInvoiceID = "";
+            try
+            {
+                string sqlMaxInvoiceID = "SELECT ISNULL(MAX(CAST(SUBSTRING(InvoiceID, 4, LEN(InvoiceID)) AS INT)), 0) FROM Invoices";
+                SqlCommand cmdMaxInvoiceID = new SqlCommand(sqlMaxInvoiceID, con, transaction);
+                int maxInvoiceID = (int)cmdMaxInvoiceID.ExecuteScalar();
+
+                newInvoiceID += "ABC" + (maxInvoiceID + 1).ToString("D5");
+            }
+            catch (SqlException ex)
+            {
+                throw new Exception("Error occurred while updating data.", ex);
+            }
+            finally
+            {
+                con.Close();
+            }
+            return newInvoiceID;
         }
     }
 }

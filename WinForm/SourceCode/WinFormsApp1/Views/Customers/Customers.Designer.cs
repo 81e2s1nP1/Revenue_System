@@ -119,7 +119,7 @@ namespace WinFormsApp1.Views
             Controls.Add(panel3);
             Controls.Add(panel2);
             Controls.Add(CustomerTable);
-            FormBorderStyle = FormBorderStyle.None;
+            FormBorderStyle = FormBorderStyle.Fixed3D;
             Name = "CustomerList";
             Padding = new Padding(6);
             StartPosition = FormStartPosition.CenterScreen;

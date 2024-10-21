@@ -144,7 +144,7 @@
             Controls.Add(HideUpdt);
             Controls.Add(Ptextbox);
             Controls.Add(LTitleForm);
-            FormBorderStyle = FormBorderStyle.None;
+            FormBorderStyle = FormBorderStyle.Fixed3D;
             Name = "ProductUpdate";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "ProductUpdate";

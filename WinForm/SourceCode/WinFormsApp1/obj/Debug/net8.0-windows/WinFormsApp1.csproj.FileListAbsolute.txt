@@ -31,3 +31,4 @@ D:\C Sharp\ASoft\Winfrom Test App\SourceCode\WinFormsApp1\obj\Debug\net8.0-windo
 D:\C Sharp\ASoft\Winfrom Test App\SourceCode\WinFormsApp1\obj\Debug\net8.0-windows\WinFormsApp1.Views.Products.ProductUpdate.resources
 D:\C Sharp\ASoft\Winfrom Test App\SourceCode\WinFormsApp1\obj\Debug\net8.0-windows\WinFormsApp1.Views.InvoiceList.resources
 D:\C Sharp\ASoft\Winfrom Test App\SourceCode\WinFormsApp1\obj\Debug\net8.0-windows\WinFormsApp1.Views.Invoices.InvoiceUpdate.resources
+D:\C Sharp\ASoft\Winfrom Test App\SourceCode\WinFormsApp1\obj\Debug\net8.0-windows\WinFormsApp1.Views.Invoices.InvoiceInsert.resources

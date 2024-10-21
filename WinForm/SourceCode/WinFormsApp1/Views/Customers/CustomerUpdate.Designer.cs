@@ -143,7 +143,7 @@
             Controls.Add(UPDATE);
             Controls.Add(Ptextbox);
             Controls.Add(LTitleForm);
-            FormBorderStyle = FormBorderStyle.None;
+            FormBorderStyle = FormBorderStyle.Fixed3D;
             Name = "CustomerUpdate";
             StartPosition = FormStartPosition.CenterScreen;
             Ptextbox.ResumeLayout(false);

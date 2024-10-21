@@ -163,5 +163,10 @@ namespace WinFormsApp1.Views
                 MessageBox.Show("Please select a customer to update.");
             }
         }
+
+        private void ProductList_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

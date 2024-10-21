@@ -207,5 +207,21 @@ namespace WinFormsApp1.Views
             }
         }
 
+        private void button1_Click(object sender, EventArgs e)
+        {
+            InvoiceInsert invoiceInsert = new InvoiceInsert();
+
+            invoiceInsert.ShowDialog(this);
+        }
+
+        private void SetDataInvoiceLaunch()
+        {
+
+        }
+
+        private void InvoiceList_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

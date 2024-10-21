@@ -76,7 +76,7 @@
             button3.Size = new Size(155, 47);
             button3.TabIndex = 2;
             button3.Text = "UPDATE";
-            button3.UseVisualStyleBackColor = false; 
+            button3.UseVisualStyleBackColor = false;
             button3.Click += handleClickUpdate;
             // 
             // button2
@@ -101,6 +101,7 @@
             button1.TabIndex = 0;
             button1.Text = "LAUNCH";
             button1.UseVisualStyleBackColor = false;
+            button1.Click += button1_Click;
             // 
             // InvoiceTable
             // 
@@ -111,7 +112,7 @@
             InvoiceTable.TabIndex = 1;
             InvoiceTable.Paint += pMiddleInvoice;
             // 
-            // Invoices
+            // InvoiceList
             // 
             AutoScaleDimensions = new SizeF(13F, 23F);
             AutoScaleMode = AutoScaleMode.Font;
@@ -120,10 +121,11 @@
             Controls.Add(panel2);
             Controls.Add(panel1);
             Font = new Font("Showcard Gothic", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            FormBorderStyle = FormBorderStyle.None;
+            FormBorderStyle = FormBorderStyle.Fixed3D;
             Margin = new Padding(5, 3, 5, 3);
-            Name = "Invoices";
+            Name = "InvoiceList";
             Text = "Invoices";
+            Load += InvoiceList_Load;
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
             panel2.ResumeLayout(false);

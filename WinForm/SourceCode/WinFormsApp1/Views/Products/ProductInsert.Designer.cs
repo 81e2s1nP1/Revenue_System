@@ -129,7 +129,7 @@
             Controls.Add(Hide);
             Controls.Add(panel1);
             Controls.Add(LabelTop);
-            FormBorderStyle = FormBorderStyle.None;
+            FormBorderStyle = FormBorderStyle.Fixed3D;
             Name = "ProductInsert";
             StartPosition = FormStartPosition.CenterScreen;
             Load += ProductInsert_Load;

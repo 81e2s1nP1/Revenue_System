@@ -154,10 +154,10 @@
             panel1.Controls.Add(label1);
             panel1.Controls.Add(label3);
             panel1.Font = new Font("Arial Narrow", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            panel1.ForeColor = Color.RoyalBlue;
+            panel1.ForeColor = Color.Black;
             panel1.Location = new Point(12, 85);
             panel1.Name = "panel1";
-            panel1.Size = new Size(619, 189);
+            panel1.Size = new Size(619, 186);
             panel1.TabIndex = 6;
             // 
             // LInvoiceDetailID
@@ -394,12 +394,12 @@
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.Azure;
-            ClientSize = new Size(644, 360);
+            ClientSize = new Size(644, 342);
             Controls.Add(panel2);
             Controls.Add(panel1);
             Controls.Add(HideUpdt);
             Controls.Add(UPDATE);
-            FormBorderStyle = FormBorderStyle.None;
+            FormBorderStyle = FormBorderStyle.Fixed3D;
             Name = "InvoiceUpdate";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "InvoiceUpdate";

@@ -104,7 +104,7 @@
             ClientSize = new Size(1223, 589);
             Controls.Add(panel2);
             Controls.Add(panel1);
-            FormBorderStyle = FormBorderStyle.None;
+            FormBorderStyle = FormBorderStyle.Fixed3D;
             Name = "Home";
             Padding = new Padding(6);
             StartPosition = FormStartPosition.CenterScreen;

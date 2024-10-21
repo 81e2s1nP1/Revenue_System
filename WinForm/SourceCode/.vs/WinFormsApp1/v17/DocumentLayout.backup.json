@@ -1,12 +1,53 @@
 {
   "Version": 1,
   "WorkspaceRootPath": "D:\\C Sharp\\ASoft\\Winfrom Test App\\SourceCode\\",
-  "Documents": [],
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{C3C9F6B4-CB39-4053-83AD-6FCC1D7F35BE}|WinFormsApp1\\WinFormsApp1.csproj|d:\\c sharp\\asoft\\winfrom test app\\sourcecode\\winformsapp1\\views\\invoices\\invoiceupdate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{C3C9F6B4-CB39-4053-83AD-6FCC1D7F35BE}|WinFormsApp1\\WinFormsApp1.csproj|solutionrelative:winformsapp1\\views\\invoices\\invoiceupdate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C3C9F6B4-CB39-4053-83AD-6FCC1D7F35BE}|WinFormsApp1\\WinFormsApp1.csproj|d:\\c sharp\\asoft\\winfrom test app\\sourcecode\\winformsapp1\\views\\invoices\\invoiceupdate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C3C9F6B4-CB39-4053-83AD-6FCC1D7F35BE}|WinFormsApp1\\WinFormsApp1.csproj|solutionrelative:winformsapp1\\views\\invoices\\invoiceupdate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
   "DocumentGroupContainers": [
     {
       "Orientation": 0,
       "VerticalTabListWidth": 256,
-      "DocumentGroups": []
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 1,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "InvoiceUpdate.cs",
+              "DocumentMoniker": "D:\\C Sharp\\ASoft\\Winfrom Test App\\SourceCode\\WinFormsApp1\\Views\\Invoices\\InvoiceUpdate.cs",
+              "RelativeDocumentMoniker": "WinFormsApp1\\Views\\Invoices\\InvoiceUpdate.cs",
+              "ToolTip": "D:\\C Sharp\\ASoft\\Winfrom Test App\\SourceCode\\WinFormsApp1\\Views\\Invoices\\InvoiceUpdate.cs",
+              "RelativeToolTip": "WinFormsApp1\\Views\\Invoices\\InvoiceUpdate.cs",
+              "ViewState": "AgIAAFUAAAAAAAAAAAAWwGkAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-21T03:24:07.034Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "InvoiceUpdate.cs [Design]",
+              "DocumentMoniker": "D:\\C Sharp\\ASoft\\Winfrom Test App\\SourceCode\\WinFormsApp1\\Views\\Invoices\\InvoiceUpdate.cs",
+              "RelativeDocumentMoniker": "WinFormsApp1\\Views\\Invoices\\InvoiceUpdate.cs",
+              "ToolTip": "D:\\C Sharp\\ASoft\\Winfrom Test App\\SourceCode\\WinFormsApp1\\Views\\Invoices\\InvoiceUpdate.cs [Design]",
+              "RelativeToolTip": "WinFormsApp1\\Views\\Invoices\\InvoiceUpdate.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-21T03:23:52.791Z",
+              "EditorCaption": " [Design]"
+            }
+          ]
+        }
+      ]
     }
   ]
 }
