@@ -32,7 +32,14 @@ namespace WinFormsApp1.Views
         private void showProductInsertForm(object sender, EventArgs e)
         {
             ProductInsert productInsert = new ProductInsert();
+            productInsert.ProductInserted += ProductInsert_ProductInserted; // Đăng ký sự kiện
             productInsert.ShowDialog(this);
+        }
+
+        // Phương thức xử lý sự kiện
+        private void ProductInsert_ProductInserted()
+        {
+            ReloadProductList();
         }
 
         public void ReloadProductList()
@@ -157,6 +164,7 @@ namespace WinFormsApp1.Views
 
                 productUpdate.SetProductInfo(productID, productName, price);
                 productUpdate.ShowDialog(this);
+                ReloadProductList();
             }
             else
             {

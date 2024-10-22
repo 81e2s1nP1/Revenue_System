@@ -1,26 +1,31 @@
 {
   "format": 1,
   "restore": {
-    "D:\\C Sharp\\ASoft\\Winfrom Test App\\SourceCode\\WinFormsApp1\\WinFormsApp1.csproj": {}
+    "D:\\C Sharp\\ASoft\\WinForm\\SourceCode\\WinFormsApp1\\WinFormsApp1.csproj": {}
   },
   "projects": {
-    "D:\\C Sharp\\ASoft\\Winfrom Test App\\SourceCode\\WinFormsApp1\\WinFormsApp1.csproj": {
+    "D:\\C Sharp\\ASoft\\WinForm\\SourceCode\\WinFormsApp1\\WinFormsApp1.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\C Sharp\\ASoft\\Winfrom Test App\\SourceCode\\WinFormsApp1\\WinFormsApp1.csproj",
+        "projectUniqueName": "D:\\C Sharp\\ASoft\\WinForm\\SourceCode\\WinFormsApp1\\WinFormsApp1.csproj",
         "projectName": "WinFormsApp1",
-        "projectPath": "D:\\C Sharp\\ASoft\\Winfrom Test App\\SourceCode\\WinFormsApp1\\WinFormsApp1.csproj",
+        "projectPath": "D:\\C Sharp\\ASoft\\WinForm\\SourceCode\\WinFormsApp1\\WinFormsApp1.csproj",
         "packagesPath": "C:\\Users\\acer\\.nuget\\packages\\",
-        "outputPath": "D:\\C Sharp\\ASoft\\Winfrom Test App\\SourceCode\\WinFormsApp1\\obj\\",
+        "outputPath": "D:\\C Sharp\\ASoft\\WinForm\\SourceCode\\WinFormsApp1\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "D:\\C Sharp\\ASoft\\MESCIUS\\ComponentOne\\WinForms\\bin\\v8\\"
+        ],
         "configFilePaths": [
           "C:\\Users\\acer\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\ComponentOne.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
           "net8.0-windows"
         ],
         "sources": {
+          "C:\\Program Files (x86)\\MESCIUS\\ComponentOne\\Packages": {},
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {},

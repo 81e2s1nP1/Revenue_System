@@ -93,15 +93,16 @@ namespace WinFormsApp1.Views.Invoices
                 invoiceDataAccessLayer.UpdateInvoiceAndInvoiceDetail(updateInvoice, updateInvoiceDetail);
                 MessageBox.Show("Invoice updated successfully!", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 this.Hide();
-                /* 
-                Optionally reload the invoice list if needed
-                ReloadInvoiceList(); 
-                */
+
+                // Optionally reload the invoice list if needed
+                // ReloadInvoiceList(); 
+
             }
             catch (Exception ex)
             {
                 MessageBox.Show("An error occurred: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
     }
 }

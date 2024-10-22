@@ -1,30 +1,62 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "D:\\C Sharp\\ASoft\\Winfrom Test App\\SourceCode\\",
+  "WorkspaceRootPath": "D:\\C Sharp\\ASoft\\WinForm\\SourceCode\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{C3C9F6B4-CB39-4053-83AD-6FCC1D7F35BE}|WinFormsApp1\\WinFormsApp1.csproj|d:\\c sharp\\asoft\\winfrom test app\\sourcecode\\winformsapp1\\views\\invoices\\invoiceinsert.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{C3C9F6B4-CB39-4053-83AD-6FCC1D7F35BE}|WinFormsApp1\\WinFormsApp1.csproj|solutionrelative:winformsapp1\\views\\invoices\\invoiceinsert.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{C3C9F6B4-CB39-4053-83AD-6FCC1D7F35BE}|WinFormsApp1\\WinFormsApp1.csproj|d:\\c sharp\\asoft\\winform\\sourcecode\\winformsapp1\\views\\customers\\customers.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C3C9F6B4-CB39-4053-83AD-6FCC1D7F35BE}|WinFormsApp1\\WinFormsApp1.csproj|solutionrelative:winformsapp1\\views\\customers\\customers.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{C3C9F6B4-CB39-4053-83AD-6FCC1D7F35BE}|WinFormsApp1\\WinFormsApp1.csproj|D:\\C Sharp\\ASoft\\Winfrom Test App\\SourceCode\\winformsapp1\\views\\invoices\\invoiceinsert.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{C3C9F6B4-CB39-4053-83AD-6FCC1D7F35BE}|WinFormsApp1\\WinFormsApp1.csproj|solutionrelative:winformsapp1\\views\\invoices\\invoiceinsert.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+      "AbsoluteMoniker": "D:0:0:{C3C9F6B4-CB39-4053-83AD-6FCC1D7F35BE}|WinFormsApp1\\WinFormsApp1.csproj|d:\\c sharp\\asoft\\winform\\sourcecode\\winformsapp1\\views\\products\\products.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C3C9F6B4-CB39-4053-83AD-6FCC1D7F35BE}|WinFormsApp1\\WinFormsApp1.csproj|solutionrelative:winformsapp1\\views\\products\\products.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{C3C9F6B4-CB39-4053-83AD-6FCC1D7F35BE}|WinFormsApp1\\WinFormsApp1.csproj|d:\\c sharp\\asoft\\winfrom test app\\sourcecode\\winformsapp1\\views\\invoices\\invoices.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{C3C9F6B4-CB39-4053-83AD-6FCC1D7F35BE}|WinFormsApp1\\WinFormsApp1.csproj|d:\\c sharp\\asoft\\winform\\sourcecode\\winformsapp1\\views\\customers\\customerinsert.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C3C9F6B4-CB39-4053-83AD-6FCC1D7F35BE}|WinFormsApp1\\WinFormsApp1.csproj|solutionrelative:winformsapp1\\views\\customers\\customerinsert.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C3C9F6B4-CB39-4053-83AD-6FCC1D7F35BE}|WinFormsApp1\\WinFormsApp1.csproj|d:\\c sharp\\asoft\\winform\\sourcecode\\winformsapp1\\views\\products\\productinsert.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C3C9F6B4-CB39-4053-83AD-6FCC1D7F35BE}|WinFormsApp1\\WinFormsApp1.csproj|solutionrelative:winformsapp1\\views\\products\\productinsert.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C3C9F6B4-CB39-4053-83AD-6FCC1D7F35BE}|WinFormsApp1\\WinFormsApp1.csproj|d:\\c sharp\\asoft\\winform\\sourcecode\\winformsapp1\\views\\customers\\customerinsert.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{C3C9F6B4-CB39-4053-83AD-6FCC1D7F35BE}|WinFormsApp1\\WinFormsApp1.csproj|solutionrelative:winformsapp1\\views\\customers\\customerinsert.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C3C9F6B4-CB39-4053-83AD-6FCC1D7F35BE}|WinFormsApp1\\WinFormsApp1.csproj|d:\\c sharp\\asoft\\winform\\sourcecode\\winformsapp1\\views\\invoices\\invoices.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{C3C9F6B4-CB39-4053-83AD-6FCC1D7F35BE}|WinFormsApp1\\WinFormsApp1.csproj|solutionrelative:winformsapp1\\views\\invoices\\invoices.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{C3C9F6B4-CB39-4053-83AD-6FCC1D7F35BE}|WinFormsApp1\\WinFormsApp1.csproj|D:\\C Sharp\\ASoft\\Winfrom Test App\\SourceCode\\winformsapp1\\views\\invoices\\invoiceupdate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{C3C9F6B4-CB39-4053-83AD-6FCC1D7F35BE}|WinFormsApp1\\WinFormsApp1.csproj|solutionrelative:winformsapp1\\views\\invoices\\invoiceupdate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+      "AbsoluteMoniker": "D:0:0:{C3C9F6B4-CB39-4053-83AD-6FCC1D7F35BE}|WinFormsApp1\\WinFormsApp1.csproj|d:\\c sharp\\asoft\\winform\\sourcecode\\winformsapp1\\views\\invoices\\invoiceinsert.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C3C9F6B4-CB39-4053-83AD-6FCC1D7F35BE}|WinFormsApp1\\WinFormsApp1.csproj|solutionrelative:winformsapp1\\views\\invoices\\invoiceinsert.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{C3C9F6B4-CB39-4053-83AD-6FCC1D7F35BE}|WinFormsApp1\\WinFormsApp1.csproj|D:\\C Sharp\\ASoft\\Winfrom Test App\\SourceCode\\winformsapp1\\views\\invoices\\invoices.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{C3C9F6B4-CB39-4053-83AD-6FCC1D7F35BE}|WinFormsApp1\\WinFormsApp1.csproj|solutionrelative:winformsapp1\\views\\invoices\\invoices.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+      "AbsoluteMoniker": "D:0:0:{C3C9F6B4-CB39-4053-83AD-6FCC1D7F35BE}|WinFormsApp1\\WinFormsApp1.csproj|d:\\c sharp\\asoft\\winform\\sourcecode\\winformsapp1\\views\\invoices\\invoiceinsert.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{C3C9F6B4-CB39-4053-83AD-6FCC1D7F35BE}|WinFormsApp1\\WinFormsApp1.csproj|solutionrelative:winformsapp1\\views\\invoices\\invoiceinsert.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{C3C9F6B4-CB39-4053-83AD-6FCC1D7F35BE}|WinFormsApp1\\WinFormsApp1.csproj|d:\\c sharp\\asoft\\winfrom test app\\sourcecode\\winformsapp1\\views\\invoices\\invoiceupdate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{C3C9F6B4-CB39-4053-83AD-6FCC1D7F35BE}|WinFormsApp1\\WinFormsApp1.csproj|d:\\c sharp\\asoft\\winform\\sourcecode\\winformsapp1\\views\\products\\products.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{C3C9F6B4-CB39-4053-83AD-6FCC1D7F35BE}|WinFormsApp1\\WinFormsApp1.csproj|solutionrelative:winformsapp1\\views\\products\\products.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C3C9F6B4-CB39-4053-83AD-6FCC1D7F35BE}|WinFormsApp1\\WinFormsApp1.csproj|d:\\c sharp\\asoft\\winform\\sourcecode\\winformsapp1\\views\\products\\productinsert.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{C3C9F6B4-CB39-4053-83AD-6FCC1D7F35BE}|WinFormsApp1\\WinFormsApp1.csproj|solutionrelative:winformsapp1\\views\\products\\productinsert.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C3C9F6B4-CB39-4053-83AD-6FCC1D7F35BE}|WinFormsApp1\\WinFormsApp1.csproj|d:\\c sharp\\asoft\\winform\\sourcecode\\winformsapp1\\views\\invoices\\invoiceupdate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{C3C9F6B4-CB39-4053-83AD-6FCC1D7F35BE}|WinFormsApp1\\WinFormsApp1.csproj|solutionrelative:winformsapp1\\views\\invoices\\invoiceupdate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C3C9F6B4-CB39-4053-83AD-6FCC1D7F35BE}|WinFormsApp1\\WinFormsApp1.csproj|d:\\c sharp\\asoft\\winform\\sourcecode\\winformsapp1\\views\\home.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C3C9F6B4-CB39-4053-83AD-6FCC1D7F35BE}|WinFormsApp1\\WinFormsApp1.csproj|solutionrelative:winformsapp1\\views\\home.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C3C9F6B4-CB39-4053-83AD-6FCC1D7F35BE}|WinFormsApp1\\WinFormsApp1.csproj|D:\\C Sharp\\ASoft\\WinForm\\SourceCode\\winformsapp1\\views\\home.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{C3C9F6B4-CB39-4053-83AD-6FCC1D7F35BE}|WinFormsApp1\\WinFormsApp1.csproj|solutionrelative:winformsapp1\\views\\home.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C3C9F6B4-CB39-4053-83AD-6FCC1D7F35BE}|WinFormsApp1\\WinFormsApp1.csproj|d:\\c sharp\\asoft\\winform\\sourcecode\\winformsapp1\\views\\home.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C3C9F6B4-CB39-4053-83AD-6FCC1D7F35BE}|WinFormsApp1\\WinFormsApp1.csproj|solutionrelative:winformsapp1\\views\\home.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -34,79 +66,184 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 7,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "InvoiceInsert.cs",
-              "DocumentMoniker": "D:\\C Sharp\\ASoft\\Winfrom Test App\\SourceCode\\WinFormsApp1\\Views\\Invoices\\InvoiceInsert.cs",
-              "RelativeDocumentMoniker": "WinFormsApp1\\Views\\Invoices\\InvoiceInsert.cs",
-              "ToolTip": "D:\\C Sharp\\ASoft\\Winfrom Test App\\SourceCode\\WinFormsApp1\\Views\\Invoices\\InvoiceInsert.cs",
-              "RelativeToolTip": "WinFormsApp1\\Views\\Invoices\\InvoiceInsert.cs",
-              "ViewState": "AgIAACoAAAAAAAAAAAAuwD4AAAAqAAAAAAAAAA==",
+              "DocumentIndex": 4,
+              "Title": "CustomerInsert.cs [Design]",
+              "DocumentMoniker": "D:\\C Sharp\\ASoft\\WinForm\\SourceCode\\WinFormsApp1\\Views\\Customers\\CustomerInsert.cs",
+              "RelativeDocumentMoniker": "WinFormsApp1\\Views\\Customers\\CustomerInsert.cs",
+              "ToolTip": "D:\\C Sharp\\ASoft\\WinForm\\SourceCode\\WinFormsApp1\\Views\\Customers\\CustomerInsert.cs [Design]",
+              "RelativeToolTip": "WinFormsApp1\\Views\\Customers\\CustomerInsert.cs [Design]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-21T03:27:42.912Z",
+              "WhenOpened": "2024-10-22T07:10:22.275Z",
+              "EditorCaption": " [Design]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "InvoiceUpdate.cs",
+              "DocumentMoniker": "D:\\C Sharp\\ASoft\\WinForm\\SourceCode\\WinFormsApp1\\Views\\Invoices\\InvoiceUpdate.cs",
+              "RelativeDocumentMoniker": "WinFormsApp1\\Views\\Invoices\\InvoiceUpdate.cs",
+              "ToolTip": "D:\\C Sharp\\ASoft\\WinForm\\SourceCode\\WinFormsApp1\\Views\\Invoices\\InvoiceUpdate.cs",
+              "RelativeToolTip": "WinFormsApp1\\Views\\Invoices\\InvoiceUpdate.cs",
+              "ViewState": "AgIAACwAAAAAAAAAAAAcwEsAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-22T04:53:18.566Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "InvoiceInsert.cs [Design]",
+              "DocumentMoniker": "D:\\C Sharp\\ASoft\\WinForm\\SourceCode\\WinFormsApp1\\Views\\Invoices\\InvoiceInsert.cs",
+              "RelativeDocumentMoniker": "WinFormsApp1\\Views\\Invoices\\InvoiceInsert.cs",
+              "ToolTip": "D:\\C Sharp\\ASoft\\WinForm\\SourceCode\\WinFormsApp1\\Views\\Invoices\\InvoiceInsert.cs [Design]",
+              "RelativeToolTip": "WinFormsApp1\\Views\\Invoices\\InvoiceInsert.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-22T04:49:52.881Z",
+              "EditorCaption": " [Design]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "InvoiceInsert.cs",
+              "DocumentMoniker": "D:\\C Sharp\\ASoft\\WinForm\\SourceCode\\WinFormsApp1\\Views\\Invoices\\InvoiceInsert.cs",
+              "RelativeDocumentMoniker": "WinFormsApp1\\Views\\Invoices\\InvoiceInsert.cs",
+              "ToolTip": "D:\\C Sharp\\ASoft\\WinForm\\SourceCode\\WinFormsApp1\\Views\\Invoices\\InvoiceInsert.cs",
+              "RelativeToolTip": "WinFormsApp1\\Views\\Invoices\\InvoiceInsert.cs",
+              "ViewState": "AgIAAHMAAAAAAAAAAAAkwLAAAAAcAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-22T04:49:57.002Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "InvoiceInsert.cs [Design]",
-              "DocumentMoniker": "D:\\C Sharp\\ASoft\\Winfrom Test App\\SourceCode\\WinFormsApp1\\Views\\Invoices\\InvoiceInsert.cs",
-              "RelativeDocumentMoniker": "WinFormsApp1\\Views\\Invoices\\InvoiceInsert.cs",
-              "ToolTip": "D:\\C Sharp\\ASoft\\Winfrom Test App\\SourceCode\\WinFormsApp1\\Views\\Invoices\\InvoiceInsert.cs [Design]",
-              "RelativeToolTip": "WinFormsApp1\\Views\\Invoices\\InvoiceInsert.cs [Design]",
+              "Title": "Products.cs",
+              "DocumentMoniker": "D:\\C Sharp\\ASoft\\WinForm\\SourceCode\\WinFormsApp1\\Views\\Products\\Products.cs",
+              "RelativeDocumentMoniker": "WinFormsApp1\\Views\\Products\\Products.cs",
+              "ToolTip": "D:\\C Sharp\\ASoft\\WinForm\\SourceCode\\WinFormsApp1\\Views\\Products\\Products.cs",
+              "RelativeToolTip": "WinFormsApp1\\Views\\Products\\Products.cs",
+              "ViewState": "AgIAABYAAAAAAAAAAAAQwCYAAAAIAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-21T03:27:37.064Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "Invoices.cs",
-              "DocumentMoniker": "D:\\C Sharp\\ASoft\\Winfrom Test App\\SourceCode\\WinFormsApp1\\Views\\Invoices\\Invoices.cs",
-              "RelativeDocumentMoniker": "WinFormsApp1\\Views\\Invoices\\Invoices.cs",
-              "ToolTip": "D:\\C Sharp\\ASoft\\Winfrom Test App\\SourceCode\\WinFormsApp1\\Views\\Invoices\\Invoices.cs",
-              "RelativeToolTip": "WinFormsApp1\\Views\\Invoices\\Invoices.cs",
-              "ViewState": "AgIAAIQAAAAAAAAAAAAEwNUAAAAkAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-21T03:27:01.438Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "Invoices.cs [Design]",
-              "DocumentMoniker": "D:\\C Sharp\\ASoft\\Winfrom Test App\\SourceCode\\WinFormsApp1\\Views\\Invoices\\Invoices.cs",
-              "RelativeDocumentMoniker": "WinFormsApp1\\Views\\Invoices\\Invoices.cs",
-              "ToolTip": "D:\\C Sharp\\ASoft\\Winfrom Test App\\SourceCode\\WinFormsApp1\\Views\\Invoices\\Invoices.cs [Design]",
-              "RelativeToolTip": "WinFormsApp1\\Views\\Invoices\\Invoices.cs [Design]",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-21T03:26:59.248Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "InvoiceUpdate.cs",
-              "DocumentMoniker": "D:\\C Sharp\\ASoft\\Winfrom Test App\\SourceCode\\WinFormsApp1\\Views\\Invoices\\InvoiceUpdate.cs",
-              "RelativeDocumentMoniker": "WinFormsApp1\\Views\\Invoices\\InvoiceUpdate.cs",
-              "ToolTip": "D:\\C Sharp\\ASoft\\Winfrom Test App\\SourceCode\\WinFormsApp1\\Views\\Invoices\\InvoiceUpdate.cs",
-              "RelativeToolTip": "WinFormsApp1\\Views\\Invoices\\InvoiceUpdate.cs",
-              "ViewState": "AgIAAFUAAAAAAAAAAAAWwGkAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-21T03:24:07.034Z",
+              "WhenOpened": "2024-10-22T06:40:12.48Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 3,
-              "Title": "InvoiceUpdate.cs [Design]",
-              "DocumentMoniker": "D:\\C Sharp\\ASoft\\Winfrom Test App\\SourceCode\\WinFormsApp1\\Views\\Invoices\\InvoiceUpdate.cs",
-              "RelativeDocumentMoniker": "WinFormsApp1\\Views\\Invoices\\InvoiceUpdate.cs",
-              "ToolTip": "D:\\C Sharp\\ASoft\\Winfrom Test App\\SourceCode\\WinFormsApp1\\Views\\Invoices\\InvoiceUpdate.cs [Design]",
-              "RelativeToolTip": "WinFormsApp1\\Views\\Invoices\\InvoiceUpdate.cs [Design]",
+              "Title": "ProductInsert.cs",
+              "DocumentMoniker": "D:\\C Sharp\\ASoft\\WinForm\\SourceCode\\WinFormsApp1\\Views\\Products\\ProductInsert.cs",
+              "RelativeDocumentMoniker": "WinFormsApp1\\Views\\Products\\ProductInsert.cs",
+              "ToolTip": "D:\\C Sharp\\ASoft\\WinForm\\SourceCode\\WinFormsApp1\\Views\\Products\\ProductInsert.cs",
+              "RelativeToolTip": "WinFormsApp1\\Views\\Products\\ProductInsert.cs",
+              "ViewState": "AgIAACAAAAAAAAAAAAAgwBEAAAAIAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-21T03:23:52.791Z"
+              "WhenOpened": "2024-10-22T06:45:00.822Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "Invoices.cs",
+              "DocumentMoniker": "D:\\C Sharp\\ASoft\\WinForm\\SourceCode\\WinFormsApp1\\Views\\Invoices\\Invoices.cs",
+              "RelativeDocumentMoniker": "WinFormsApp1\\Views\\Invoices\\Invoices.cs",
+              "ToolTip": "D:\\C Sharp\\ASoft\\WinForm\\SourceCode\\WinFormsApp1\\Views\\Invoices\\Invoices.cs",
+              "RelativeToolTip": "WinFormsApp1\\Views\\Invoices\\Invoices.cs",
+              "ViewState": "AgIAACkAAAAAAAAAAAAgwBQAAAAsAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-22T04:52:11.255Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Customers.cs",
+              "DocumentMoniker": "D:\\C Sharp\\ASoft\\WinForm\\SourceCode\\WinFormsApp1\\Views\\Customers\\Customers.cs",
+              "RelativeDocumentMoniker": "WinFormsApp1\\Views\\Customers\\Customers.cs",
+              "ToolTip": "D:\\C Sharp\\ASoft\\WinForm\\SourceCode\\WinFormsApp1\\Views\\Customers\\Customers.cs",
+              "RelativeToolTip": "WinFormsApp1\\Views\\Customers\\Customers.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAEYAAABOAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-22T06:40:42.88Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "CustomerInsert.cs",
+              "DocumentMoniker": "D:\\C Sharp\\ASoft\\WinForm\\SourceCode\\WinFormsApp1\\Views\\Customers\\CustomerInsert.cs",
+              "RelativeDocumentMoniker": "WinFormsApp1\\Views\\Customers\\CustomerInsert.cs",
+              "ToolTip": "D:\\C Sharp\\ASoft\\WinForm\\SourceCode\\WinFormsApp1\\Views\\Customers\\CustomerInsert.cs",
+              "RelativeToolTip": "WinFormsApp1\\Views\\Customers\\CustomerInsert.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAADIAAABKAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-22T07:10:23.712Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "ProductInsert.cs [Design]",
+              "DocumentMoniker": "D:\\C Sharp\\ASoft\\WinForm\\SourceCode\\WinFormsApp1\\Views\\Products\\ProductInsert.cs",
+              "RelativeDocumentMoniker": "WinFormsApp1\\Views\\Products\\ProductInsert.cs",
+              "ToolTip": "D:\\C Sharp\\ASoft\\WinForm\\SourceCode\\WinFormsApp1\\Views\\Products\\ProductInsert.cs [Design]",
+              "RelativeToolTip": "WinFormsApp1\\Views\\Products\\ProductInsert.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-22T06:40:07.126Z",
+              "EditorCaption": " [Design]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "Products.cs [Design]",
+              "DocumentMoniker": "D:\\C Sharp\\ASoft\\WinForm\\SourceCode\\WinFormsApp1\\Views\\Products\\Products.cs",
+              "RelativeDocumentMoniker": "WinFormsApp1\\Views\\Products\\Products.cs",
+              "ToolTip": "D:\\C Sharp\\ASoft\\WinForm\\SourceCode\\WinFormsApp1\\Views\\Products\\Products.cs [Design]",
+              "RelativeToolTip": "WinFormsApp1\\Views\\Products\\Products.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-22T06:40:09.901Z",
+              "EditorCaption": " [Design]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "Home.Designer.cs",
+              "DocumentMoniker": "D:\\C Sharp\\ASoft\\WinForm\\SourceCode\\WinFormsApp1\\Views\\Home.Designer.cs",
+              "RelativeDocumentMoniker": "WinFormsApp1\\Views\\Home.Designer.cs",
+              "ToolTip": "D:\\C Sharp\\ASoft\\WinForm\\SourceCode\\WinFormsApp1\\Views\\Home.Designer.cs",
+              "RelativeToolTip": "WinFormsApp1\\Views\\Home.Designer.cs",
+              "ViewState": "AgIAAEsAAAAAAAAAAAAYwG0AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-22T01:16:26.907Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "Home.cs",
+              "DocumentMoniker": "D:\\C Sharp\\ASoft\\WinForm\\SourceCode\\WinFormsApp1\\Views\\Home.cs",
+              "RelativeDocumentMoniker": "WinFormsApp1\\Views\\Home.cs",
+              "ToolTip": "D:\\C Sharp\\ASoft\\WinForm\\SourceCode\\WinFormsApp1\\Views\\Home.cs",
+              "RelativeToolTip": "WinFormsApp1\\Views\\Home.cs",
+              "ViewState": "AgIAABAAAAAAAAAAAAAQwCUAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-22T01:12:25.347Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "Home.cs [Design]",
+              "DocumentMoniker": "D:\\C Sharp\\ASoft\\WinForm\\SourceCode\\WinFormsApp1\\Views\\Home.cs",
+              "RelativeDocumentMoniker": "WinFormsApp1\\Views\\Home.cs",
+              "ToolTip": "D:\\C Sharp\\ASoft\\WinForm\\SourceCode\\WinFormsApp1\\Views\\Home.cs [Design]",
+              "RelativeToolTip": "WinFormsApp1\\Views\\Home.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-22T01:12:11.517Z",
+              "EditorCaption": " [Design]"
             }
           ]
         }

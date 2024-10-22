@@ -125,7 +125,6 @@
             Margin = new Padding(5, 3, 5, 3);
             Name = "InvoiceList";
             Text = "Invoices";
-            Load += InvoiceList_Load;
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
             panel2.ResumeLayout(false);

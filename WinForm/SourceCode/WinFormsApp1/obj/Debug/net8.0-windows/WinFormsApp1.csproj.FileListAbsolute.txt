@@ -32,3 +32,37 @@ D:\C Sharp\ASoft\Winfrom Test App\SourceCode\WinFormsApp1\obj\Debug\net8.0-windo
 D:\C Sharp\ASoft\Winfrom Test App\SourceCode\WinFormsApp1\obj\Debug\net8.0-windows\WinFormsApp1.Views.InvoiceList.resources
 D:\C Sharp\ASoft\Winfrom Test App\SourceCode\WinFormsApp1\obj\Debug\net8.0-windows\WinFormsApp1.Views.Invoices.InvoiceUpdate.resources
 D:\C Sharp\ASoft\Winfrom Test App\SourceCode\WinFormsApp1\obj\Debug\net8.0-windows\WinFormsApp1.Views.Invoices.InvoiceInsert.resources
+D:\C Sharp\ASoft\WinForm\SourceCode\WinFormsApp1\bin\Debug\net8.0-windows\WinFormsApp1.exe
+D:\C Sharp\ASoft\WinForm\SourceCode\WinFormsApp1\bin\Debug\net8.0-windows\WinFormsApp1.deps.json
+D:\C Sharp\ASoft\WinForm\SourceCode\WinFormsApp1\bin\Debug\net8.0-windows\WinFormsApp1.runtimeconfig.json
+D:\C Sharp\ASoft\WinForm\SourceCode\WinFormsApp1\bin\Debug\net8.0-windows\WinFormsApp1.dll
+D:\C Sharp\ASoft\WinForm\SourceCode\WinFormsApp1\bin\Debug\net8.0-windows\WinFormsApp1.pdb
+D:\C Sharp\ASoft\WinForm\SourceCode\WinFormsApp1\bin\Debug\net8.0-windows\System.Data.SqlClient.dll
+D:\C Sharp\ASoft\WinForm\SourceCode\WinFormsApp1\bin\Debug\net8.0-windows\runtimes\win-arm64\native\sni.dll
+D:\C Sharp\ASoft\WinForm\SourceCode\WinFormsApp1\bin\Debug\net8.0-windows\runtimes\win-x64\native\sni.dll
+D:\C Sharp\ASoft\WinForm\SourceCode\WinFormsApp1\bin\Debug\net8.0-windows\runtimes\win-x86\native\sni.dll
+D:\C Sharp\ASoft\WinForm\SourceCode\WinFormsApp1\bin\Debug\net8.0-windows\runtimes\unix\lib\netcoreapp2.1\System.Data.SqlClient.dll
+D:\C Sharp\ASoft\WinForm\SourceCode\WinFormsApp1\bin\Debug\net8.0-windows\runtimes\win\lib\netcoreapp2.1\System.Data.SqlClient.dll
+D:\C Sharp\ASoft\WinForm\SourceCode\WinFormsApp1\obj\Debug\net8.0-windows\WinFormsApp1.csproj.AssemblyReference.cache
+D:\C Sharp\ASoft\WinForm\SourceCode\WinFormsApp1\obj\Debug\net8.0-windows\WinFormsApp1.Properties.Resources.resources
+D:\C Sharp\ASoft\WinForm\SourceCode\WinFormsApp1\obj\Debug\net8.0-windows\WinFormsApp1.Views.Customers.CustomerInsert.resources
+D:\C Sharp\ASoft\WinForm\SourceCode\WinFormsApp1\obj\Debug\net8.0-windows\WinFormsApp1.Views.CustomerList.resources
+D:\C Sharp\ASoft\WinForm\SourceCode\WinFormsApp1\obj\Debug\net8.0-windows\WinFormsApp1.Views.Customers.CustomerUpdate.resources
+D:\C Sharp\ASoft\WinForm\SourceCode\WinFormsApp1\obj\Debug\net8.0-windows\WinFormsApp1.Home.resources
+D:\C Sharp\ASoft\WinForm\SourceCode\WinFormsApp1\obj\Debug\net8.0-windows\WinFormsApp1.Views.Invoices.InvoiceInsert.resources
+D:\C Sharp\ASoft\WinForm\SourceCode\WinFormsApp1\obj\Debug\net8.0-windows\WinFormsApp1.Views.InvoiceList.resources
+D:\C Sharp\ASoft\WinForm\SourceCode\WinFormsApp1\obj\Debug\net8.0-windows\WinFormsApp1.Views.Invoices.InvoiceUpdate.resources
+D:\C Sharp\ASoft\WinForm\SourceCode\WinFormsApp1\obj\Debug\net8.0-windows\WinFormsApp1.Views.Products.ProductInsert.resources
+D:\C Sharp\ASoft\WinForm\SourceCode\WinFormsApp1\obj\Debug\net8.0-windows\WinFormsApp1.Views.ProductList.resources
+D:\C Sharp\ASoft\WinForm\SourceCode\WinFormsApp1\obj\Debug\net8.0-windows\WinFormsApp1.Views.Products.ProductUpdate.resources
+D:\C Sharp\ASoft\WinForm\SourceCode\WinFormsApp1\obj\Debug\net8.0-windows\WinFormsApp1.csproj.GenerateResource.cache
+D:\C Sharp\ASoft\WinForm\SourceCode\WinFormsApp1\obj\Debug\net8.0-windows\WinFormsApp1.GeneratedMSBuildEditorConfig.editorconfig
+D:\C Sharp\ASoft\WinForm\SourceCode\WinFormsApp1\obj\Debug\net8.0-windows\WinFormsApp1.AssemblyInfoInputs.cache
+D:\C Sharp\ASoft\WinForm\SourceCode\WinFormsApp1\obj\Debug\net8.0-windows\WinFormsApp1.AssemblyInfo.cs
+D:\C Sharp\ASoft\WinForm\SourceCode\WinFormsApp1\obj\Debug\net8.0-windows\WinFormsApp1.csproj.CoreCompileInputs.cache
+D:\C Sharp\ASoft\WinForm\SourceCode\WinFormsApp1\obj\Debug\net8.0-windows\WinForms.E4050A35.Up2Date
+D:\C Sharp\ASoft\WinForm\SourceCode\WinFormsApp1\obj\Debug\net8.0-windows\WinFormsApp1.dll
+D:\C Sharp\ASoft\WinForm\SourceCode\WinFormsApp1\obj\Debug\net8.0-windows\refint\WinFormsApp1.dll
+D:\C Sharp\ASoft\WinForm\SourceCode\WinFormsApp1\obj\Debug\net8.0-windows\WinFormsApp1.pdb
+D:\C Sharp\ASoft\WinForm\SourceCode\WinFormsApp1\obj\Debug\net8.0-windows\WinFormsApp1.genruntimeconfig.cache
+D:\C Sharp\ASoft\WinForm\SourceCode\WinFormsApp1\obj\Debug\net8.0-windows\ref\WinFormsApp1.dll

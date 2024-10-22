@@ -47,7 +47,6 @@
             panel1.Name = "panel1";
             panel1.Size = new Size(250, 577);
             panel1.TabIndex = 0;
-            panel1.Paint += navbar;
             // 
             // button3
             // 
@@ -94,7 +93,6 @@
             panel2.Padding = new Padding(6);
             panel2.Size = new Size(961, 577);
             panel2.TabIndex = 1;
-            panel2.Paint += pCustomers;
             // 
             // Home
             // 
@@ -109,7 +107,6 @@
             Padding = new Padding(6);
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Customers-List";
-            Load += fCustomers_Load;
             panel1.ResumeLayout(false);
             ResumeLayout(false);
         }

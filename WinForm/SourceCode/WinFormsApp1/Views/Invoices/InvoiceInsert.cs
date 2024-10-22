@@ -18,6 +18,8 @@ namespace WinFormsApp1.Views.Invoices
         private InvoiceDataAccessLayer invoiceDataAccessLayer;
         private ProductDataAccessLayer productDataAccessLayer;
         private CustomerDataAccessLayer customerDataAccessLayer;
+        private DataGridView dataGridView;
+        public event Action InvoiceInserted;
         public InvoiceInsert()
         {
             InitializeComponent();
@@ -25,8 +27,6 @@ namespace WinFormsApp1.Views.Invoices
             productDataAccessLayer = new ProductDataAccessLayer();
             customerDataAccessLayer = new CustomerDataAccessLayer();
         }
-
-        private DataGridView dataGridView;
 
         private void InvoiceInsert_Load(object sender, EventArgs e)
         {
@@ -169,8 +169,12 @@ namespace WinFormsApp1.Views.Invoices
 
                 // Call InsertInvoice method with productIds and quantities
                 invoiceDataAccessLayer.InsertInvoice(invoice, quantities, productIds);
-
                 MessageBox.Show("Invoice created successfully.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                // Gọi sự kiện ProductInserted
+                InvoiceInserted?.Invoke();
+
+                this.Hide();
             }
             catch (InvalidOperationException ex)
             {

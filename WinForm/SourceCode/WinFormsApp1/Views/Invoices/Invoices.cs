@@ -11,6 +11,7 @@ using System.Windows.Forms;
 using WinFormsApp1.Services;
 using WinFormsApp1.Views.Customers;
 using WinFormsApp1.Views.Invoices;
+using WinFormsApp1.Views.Products;
 
 namespace WinFormsApp1.Views
 {
@@ -200,28 +201,25 @@ namespace WinFormsApp1.Views
                 // Set the data into InvoiceUpdate form
                 invoiceUpdate.SetInvoiceInfo(customerModel, productModel, invoiceModel, invoiceDetailModel);
                 invoiceUpdate.ShowDialog(this);
+                ReloadInvoiceList();
             }
             else
             {
-                MessageBox.Show("Please select a customer to update.");
+                MessageBox.Show("Please select an invoice to update.");
             }
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
             InvoiceInsert invoiceInsert = new InvoiceInsert();
-
+            invoiceInsert.InvoiceInserted += InvoiceInsert_ProductInserted; // Đăng ký sự kiện
             invoiceInsert.ShowDialog(this);
         }
 
-        private void SetDataInvoiceLaunch()
+        // Phương thức xử lý sự kiện
+        private void InvoiceInsert_ProductInserted()
         {
-
-        }
-
-        private void InvoiceList_Load(object sender, EventArgs e)
-        {
-
+            ReloadInvoiceList();
         }
     }
 }

@@ -15,15 +15,6 @@ namespace WinFormsApp1
             InitializeComponent();
         }
 
-        // Event handler for form load event
-        private void fCustomers_Load(object sender, EventArgs e)
-        {
-        }
-
-        // Event handler for the panel paint event (navbar)
-        private void navbar(object sender, PaintEventArgs e)
-        {
-        }
 
         // Method to show a child form within a panel
         private void ShowChildFormInPanel(Form childForm, Panel panelContainer)
@@ -43,11 +34,6 @@ namespace WinFormsApp1
             panelContainer.Controls.Clear();
             panelContainer.Controls.Add(childForm);
             childForm.Show(); 
-        }
-
-        // Event handler for the panel paint event (for customer panel)
-        private void pCustomers(object sender, PaintEventArgs e)
-        {
         }
 
         // Event handler for button1 click (showing customers)

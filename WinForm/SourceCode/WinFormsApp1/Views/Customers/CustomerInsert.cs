@@ -15,12 +15,11 @@ namespace WinFormsApp1.Views.Customers
     public partial class CustomerInsert : Form
     {
         private CustomerDataAccessLayer customerDataAccessLayer;
-        private CustomerList customerList;
+        public event Action customerInserted;
         public CustomerInsert()
         {
             InitializeComponent();
             customerDataAccessLayer = new CustomerDataAccessLayer();
-            customerList = new CustomerList();
         }
         private void button1_Click(object sender, EventArgs e)
         {
@@ -48,6 +47,9 @@ namespace WinFormsApp1.Views.Customers
             {
                 customerDataAccessLayer.InsertCustomer(newCustomer);
                 MessageBox.Show("Khách hàng đã được thêm thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                customerInserted?.Invoke(); // gọi sự kiện insert customer
+
                 this.Hide();
             }
             catch (Exception ex)

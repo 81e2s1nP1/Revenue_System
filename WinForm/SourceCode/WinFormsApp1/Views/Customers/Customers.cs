@@ -10,6 +10,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using WinFormsApp1.Services;
 using WinFormsApp1.Views.Customers;
+using WinFormsApp1.Views.Products;
 
 namespace WinFormsApp1.Views
 {
@@ -67,7 +68,14 @@ namespace WinFormsApp1.Views
         private void ShowInsertForm(object sender, EventArgs e)
         {
             CustomerInsert customerInsert = new CustomerInsert();
+            customerInsert.customerInserted += CustomerInsert_CustomerInserted; // Đăng ký sự kiện
             customerInsert.ShowDialog(this);
+        }
+
+        // Phương thức xử lý sự kiện
+        private void CustomerInsert_CustomerInserted()
+        {
+            ReloadCustomerList();
         }
 
         private void showUpdateForm_Click(object sender, EventArgs e)
@@ -88,6 +96,7 @@ namespace WinFormsApp1.Views
 
                 customerUpdate.SetCustomerInfo(customerID, customerName, phone);
                 customerUpdate.ShowDialog(this);
+                ReloadCustomerList();
             }
             else
             {

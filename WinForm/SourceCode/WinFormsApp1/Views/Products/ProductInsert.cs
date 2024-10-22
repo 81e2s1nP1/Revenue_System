@@ -15,6 +15,7 @@ namespace WinFormsApp1.Views.Products
     public partial class ProductInsert : Form
     {
         private ProductDataAccessLayer productDataAccessLayer;
+        public event Action ProductInserted;
         public ProductInsert()
         {
             productDataAccessLayer = new ProductDataAccessLayer();
@@ -37,11 +38,10 @@ namespace WinFormsApp1.Views.Products
                 return;
             }
 
-            // Check the input value and parse
             if (!decimal.TryParse(price, out decimal parsedPrice))
             {
                 MessageBox.Show("Please enter a valid price.", "Input Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return; // Exit the method if the price is invalid
+                return;
             }
 
             ProductModel newProduct = new ProductModel
@@ -54,6 +54,10 @@ namespace WinFormsApp1.Views.Products
             {
                 productDataAccessLayer.InsertProduct(newProduct);
                 MessageBox.Show("The product has been added successfully!", "Notification", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                // Gọi sự kiện ProductInserted
+                ProductInserted?.Invoke();
+
                 this.Hide();
             }
             catch (Exception ex)
